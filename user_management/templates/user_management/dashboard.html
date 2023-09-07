@@ -1,0 +1,183 @@
+{% extends "bw_base.html" %}
+{% load static %}
+{% load bootstrap5 %}
+{% load humanize %}
+{% block extrahead %}
+
+<style>
+  .modelFormTrigger{
+display:none;
+  }
+  .HomeBtn{
+    display: none;
+  }
+</style>
+
+
+  {% endblock %}
+  <!-- <body style="background-color: #666666;"> -->
+      {% block content %}
+    
+   
+     <!-- <section class="pt-2">
+      <div class="container">
+        <div class="row justify-content-center">
+    
+          <div class="col-lg-10">
+              
+             
+              <div id="drag-and-drop-zone" class="dm-uploader p-2">
+                <h3 class="mb-2 mt-2 text-muted">Drag &amp; drop files here</h3>
+    
+                <div class="btn btn-warning mb-2">
+                    <span>Open the file Browser </span>
+                    <input type="file" title='Click to add Files' />                    
+                </div>
+               
+                <ul class="list-unstyled p-0" id="files">
+                  <li class="text-muted text-center empty">No files uploaded.</li>
+                </ul>
+
+                <figure class="text-center">
+                
+                  <figcaption class="blockquote-footer">
+                    Formats allowed : amr, flac, wav, ogg, mp3, mp4, webm
+                  </figcaption>
+                </figure>
+                
+              </div>
+             
+            </div>
+           
+          </div>
+        
+      </div>
+    </section> -->
+      <section class="pt-2 mt-2 mb-5">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-12">
+           
+              
+            <a href="/user_management/user/create/" class="btn btn-sm btn-warning float-end me-4 mt-3 mb-2">Create Project</a>
+                
+                      <div id="tableApp">
+                       
+                      </div>
+                
+                 
+              
+              
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#DownloadFile">
+  Launch DownloadFile modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="DownloadFile" tabindex="-1" aria-labelledby="DownloadFileLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="DownloadFileLabel">Export to your device</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="formatFile" class="form-label">Choose a file format</label>
+        <select id="formatFile" class="form-select">
+          <option selected value="txt">Text (.txt)</option>
+          <option selected value="srt">SubRip Subtitle (.srt)</option>
+          <option selected value="docx">Word</option>
+          <option selected value="pdf">Portable document format (.pdf)</option>
+          <option selected value="vtt">Video Text Tracks (.vtt)</option>
+     
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning btn-sm DownloadFile">Download</button>
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="viewInovice" tabindex="-1" aria-labelledby="DownloadFileLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="inv_label">Invoice Detail</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="p"></p>
+        <table class="table" ><thead><th>Name</th><th>Length</th><th class="text-end">Amount</th></thead><tbody id="table"><tr><td ></td></tr></tbody><tfoot ><tr><th colspan="2">Total</th><td id="total" class="text-end"></td></tr></tfoot></table>
+       
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-danger btn-sm DownloadFile">Download</button> -->
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="ConfimationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Please confirm</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <p id="ConfimationText" class="m-0"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary CancelTranscribe" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary ContinueTranscribe">Transcribe</button>
+      </div>
+    </div>
+  </div>
+</div>
+        {% endblock %}
+
+		
+		{% block extrascript %}
+
+    <script src="{% static 'user_management/better_admin/js/custom.js' %}"></script>
+    <script src="{% static 'user_management/libs/Fileuploader/jquery.dm-uploader.min.js' %}"></script>
+    <script src="{% static 'user_management/libs/Fileuploader/demo-ui.js' %}"></script>
+    <!-- <script src="{% static 'user_management/libs/Fileuploader/demo-config.js' %}"></script> -->
+    <script type="text/html" id="files-template">
+      <li class="media">
+        <div class="media-body mb-1">
+          <p class="mb-2">
+            <strong>%%filename%%</strong> - Status: <span class="text-muted">Waiting</span>
+          </p>
+          <div class="progress mb-2">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" 
+              role="progressbar"
+              style="width: 0%" 
+              aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <hr class="mt-1 mb-1" />
+        </div>
+      </li>
+
+
+        </script>
+  <script>
+    {% if messages %}
+      {% for message in messages %}
+
+        ShowNoty('{{message}}','alert');
+      {% endfor %}
+      {% endif %}
+  </script>
+		{% endblock %}
+    <!-- </body> -->

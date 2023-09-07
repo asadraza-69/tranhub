@@ -1,0 +1,16 @@
+{% load image_extras %}
+{% load user_perm %}
+{% get_user_perm "can_edit_permission_groups" as can_edit_permission_groups %}
+<div class="dropdown">
+    <div class="btn-group">
+        <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+             <i class="icon play"></i>&nbsp;
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+            {% if can_edit_permission_groups %}
+                <li style="text-align:left"><a tabindex="-1" href="./{{ object.pk }}/update/?{{ request.GET.urlencode }}"><i class="icon edit"></i>&nbsp;&nbsp;Edit it!</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>

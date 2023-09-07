@@ -1,0 +1,143 @@
+{% extends 'global_settings/base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+{% block body %}
+    {% if user.is_superuser%}
+    <div class="right_segment" style="margin-top: 100px;">
+        <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+             <div class="ui header">
+                <h1 id="mainTitle">
+                    <span>Create RBAC Preference Group</span>
+                </h1>
+            </div>
+            <div class="ui segment middle attached">
+                <div class="ui form">
+                    <div class="fields">
+                        <div class="two wide field required">
+                            <label>Sequence</label>
+                            {{ form.sequence }}
+                            {% if form.sequence.errors %}
+                                {% for error in form.sequence.errors %}
+                                    <p class="help-block">{{ error }}</p>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="fourteen wide field required">
+                            <label>Group</label>
+                            {{ form.group }}
+                            {% if form.group.errors %}
+                                {% for error in form.group.errors %}
+                                    <p class="help-block">{{ error }}</p>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui segment middle attached">
+                {% for formset in inlines %}
+                    {% include 'rbac_preferences/formset.html' with formset=formset counter=forloop.counter %}
+                {% endfor %}
+            </div>
+            <div class="ui segment bottom attached text-center">
+
+                <button type="submit" class="ui button small green labeled icon"> <i class="icon arrow right"></i> Submit </button>
+                <a class="ui button small red labeled icon" href="/rbac_preferences/rbacpreference/"><i class="icon remove"></i> Cancel</a>
+            </div>
+        </form>
+    </div>
+    {% else %}
+        {% include "forbidden.html" %}
+    {% endif %}
+{% endblock %}
+
+{% block extra_style %}
+    <style type="text/css">
+        .ui.form input{
+            vertical-align: middle !important;
+        }
+        tr.dynamic-form-add td {
+            text-align: center;
+            padding: 10px 0 !important;
+        }
+         .no_segment_bg{
+            background-color: #f5f5f5 !important;
+        }
+        .no_border{
+            border: none !important;
+        }
+        #newHeading{
+            margin-top: 100px !important;
+        }
+        #id_mug_shot{
+            padding-left: 0px !important;
+            border: none !important;
+        }
+        .segment_spacing{
+            padding: 25px !important;
+            border-radius: 0px !important;
+        }
+        .ui.top.attached.segment{
+            background-color: #0c4da2 !important;
+            color: #fff !important;
+            border-radius: 0px !important;
+        }
+        .right_segment .ui.header{
+            float: none !important;
+            margin-bottom: 30px !important;
+        }
+
+        @media screen and (min-width: 320px) and (max-width: 767px){
+            .ui.bottom.segment.attached.center.aligned.no_border {
+                margin-bottom: 5px !important;
+            }
+        }
+
+        #myFormset1Table thead tr th{
+            background-color: #adadad !important;
+        }
+        #myFormset1Table tbody tr td:first-child{
+            padding: 10px !important;
+        }
+
+    </style>
+{% endblock %}
+
+
+{% block extra_script %}
+    <script type="text/javascript" src="{% static '/js/jquery.formset.js' %}"></script>
+    <script type="text/javascript">
+        
+            $('table').find('tbody tr').each(function(){
+                $(this).find('td.actionCol').html('')
+            })
+            {% for formset in inlines %}
+               $('#myFormset{{forloop.counter}}Table tbody tr').formset({
+                    prefix: '{{ formset.prefix }}',
+                    addText: '<span class="ui button mini blue icon labeled"> <i class="icon plus" title="Add Another"></i> Add More</span>',
+                    deleteText: ' <span class="ui button mini red icon labeled"><i class="icon trash" title="Remove"></i> Remove</span>',
+                    });
+            {% endfor %}
+
+            var pathname = window.location.pathname,
+                pathnameArray = pathname.split('/'),
+                template_id = pathnameArray[3];
+
+                console.log('template_id', template_id)
+
+            if ( template_id) {
+                $('table').find('tbody tr').each(function(){
+                    var $titleField = $(this).find('td.titleField').find('input[name$="-title"]')
+                    var inputValue = $titleField.val();
+                    if(inputValue) {
+                        $titleField.attr('readonly','readonly')
+
+                    }
+
+                })
+            }
+        
+    </script>
+{% endblock %}

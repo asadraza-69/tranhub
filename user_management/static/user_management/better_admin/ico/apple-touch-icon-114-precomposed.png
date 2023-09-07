@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="utf-8">
+  <title>
+  bitswits / automation_staging 
+  / source  / applications / bootstrap_toolkit_extras / static / bootstrap_toolkit_extras / ico / apple-touch-icon-114-precomposed.png
+ &mdash; Bitbucket
+</title>
+  <link rel="icon" type="image/png" href="https://d3oaxc4q5k2d6q.cloudfront.net/m/1e2f1b8d847d/img/favicon.png">
+  <meta id="bb-canon-url" name="bb-canon-url" content="https://bitbucket.org">
+  
+  
+<link rel="stylesheet" href="https://d3oaxc4q5k2d6q.cloudfront.net/m/1e2f1b8d847d/compressed/css/0c8517ab68fc.css" type="text/css" />
+
+  <!--[if lt IE 9]><link rel="stylesheet" href="https://d3oaxc4q5k2d6q.cloudfront.net/m/1e2f1b8d847d/css/aui/aui-ie.css" media="all"><![endif]-->
+  <!--[if IE 9]><link rel="stylesheet" href="https://d3oaxc4q5k2d6q.cloudfront.net/m/1e2f1b8d847d/css/aui/aui-ie9.css" media="all"><![endif]-->
+  <!--[if IE]><link rel="stylesheet" href="https://d3oaxc4q5k2d6q.cloudfront.net/m/1e2f1b8d847d/css/aui-overrides-ie.css" media="all"><![endif]-->
+  <meta name="description" content=""/>
+  <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Bitbucket" />
+  
+  <link href="/bitswits/automation_staging/rss?token=5596230b107d7a1a483a19f25adade5c" rel="alternate nofollow" type="application/rss+xml" title="RSS feed for automation_staging" />
+
+</head>
+<body class="aui-layout production "
+      >
+<script type="text/javascript" src="https://d3oaxc4q5k2d6q.cloudfront.net/m/1e2f1b8d847d/compressed/js/e98deabf8a2e.js"></script>
+<div id="page">
+  <div id="wrapper">
+    
+    <header id="header" role="banner">
+      <nav class="aui-header aui-dropdown2-trigger-group" role="navigation">
+        <div class="aui-header-inner">
+          <div class="aui-header-primary">
+            <h1 class="aui-header-logo aui-header-logo-bitbucket">
+              <a href="/" class="aui-nav-imagelink">
+                <span class="aui-header-logo-device">Bitbucket</span>
+              </a>
+            </h1>
+            <script id="repo-dropdown-template" type="text/html">
+  
+
+[[#hasViewed]]
+  <div class="aui-dropdown2-section">
+    <strong class="viewed">Recently viewed</strong>
+    <ul class="aui-list-truncate">
+      [[#viewed]]
+        <li class="[[#is_private]]private[[/is_private]][[^is_private]]public[[/is_private]] repository">
+          <a href="[[url]]" title="[[owner]]/[[name]]" class=" aui-icon-container">
+            <img class="repo-avatar size16" src="[[{avatar}]]" alt="[[owner]]/[[name]] avatar"/>
+            [[owner]] / [[name]]
+          </a>
+        </li>
+      [[/viewed]]
+    </ul>
+  </div>
+[[/hasViewed]]
+[[#hasUpdated]]
+<div class="aui-dropdown2-section">
+  <strong class="updated">Recently updated</strong>
+  <ul class="aui-list-truncate">
+    [[#updated]]
+    <li class="[[#is_private]]private[[/is_private]][[^is_private]]public[[/is_private]] repository">
+      <a href="[[url]]" title="[[owner]]/[[name]]" class=" aui-icon-container">
+        <img class="repo-avatar size16" src="[[{avatar}]]" alt="[[owner]]/[[name]] avatar"/>
+        [[owner]] / [[name]]
+      </a>
+    </li>
+    [[/updated]]
+  </ul>
+</div>
+[[/hasUpdated]]
+
+</script>
+            <ul role="menu" class="aui-nav">
+              
+                <li>
+                  <a href="https://bitbucket.org" id="dashboard-link">
+                    Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a class="aui-dropdown2-trigger aui-dropdown2-trigger selected"
+                     aria-owns="repo-dropdown" aria-haspopup="true" href="/repo/mine " id="repositories-dropdown-trigger">
+                    Repositories
+                    <span class="aui-icon-dropdown"></span>
+                  </a>
+                  <nav id="repo-dropdown" class="aui-dropdown2 aui-style-default">
+                    <div id="repo-dropdown-recent"></div>
+                    <div class="aui-dropdown2-section">
+                      <ul>
+                        <li>
+                          <a href="/repo/create" class="new-repository" id="create-repo-link">
+                            Create repository
+                          </a>
+                        </li>
+                        <li>
+                          <a href="/repo/import" class="import-repository" id="import-repo-link">
+                            Import repository
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </nav>
+                </li>
+              
+            </ul>
+          </div>
+          <div class="aui-header-secondary">
+            <ul role="menu" class="aui-nav">
+              <li>
+                <form action="/repo/all" method="get" class="aui-quicksearch">
+                  <label for="search-query" class="assistive">owner/repository</label>
+                  <input  id="search-query" class="search" type="text" placeholder="owner/repository" name="name">
+                </form>
+              </li>
+              <li>
+                <a class="aui-dropdown2-trigger"aria-controls="header-help-dropdown" aria-owns="header-help-dropdown"
+                   aria-haspopup="true" data-container="#header .aui-header-inner" href="#header-help-dropdown">
+                  <span class="aui-icon aui-icon-small aui-iconfont-help">Help</span><span class="aui-icon-dropdown"></span>
+                </a>
+                <nav id="header-help-dropdown" class="aui-dropdown2 aui-style-default aui-dropdown2-in-header" aria-hidden="true">
+                  <div class="aui-dropdown2-section">
+                    <ul>
+                      <li>
+                        <a href="/whats-new" id="features-link">
+                          What's new
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="aui-dropdown2-section">
+                    <ul>
+                      <li><a href="https://confluence.atlassian.com/display/BITBUCKET/bitbucket+Documentation+Home" target="_blank">Documentation</a></li>
+                      <li><a href="https://confluence.atlassian.com/display/BITBUCKET/bitbucket+101" target="_blank">Bitbucket 101</a></li>
+                      <li><a href="https://confluence.atlassian.com/display/BBKB/Bitbucket+Knowledge+Base+Home" target="_blank">Knowledge base</a></li>
+                    </ul>
+                  </div>
+                  <div class="aui-dropdown2-section">
+                    <ul>
+                      <li><a href="https://answers.atlassian.com/tags/bitbucket/" target="_blank">Bitbucket on Atlassian Answers</a></li>
+                      <li><a href="/support">Support</a></li>
+                    </ul>
+                  </div>
+                </nav>
+              </li>
+              
+              
+                <li>
+                  <a class="aui-dropdown2-trigger"
+                     aria-owns="user-dropdown" aria-haspopup="true" data-container="#header .aui-header-inner"
+                     href="/alixedi" title="alixedi" id="user-dropdown-trigger">
+                    <div class="aui-avatar aui-avatar-small">
+                        <div class="aui-avatar-inner">
+                            <img src="https://secure.gravatar.com/avatar/6222e2806bac97d4af7bbb9798bb9fd4?d=https%3A%2F%2Fd3oaxc4q5k2d6q.cloudfront.net%2Fm%2F1e2f1b8d847d%2Fimg%2Fdefault_avatar%2F32%2Fuser_blue.png&amp;s=32" alt="alixedi" height="24" width="24" />
+                        </div>
+                    </div>
+                  </a>
+                  <nav id="user-dropdown" class="aui-dropdown2 aui-style-default" aria-hidden="true">
+                    <div class="aui-dropdown2-section">
+                      <ul>
+                        <li>
+                          <a href="/alixedi" id="profile-link">View profile</a>
+                        </li>
+                        <li>
+                          <a href="/account/user/alixedi/" id="account-link">Manage account</a>
+                        </li>
+                        <li>
+                          <a href="/account/notifications/" id="inbox-link">Inbox <span id="inbox-unread-count"></span></a>
+                        </li>
+                        <li>
+                          <a href="/account/signout/">Log out</a>
+                        </li>
+                      </ul>
+                    </div>
+                      <div class="aui-dropdown2-section" id="account-admin-links">
+                        <strong>Teams</strong>
+                          <ul class="aui-list-truncate">
+                          </ul>
+                        </div>
+                      <div class="aui-dropdown2-section">
+                          <ul>
+                              <li>
+                                  <a href="#general-invite" class='general-invite-link'>Invite a friend</a>
+                              </li>
+                          </ul>
+                      </div>
+                      
+                      <div class="aui-dropdown2-section">
+                        <ul>
+                          <li>
+                            <a href="/account/create-team/" id="create-team-link">Create team</a>
+                          </li>
+                          <li>
+                            <a href="/account/user/alixedi/convert-team/">Convert to team</a>
+                          </li>
+                        </ul>
+                      </div>
+                    
+                  </nav>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+      <header id="account-warning" role="banner"
+              class="aui-message-banner warning ">
+        <div class="center-content">
+          <span class="aui-icon aui-icon-warning"></span>
+          <span class="message">
+            
+          </span>
+        </div>
+      </header>
+    
+      <header id="aui-message-bar">
+        
+      </header>
+    
+    
+  <header id="repo-warning" role="banner" class="aui-message-banner warning">
+    <div class="center-content">
+      <span class="aui-icon aui-icon-warning"></span>
+      <span class="message">
+      </span>
+    </div>
+  </header>
+  <script id="repo-warning-template" type="text/html">
+  
+
+
+
+
+  This repository's ownership is pending transfer to <a href="/[[username]]">[[username]]</a>.
+  Visit the <a href="/bitswits/automation_staging/admin/transfer">transfer repository page</a> to view more details.
+
+
+</script>
+  <header id="repo-header" class="subhead row">
+    <div class="center-content">
+      <div class="repo-summary">
+        <a class="repo-avatar-link" href="/bitswits/automation_staging">
+          <span class="repo-avatar-container size64" title="bitswits/automation_staging">
+  <img alt="bitswits/automation_staging" src="https://d3oaxc4q5k2d6q.cloudfront.net/m/1e2f1b8d847d/img/language-avatars/python_64.png"/>
+</span>
+
+          
+          <span class="locked" rel="tooltip" title="Private repository" data-placement="bottom"></span>
+          
+        </a>
+        <h1><a class="repo-link" href="/bitswits/automation_staging">automation_staging</a></h1>
+        <ul class="repo-metadata clearfix">
+          <li>
+            <a class="user" href="/bitswits">
+              <span class="icon user">User icon</span>
+              <span>bitswits</span>
+            </a>
+          </li>
+          
+          
+          <li class="social">
+            <a class="follow following" id="repo-follow"
+               rel="nofollow"
+               href="/bitswits/automation_staging/follow">
+              <span class="icon follow">Follow icon</span>
+              <span class="text">Following</span>
+            </a>
+          </li>
+          
+          <li class="social">
+            
+              <a class="share" href="#share" id="repo-share-link">
+                <span class="icon invitation">Invitation icon</span>
+                <span>Share</span>
+              </a>
+              
+<div id="share" data-access-url="/bitswits/automation_staging/admin/access"
+                data-groups-url="/account/user/bitswits/groups/">
+  
+    
+      <div class="aui-tabs horizontal-tabs" id="invitation-tabs">
+        <ul class="tabs-menu">
+          <li class="menu-item active-tab">
+            <a href="#share-repository"><strong>Repository</strong></a>
+          </li>
+          <li class="menu-item">
+            <a href="#share-team"><strong>Team</strong></a>
+          </li>
+        </ul>
+        <div class="tabs-pane active-pane" id="share-repository">
+    
+          <div class="clearfix">
+            <span class="repo-avatar-container size32" title="bitswits/automation_staging">
+  <img alt="bitswits/automation_staging" src="https://d3oaxc4q5k2d6q.cloudfront.net/m/1e2f1b8d847d/img/language-avatars/python_32.png"/>
+</span>
+
+            <span class="repo-name-container">
+              bitswits / automation_staging
+            </span>
+          </div>
+          <p class="helptext">
+            
+              Existing users are granted access to this repository immediately.
+              <br>New users will be sent an invitation.
+            
+          </p>
+          <div class="share-form"></div>
+    
+        </div>
+        <div class="tabs-pane" id="share-team">
+          
+            <div class="clearfix">
+              <span class="team-avatar-container">
+                <img src="https://secure.gravatar.com/avatar/612d0289f096f5329327e360b639b2ce?d=https%3A%2F%2Fd3oaxc4q5k2d6q.cloudfront.net%2Fm%2F1e2f1b8d847d%2Fimg%2Fdefault_team_avatar%2F32%2Fteam_blue.png&amp;s=32" alt="BitsWits" title="BitsWits" class="avatar avatar32" />
+              </span>
+              <span class="team-name-container">
+                BitsWits
+              </span>
+            </div>
+            <p class="helptext">
+              
+                Existing users are granted access to this team immediately.
+                <br>New users will be sent an invitation.
+              
+            </p>
+            <div class="share-form"></div>
+          
+        </div>
+      </div>  
+    
+  
+  <script id="share-form-template" type="text/html">
+  
+
+<div class="error aui-message hidden">
+  <span class="aui-icon icon-error"></span>
+  <div class="message"></div>
+</div>
+<table class="widget bb-list aui">
+  <thead>
+  <tr class="assistive">
+    <th class="user">User</th>
+    <th class="role">Role</th>
+    <th class="actions">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="form">
+    <td colspan="3">
+      <form>
+        <input type="text" class="user-or-email text user-input"
+               placeholder="Username or email address"
+               [[#disabled]]disabled[[/disabled]]>
+        <button type="submit" class="aui-button aui-style" disabled>Add</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+</script>
+  <script id="share-detail-template" type="text/html">
+  
+
+[[#username]]
+<td class="user
+           [[#hasCustomGroups]]custom-groups[[/hasCustomGroups]]"
+    [[#error]]data-error="[[error]]"[[/error]]>
+  <div title="[[displayName]]">
+    <a href="/[[username]]" class="user">
+      <img class="avatar avatar16" src="[[avatar]]" />
+      <span>[[displayName]]</span>
+    </a>
+  </div>
+</td>
+[[/username]]
+[[^username]]
+<td class="email
+           [[#hasCustomGroups]]custom-groups[[/hasCustomGroups]]"
+    [[#error]]data-error="[[error]]"[[/error]]>
+  <div title="[[email]]">[[email]]</div>
+</td>
+[[/username]]
+<td class="role
+           [[#hasCustomGroups]]custom-groups[[/hasCustomGroups]]">
+  <div>
+    [[#group]]
+      [[#hasCustomGroups]]
+        <select class="group">
+          [[#groups]]
+            <option value="[[slug]]"
+                    [[#isSelected]]selected[[/isSelected]]>
+              [[name]]
+            </option>
+          [[/groups]]
+        </select>
+      [[/hasCustomGroups]]
+      [[^hasCustomGroups]]
+      <label>
+        <input type="checkbox" class="admin"
+               [[#isAdmin]]checked[[/isAdmin]]>
+        Administrator
+      </label>
+      [[/hasCustomGroups]]
+    [[/group]]
+    [[^group]]
+      <ul>
+        <li class="permission aui-lozenge aui-lozenge-complete
+                   [[^read]]aui-lozenge-subtle[[/read]]"
+            data-permission="read">
+          read
+        </li>
+        <li class="permission aui-lozenge aui-lozenge-complete
+                   [[^write]]aui-lozenge-subtle[[/write]]"
+            data-permission="write">
+          write
+        </li>
+        <li class="permission aui-lozenge aui-lozenge-complete
+                   [[^admin]]aui-lozenge-subtle[[/admin]]"
+            data-permission="admin">
+          admin
+        </li>
+      </ul>
+    [[/group]]
+  </div>
+</td>
+<td class="actions
+           [[#hasCustomGroups]]custom-groups[[/hasCustomGroups]]">
+  <div>
+    <a href="#" class="delete">Delete</a>
+  </div>
+</td>
+
+</script>
+</div>
+
+
+            
+          </li>
+          
+        </ul>
+      </div>
+      <div id="repo-toolbar" class="bb-toolbar">
+        
+        <div class="aui-buttons">
+          <a id="repo-clone-button" class="aui-button aui-style" href="https://alixedi@bitbucket.org/bitswits/automation_staging">
+            <span class="icon clone">Clone icon</span>
+            <span>Clone</span>
+            <span class="aui-icon-dropdown"></span>
+          </a>
+          <a id="fork-button" class="aui-button aui-style"
+             href="/bitswits/automation_staging/fork">
+            <span class="icon fork">Fork icon</span>
+            <span>Fork</span>
+          </a>
+        </div>
+        <div class="aui-buttons">
+          <a id="compare-button" class="aui-button aui-style"
+             href="/bitswits/automation_staging/compare">
+            <span class="icon compare">Compare icon</span>
+            <span>Compare</span>
+          </a>
+          <a id="pull-request-button" class="aui-button aui-style"
+             href="/bitswits/automation_staging/pull-request/new">
+            <span class="icon pull-request">Pull request icon</span>
+            <span>Pull request</span>
+          </a>
+        </div>
+        
+        
+
+<div id="repo-clone-dialog" class="clone-dialog hidden">
+  
+<div class="clone-url">
+  <div class="aui-buttons">
+    <a href="https://alixedi@bitbucket.org/bitswits/automation_staging"
+       class="aui-button aui-style aui-dropdown2-trigger" aria-haspopup="true"
+       aria-owns="clone-url-dropdown-header">
+      <span class="dropdown-text">HTTPS</span>
+    </a>
+    <div id="clone-url-dropdown-header" class="aui-dropdown2 aui-style-default">
+      <ul class="aui-list-truncate">
+        <li>
+          <a href="https://alixedi@bitbucket.org/bitswits/automation_staging"
+            
+              data-command="hg clone https://alixedi@bitbucket.org/bitswits/automation_staging"
+            
+            class="item-link https">HTTPS
+          </a>
+        </li>
+        <li>
+          <a href="ssh://hg@bitbucket.org/bitswits/automation_staging"
+            
+              data-command="hg clone ssh://hg@bitbucket.org/bitswits/automation_staging"
+            
+            class="item-link ssh">SSH
+          </a>
+        </li>
+      </ul>
+    </div>
+    <input type="text" readonly="readonly" value="hg clone https://alixedi@bitbucket.org/bitswits/automation_staging">
+  </div>
+  
+  <p>Need help cloning? Visit
+     <a href="https://confluence.atlassian.com/x/cgozDQ" target="_blank">Bitbucket 101</a>.</p>
+  
+</div>
+
+
+  
+  
+  
+
+<div class="clone-in-sourcetree"
+  data-https-url="https://alixedi@bitbucket.org/bitswits/automation_staging"
+  data-ssh-url="ssh://hg@bitbucket.org/bitswits/automation_staging">
+  <p><button class="aui-button aui-style aui-button-primary">Clone in SourceTree</button></p>
+
+  <p><a href="http://www.sourcetreeapp.com" target="_blank">SourceTree</a>
+      is a free Mac client by Atlassian for Git, Mercurial and Subversion.</p>
+</div>
+
+  
+</div>
+
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </header>
+  <nav id="repo-tabs" class="aui-navgroup aui-navgroup-horizontal aui-navgroup-horizontal-roomy">
+    <div class="aui-navgroup-inner">
+      <div class="aui-navgroup-primary">
+        <ul class="aui-nav">
+          
+            <li>
+              <a href="/bitswits/automation_staging/overview" id="repo-overview-link">Overview</a>
+            </li>
+          
+          
+            <li class="aui-nav-selected">
+              <a href="/bitswits/automation_staging/src" id="repo-source-link">Source</a>
+            </li>
+          
+          
+            <li>
+              <a href="/bitswits/automation_staging/commits" id="repo-commits-link">
+                Commits
+              </a>
+            </li>
+          
+          
+            <li>
+              <a href="/bitswits/automation_staging/pull-requests" id="repo-pullrequests-link">
+                Pull requests
+                
+                  
+                
+              </a>
+            </li>
+          
+          
+            
+          
+            <li id="issues-tab" class="
+              
+                
+              
+            ">
+              <a href="/bitswits/automation_staging/issues?status=new&amp;status=open" id="repo-issues-link">
+                Issues
+                
+                  
+                    <span class="aui-badge">39</span>
+                  
+                
+              </a>
+            </li>
+            <li id="wiki-tab" class="
+                
+                  
+                
+              ">
+              <a href="/bitswits/automation_staging/wiki" id="repo-wiki-link">Wiki</a>
+            </li>
+          
+            <li>
+            <a href="/bitswits/automation_staging/downloads" id="repo-downloads-link">
+              Downloads
+              
+                
+                  <span class="aui-badge" id="downloads-count">2</span>
+                
+              
+            </a>
+            </li>
+          
+        </ul>
+      </div>
+      <div class="aui-navgroup-secondary">
+        <ul class="aui-nav">
+          
+            <li id="admin-tab">
+              <a href="/bitswits/automation_staging/admin"
+                  id="repo-admin-link" title="Administration">
+                  <span class="aui-icon aui-icon-small aui-iconfont-configure">Administration</span>
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <div id="content" role="main">
+      
+  <div id="repo-content">
+    
+  <div id="source-container">
+    
+
+
+
+<header id="source-path">
+  
+  <div class="labels labels-csv">
+    
+      <div class="aui-buttons">
+        <button data-branches-tags-url="/api/1.0/repositories/bitswits/automation_staging/branches-tags"
+                class="aui-button aui-style branch-dialog-trigger" title="default">
+          
+            
+              <span class="branch icon">Branch</span>
+            
+            <span class="name">default</span>
+          
+          <span class="aui-icon-dropdown"></span>
+        </button>
+      </div>
+    
+  </div>
+  
+  
+    <div class="view-switcher">
+      <div class="aui-buttons">
+        
+          <a href="/bitswits/automation_staging/src/294bc57cb3a3/applications/bootstrap_toolkit_extras/static/bootstrap_toolkit_extras/ico/apple-touch-icon-114-precomposed.png?at=default"
+             class="aui-button aui-style pjax-trigger" aria-pressed="true">
+            Source
+          </a>
+          <a href="/bitswits/automation_staging/diff/applications/bootstrap_toolkit_extras/static/bootstrap_toolkit_extras/ico/apple-touch-icon-114-precomposed.png?diff2=294bc57cb3a3&at=default"
+             class="aui-button aui-style pjax-trigger"
+             title="Diff to previous change">
+            Diff
+          </a>
+          <a href="/bitswits/automation_staging/history-node/294bc57cb3a3/applications/bootstrap_toolkit_extras/static/bootstrap_toolkit_extras/ico/apple-touch-icon-114-precomposed.png?at=default"
+             class="aui-button aui-style pjax-trigger">
+            History
+          </a>
+        
+      </div>
+    </div>
+  
+  <h1>
+    <a href="/bitswits/automation_staging/src/294bc57cb3a3?at=default"
+       class="pjax-trigger" title="[u&#39;applications&#39;, u&#39;bootstrap_toolkit_extras&#39;, u&#39;static&#39;, u&#39;bootstrap_toolkit_extras&#39;, u&#39;ico&#39;, u&#39;apple-touch-icon-114-precomposed.png&#39;]">automation_staging</a> /
+    
+      
+        
+          
+            <a href="/bitswits/automation_staging/src/294bc57cb3a3/applications?at=default"
+               class="pjax-trigger">applications</a> /
+          
+        
+      
+    
+      
+        
+          
+            <a href="/bitswits/automation_staging/src/294bc57cb3a3/applications/bootstrap_toolkit_extras?at=default"
+               class="pjax-trigger">bootstrap_toolkit_extras</a> /
+          
+        
+      
+    
+      
+        
+          
+            <a href="/bitswits/automation_staging/src/294bc57cb3a3/applications/bootstrap_toolkit_extras/static?at=default"
+               class="pjax-trigger">static</a> /
+          
+        
+      
+    
+      
+        
+          
+            <a href="/bitswits/automation_staging/src/294bc57cb3a3/applications/bootstrap_toolkit_extras/static/bootstrap_toolkit_extras?at=default"
+               class="pjax-trigger">bootstrap_toolkit_extras</a> /
+          
+        
+      
+    
+      
+        
+          
+            <a href="/bitswits/automation_staging/src/294bc57cb3a3/applications/bootstrap_toolkit_extras/static/bootstrap_toolkit_extras/ico?at=default"
+               class="pjax-trigger">ico</a> /
+          
+        
+      
+    
+      
+        
+          <span>apple-touch-icon-114-precomposed.png</span>
+        
+      
+    
+  </h1>
+  
+    
+    
+  
+  <div class="clearfix"></div>
+</header>
+
+
+  
+    <div id="source-view">
+      <div class="toolbar">
+        <div class="primary">
+          <div class="aui-buttons">
+            
+              <button id="file-history-trigger" class="aui-button aui-style changeset-info"
+                      data-changeset="294bc57cb3a3da6dbd91055583e3e838e1a70475"
+                      data-path="applications/bootstrap_toolkit_extras/static/bootstrap_toolkit_extras/ico/apple-touch-icon-114-precomposed.png"
+                      data-current="294bc57cb3a3da6dbd91055583e3e838e1a70475">
+                
+                   
+
+<img class="avatar avatar16" src="https://secure.gravatar.com/avatar/769c62864dd91c0ea2e1a5f48d38b219?d=https%3A%2F%2Fd3oaxc4q5k2d6q.cloudfront.net%2Fm%2F1e2f1b8d847d%2Fimg%2Fdefault_avatar%2F16%2Fuser_blue.png&amp;s=16" alt="Sharaf Ali avatar" />
+<span class="changeset-hash">294bc57</span>
+<time datetime="2012-12-29T12:33:36+00:00" class="timestamp"></time>
+<span class="aui-icon-dropdown"></span>
+
+                
+              </button>
+            
+          </div>
+        </div>
+          <div class="secondary">
+            
+            <div class="aui-buttons">
+              
+              <a href="/bitswits/automation_staging/full-commit/294bc57cb3a3/applications/bootstrap_toolkit_extras/static/bootstrap_toolkit_extras/ico/apple-touch-icon-114-precomposed.png" class="aui-button aui-style"
+                 title="View full commit 294bc57">Full commit</a>
+              
+              <a href="/bitswits/automation_staging/raw/294bc57cb3a3da6dbd91055583e3e838e1a70475/applications/bootstrap_toolkit_extras/static/bootstrap_toolkit_extras/ico/apple-touch-icon-114-precomposed.png"
+                 class="aui-button aui-style">Raw</a>
+            </div>
+          </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+
+    
+      <div id="inline-image">
+          <img src="/bitswits/automation_staging/raw/294bc57cb3a3da6dbd91055583e3e838e1a70475/applications/bootstrap_toolkit_extras/static/bootstrap_toolkit_extras/ico/apple-touch-icon-114-precomposed.png" alt="">
+      </div>
+    
+  
+
+
+  <script id="source-changeset" type="text/html">
+  
+
+<a href="/bitswits/automation_staging/src/[[raw_node]]/applications/bootstrap_toolkit_extras/static/bootstrap_toolkit_extras/ico/apple-touch-icon-114-precomposed.png?at=default"
+   class="[[#selected]]highlight[[/selected]]"
+   data-hash="[[node]]">
+  [[#author.username]]
+    <img class="avatar avatar16" src="[[author.avatar]]"/>
+    <span class="author" title="[[raw_author]]">[[author.display_name]]</span>
+  [[/author.username]]
+  [[^author.username]]
+    <img class="avatar avatar16" src="https://d3oaxc4q5k2d6q.cloudfront.net/m/1e2f1b8d847d/img/default_avatar/16/user_blue.png"/>
+    <span class="author unmapped" title="[[raw_author]]">[[author]]</span>
+  [[/author.username]]
+  <time datetime="[[utctimestamp]]" data-title="true">[[utctimestamp]]</time>
+  <span class="message">[[message]]</span>
+</a>
+
+</script>
+  <script id="embed-template" type="text/html">
+  
+
+<form class="aui embed">
+  <label for="embed-code">Embed this source in another page:</label>
+  <input type="text" readonly="true" value="&lt;script src=&quot;[[url]]&quot;&gt;&lt;/script&gt;" id="embed-code">
+</form>
+
+</script>
+
+
+<div class="mask"></div>
+
+
+
+  <script id="branch-dialog-template" type="text/html">
+  
+
+<div class="tabbed-filter-widget branch-dialog">
+  <div class="tabbed-filter">
+    <input placeholder="Filter branches" class="filter-box" autosave="branch-dropdown-1468029" type="text">
+    [[^ignoreTags]]
+      <div class="aui-tabs horizontal-tabs aui-tabs-disabled filter-tabs">
+        <ul class="tabs-menu">
+          <li class="menu-item active-tab"><a href="#branches">Branches</a></li>
+          <li class="menu-item"><a href="#tags">Tags</a></li>
+        </ul>
+      </div>
+    [[/ignoreTags]]
+  </div>
+  
+    <div class="tab-pane active-pane" id="branches" data-filter-placeholder="Filter branches">
+      <ol class="filter-list">
+        <li class="empty-msg">No matching branches</li>
+        [[#branches]]
+          [[#hasMultipleHeads]]
+            [[#heads]]
+              <li class="comprev filter-item">
+                <a href="/bitswits/automation_staging/src/[[changeset]]/applications/bootstrap_toolkit_extras/static/bootstrap_toolkit_extras/ico/apple-touch-icon-114-precomposed.png?at=[[safeName]]"
+                   title="[[name]]">
+                  [[name]] ([[shortChangeset]])
+                </a>
+              </li>
+            [[/heads]]
+          [[/hasMultipleHeads]]
+          [[^hasMultipleHeads]]
+            <li class="comprev filter-item">
+              <a href="/bitswits/automation_staging/src/[[changeset]]/applications/bootstrap_toolkit_extras/static/bootstrap_toolkit_extras/ico/apple-touch-icon-114-precomposed.png?at=[[safeName]]" title="[[name]]">
+                [[name]]
+              </a>
+            </li>
+          [[/hasMultipleHeads]]
+        [[/branches]]
+      </ol>
+    </div>
+    <div class="tab-pane" id="tags" data-filter-placeholder="Filter tags">
+      <ol class="filter-list">
+        <li class="empty-msg">No matching tags</li>
+        [[#tags]]
+          <li class="comprev filter-item">
+            <a href="/bitswits/automation_staging/src/[[changeset]]/applications/bootstrap_toolkit_extras/static/bootstrap_toolkit_extras/ico/apple-touch-icon-114-precomposed.png?at=[[safeName]]" title="[[name]]">
+              [[name]]
+            </a>
+          </li>
+        [[/tags]]
+      </ol>
+    </div>
+  
+</div>
+
+</script>
+
+
+
+  </div>
+
+  </div>
+  
+    
+
+<form id="file-search-form" action="#"
+  
+  data-revision="294bc57cb3a3da6dbd91055583e3e838e1a70475"
+  data-branch="default">
+  <input type="text" id="file-search-query" class="loading">
+  <div id="filtered-files"></div>
+  <div class="tip"><em>Tip:</em> Filter by directory path e.g. <strong>/media app.js</strong> to search for public<strong>/media/app.js</strong>.</div>
+  <div class="tip"><em>Tip:</em> Use camelCasing e.g. <strong>ProjME</strong> to search for <strong>ProjectModifiedE</strong>vent.java.</div>
+  <div class="tip"><em>Tip:</em> Filter by extension type e.g. <strong>/repo .js</strong> to search for all <strong>.js</strong> files in the <strong>/repo</strong> directory.</div>
+  <div class="tip"><em>Tip:</em> Separate your search with spaces e.g. <strong>/ssh pom.xml</strong> to search for src<strong>/ssh/pom.xml</strong>.</div>
+  <div class="tip"><em>Tip:</em> Use ↑ and ↓ arrow keys to navigate and <strong>return</strong> to view the file.</div>
+  <div class="tip mod-osx"><em>Tip:</em> You can also navigate files with <strong>Ctrl+j</strong> <em>(next)</em> and <strong>Ctrl+k</strong> <em>(previous)</em> and view the file with <strong>Ctrl+o</strong>.</div>
+  <div class="tip mod-win"><em>Tip:</em> You can also navigate files with <strong>Alt+j</strong> <em>(next)</em> and <strong>Alt+k</strong> <em>(previous)</em> and view the file with <strong>Alt+o</strong>.</div>
+  <script id="filtered-files-template" type="text/html">
+  
+
+<table class="aui bb-list">
+  <thead>
+    <tr class="assistive">
+      <th class="name">Filename</th>
+    </tr>
+  </thead>
+  <tbody>
+    [[#files]]
+    <tr class="iterable-item">
+      <td class="name [[#isDirectory]]directory[[/isDirectory]]">
+        <a href="/bitswits/automation_staging/src/[[node]]/[[name]][[#branch]]?at=[[branch]][[/branch]]"
+           title="[[name]]" class="execute" tabindex="-1">
+          [[&highlightedName]]
+        </a>
+      </td>
+    </tr>
+    [[/files]]
+  </tbody>
+</table>
+
+</script>
+</form>
+
+  
+
+    </div>
+  </div>
+  <footer id="footer" role="contentinfo">
+    <section class="footer-body">
+      <ul>
+        <li><a href="http://blog.bitbucket.org">Blog</a></li>
+        <li><a href="//bitbucket.org/site/master/issues/new">Report a bug</a></li>
+        <li><a href="/support">Support</a></li>
+        <li><a href="http://confluence.atlassian.com/display/BITBUCKET">Documentation</a></li>
+        <li><a href="http://confluence.atlassian.com/x/IYBGDQ">API</a></li>
+        <li><a href="http://groups.google.com/group/bitbucket-users">Forum</a></li>
+        <li><a href="http://status.bitbucket.org/">Server status</a></li>
+        <li><a href="http://www.atlassian.com/hosted/terms.jsp">Terms of service</a></li>
+        <li><a href="http://www.atlassian.com/about/privacy.jsp">Privacy policy</a></li>
+      </ul>
+      <ul>
+        
+        <li><a href="http://git-scm.com/">Git 1.7.10.3</a></li>
+        <li><a href="http://mercurial.selenic.com/">Mercurial 2.2.2</a></li>
+        <li><a href="https://www.djangoproject.com/">Django 1.3.1</a></li>
+        <li><a href="http://www.python.org/">Python 2.7.3</a></li>
+        <li><a href="#">1e2f1b8d847d / 1e2f1b8d847d @ bitbucket25</a></li>
+      </ul>
+    </section>
+  </footer>
+</div>
+
+<script type="text/javascript" src="https://d3oaxc4q5k2d6q.cloudfront.net/m/1e2f1b8d847d/compressed/js/db8f1df82392.js"></script>
+
+<!-- This script exists purely for the benefit of our selenium tests -->
+<script>
+  setTimeout(function () {
+    BB.JsLoaded = true;
+  }, 3000);
+</script>
+
+
+
+<script>
+  (function (window) {
+    // Base URL to use for non-CNAME URLs.
+    BB.baseUrl = 'https://bitbucket.org';
+
+    BB.images = {
+      invitation: 'https://d3oaxc4q5k2d6q.cloudfront.net/m/1e2f1b8d847d/img/icons/fugue/card_address.png',
+      noAvatar: 'https://d3oaxc4q5k2d6q.cloudfront.net/m/1e2f1b8d847d/img/default_avatar/16/user_blue.png'
+    };
+    BB.user = {"username": "alixedi", "displayName": "Ali Zaidi", "firstName": "Ali", "avatarUrl": "https://secure.gravatar.com/avatar/6222e2806bac97d4af7bbb9798bb9fd4?d=https%3A%2F%2Fd3oaxc4q5k2d6q.cloudfront.net%2Fm%2F1e2f1b8d847d%2Fimg%2Fdefault_avatar%2F32%2Fuser_blue.png\u0026s=32", "lastName": "Zaidi", "isTeam": false, "isSshEnabled": false, "isKbdShortcutsEnabled": true, "id": 238751, "isAuthenticated": true};
+    BB.repo || (BB.repo = {});
+    
+      BB.repo.id = 1468029;
+      BB.repo.scm = 'hg';
+      
+      
+        BB.repo.language = 'python';
+        BB.repo.pygmentsLanguage = 'python';
+      
+      
+        BB.repo.slug = 'automation_staging';
+      
+      
+        BB.repo.owner = {};
+        BB.repo.owner.username = 'bitswits';
+        BB.repo.owner.is_team = true;
+      
+      
+        BB.repo.creator = {};
+        BB.repo.creator.username = 'sharafjaffri';
+      
+      // Coerce `BB.repo` to a string to get
+      // "davidchambers/mango" or whatever.
+      BB.repo.toString = function () {
+        return BB.cname ? this.slug : '{owner.username}/{slug}'.format(this);
+      }
+      
+        BB.changeset = '294bc57cb3a3da6dbd91055583e3e838e1a70475'
+      
+      
+    
+    window.setInterval(BB.localize, 60 * 1000);
+    BB.localize();
+
+  })(window);
+</script>
+
+
+<script>
+    // Bitbucket Google Analytics
+    // NOTE: these will not fire in development. In debug mode it just logs them to console.
+    (function (window) {
+        // Track the main pageview to the Bitbucket GA account.
+        BB.gaqPush(['_trackPageview']);
+        // Track the main pageview to the Atlassian GA account.
+        BB.gaqPush(['atl._trackPageview']);
+
+        
+
+
+        
+
+        // Include GA commands from sub-templates
+        
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            ga.setAttribute('async', 'true');
+            document.documentElement.firstChild.appendChild(ga);
+        }());
+    })(window);
+</script>
+
+
+
+</body>
+</html>

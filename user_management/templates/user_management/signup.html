@@ -1,0 +1,722 @@
+{% extends "bw_base.html" %}
+{% load static %}
+{% load bootstrap5%}
+{% load humanize %}
+{% block extrahead %}
+
+<!-- CSS -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet"
+  type="text/css" /> -->
+<link href="{% static 'user_management/setup/css/smart-wizard.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'user_management/setup/css/style.css' %}" rel="stylesheet">
+<style>
+  .sw-theme-dots>.nav::before {
+    display: none;
+  }
+
+  .sw-theme-dots>.nav {
+    position: relative;
+    margin-bottom: 0px
+  }
+
+  .sw-theme-dots>.nav .nav-item {
+    position: relative;
+    margin-bottom: 10px
+  }
+
+  .sw-theme-dots>.nav .nav-item::before {
+    content: " ";
+    position: absolute;
+    top: 18px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #eee;
+    border-radius: 3px;
+    z-index: 1;
+  }
+
+  .sw-theme-dots>.nav .nav-item:nth-child(1)::before {
+    width: 50%;
+    right: 0;
+    left: auto;
+  }
+
+  .sw-theme-dots>.nav .nav-item:last-child::before {
+    width: 50%;
+  }
+
+  input.wpcf7-phonetext {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+  }
+
+
+  .DMFileName {
+    font-size: 12px;
+    display: table-cell;
+    vertical-align: middle;
+    width: 50%;
+    overflow-wrap: break-word;
+  }
+
+  ul#files .media-body {
+    display: table-row;
+    width: 100%;
+  }
+
+  ul#files .media-body .progressContainer {
+    display: table-cell;
+    width: 10%;
+  }
+
+  span.FileCharges {
+    display: table-cell;
+    text-align: right;
+  }
+
+
+  ul#files .media {
+    display: table;
+    width: 100%;
+    vertical-align: middle;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-bottom: 1px solid #ccc;
+    table-layout: fixed;
+  }
+
+
+  ul#files .media-body hr {
+    display: none;
+  }
+  .disabled{
+    background-color: #ccc;
+    pointer-events: none;
+  }
+</style>
+
+{% endblock %}
+{% block content %}
+
+
+<section>
+  <div class="container-fluid">
+
+    
+    <!-- <div class="row">
+
+      <div class="text-center">
+        {% if signup %}
+        <a href="/user_management/main_dashboard/" class="btn btn-sm btn-danger mt-2 float-start"><i
+            class='bx bx-grid-alt nav_icon fa fa-th'></i> <span class="nav_name">Projects List</span> </a>
+        {% endif %}
+        <img class="text-center" src="{{ STATIC_URL }}/static/img/logo.png">
+      </div>
+    </div> -->
+
+    <div class="row justify-content-center mt-2">
+      <div class="col-xl-8">
+
+        <div id="smartwizard" class="mb-5 py-5">
+
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#step-1">
+                Upload Audio/Video File(s)
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#step-2">
+                Instant Quote & Online Payment
+              </a>
+              <img src="{% static 'user_management/better_admin/img/paypal-payment.png' %}">
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#step-3">
+                Order Complete
+              </a>
+            </li>
+
+          </ul>
+
+          <div class="tab-content">
+            <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
+              <section class="pt-2 DM_Uploader">
+               
+
+
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-xl-12 col-lg-12">
+                        <div id="drag-and-drop-zone" class="dm-uploader p-2 mt-3">
+                          <h3 class="mb-2 text-muted">Drag &amp; drop files here</h3>
+
+                          <label class="custom-file-upload btn btn-warning">
+                            <input type="file" />
+                            Choose File
+                          </label>
+
+
+
+                          <figure class="text-center mb-0">
+
+                            <figcaption class="blockquote-footer">
+                              Formats allowed : amr, flac, wav, ogg, mp3, mp4, webm
+                            </figcaption>
+                          </figure>
+
+                        </div>
+
+                      </div>
+                      <h6 class="msg-filesupload text-danger text-center" style="display: none;"></h6><!-- /uploader -->
+                    </div>
+                    <div class="row justify-content-center ">
+                      <div class="col-md-10 col-sm-12">
+                        <ul class="list-unstyled p-0 mb-1 mt-2" id="files">
+                          <li class="text-muted text-center empty">No files uploaded.</li>
+                        </ul>
+                        <div class="SubTotalDiv" style="display: none;">
+                          <div class="d-flex justify-content-between">
+                            <strong style="width: 61%;"><span class="SubTotalTitle">Subtotal</span> <span id="RatePerMin"></span></strong>
+                           
+                            <span id="Total_Minutes"></span>
+                            <span id="SubTotal"></span>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="ServiceType mt-2" style="display: none;">
+
+                      <div class="row justify-content-center ">
+                        <div class="col-lg-8 col-md-12">
+                          <div class="card mb-2">
+                           
+                            <div class="card-body">
+                              <form id="ProjectDetails" enctype="multipart/form-data" id="payment-form" method="POST">
+                                <input type="hidden" id="filePaths" name="file_paths">
+                                <div class="form-group mb-3">
+                                  <label class="mb-0"><strong>Project Name <sup class="text-danger text-bold">*</sup></strong></label>
+                                  <input type="text" id="projectname" name="project_name" class="form-control form-control-sm"
+                                    placeholder="Please enter project name" required>
+                                  <h6 class="msg-projectname text-danger" style="display: none;"></h6>
+                                </div>
+                                <div class="form-group mb-3">
+                                  <label><strong>Extra Comments</strong></label>
+                                  <textarea class="form-control" rows="1" id="extracomment" name="Extra_Comment"></textarea>
+                                </div>
+                                <div class="mb-3 d-none">
+                                <small class="d-flex field-title"><strong class="me-auto">Service Type</strong> <small id="Total_closed_captioning_services_val" class="float-end"></small></small>
+
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="ServiceTypeRB" id="ServiceType2"
+                                      value="closed_captioning_services" >
+                                    <label class="form-check-label" for="ServiceType2">Closed Captioning Services
+                                      (English
+                                      Subtitles) (+$ <span id="closed_captioning_services_val"></span>/min)
+                                      <i class="fa fa-info-circle" data-toggle="tooltip"
+                                        title="English subtitles help your viewers better understand your video." data-placement="top"></i></label>
+                                  </div>
+                            
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" checked name="ServiceTypeRB" id="ServiceType1"
+                                      value="transcription_services">
+                                    <label class="form-check-label" for="ServiceType1">Transcription Services <i class="fa fa-info-circle"
+                                        data-toggle="tooltip" title="Transcription service converts speech into text document."
+                                        data-placement="top"></i></label>
+                                  </div>
+                            
+                               
+                                 
+                                </div>
+                            
+                            
+                            
+                                <div class="TranscriptionServicesContainer mb-3" style="display: none;">
+                            
+                                  <small class="d-flex field-title"><strong class="me-auto">Timestamping</strong> <small id="Total_Timestamping_val" class="float-end"></small></small>
+                                  <div class="mb-3">
+                                    <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="TimeStampRB" id="TimeStampRB1" value="none" checked>
+                                      <label class="form-check-label" for="TimeStampRB1">None </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="TimeStampRB" id="TimeStampRB2" value="on_speaker_change">
+                                      <label class="form-check-label" for="TimeStampRB2">On Speaker
+                                        Change(+$ <span id="on_speaker_change_val"></span>/min) <i class="fa fa-info-circle" data-toggle="tooltip"
+                                          title="A timestamp will be inserted upon speaker change." data-placement="top"></i></label>
+                                    </div>
+                            
+                                    <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="TimeStampRB" id="TimeStampRB3" value="every_2_minutes">
+                                      <label class="form-check-label" for="TimeStampRB3">Every 2 Minutes(+$ <span
+                                          id="every_2_minutes_val"></span>/min)
+                                        <i class="fa fa-info-circle" data-toggle="tooltip" title="A timestamp will be inserted every 2 minutes."
+                                          data-placement="top"></i></label>
+                                    </div>
+                            
+                                   
+                                  </div>
+                            
+                                  <small class="d-flex field-title"><strong class="me-auto">Verbatim </strong> <small id="Total_Verbatim_val" class="float-end"></small></small>
+                                  <div class="mb-3">
+                                    <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="VerbatimRB" id="VerbatimRB1" value="non-verbatim" checked>
+                                      <label class="form-check-label" for="VerbatimRB1">Non-Verbatim <i class="fa fa-info-circle"
+                                          data-toggle="tooltip"
+                                          title="Transcriptionist will capture the fundamental meaning behind the words spoken. Filter words and repetitions are removed."
+                                          data-placement="top"></i></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="VerbatimRB" id="VerbatimRB2" value="verbatim">
+                                      <label class="form-check-label" for="VerbatimRB2">Verbatim(+$ <span id="verbatim_val"></span>/min) <i
+                                          class="fa fa-info-circle" data-toggle="tooltip"
+                                          title="The transcriptionist will capture all the sounds including non-verbal communication on the recording, such as laughter, pauses, etc."
+                                          data-placement="top"></i></label>
+                                    </div>
+                                  
+                                  </div>
+                                </div>
+                                <div class="form-group mb-3 d-none">
+                                <small class="d-flex field-title"><strong class="me-auto">Urgent Basis </strong> <small id="Total_rush_my_order_val" class="float-end"></small></small>
+
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="checkbox" name="rush_my_order" id="UrgentOrder"
+                                    value="rush_my_order">
+                                  <label class="form-check-label" for="UrgentOrder">Rush My Order (+ $<span id="UrgentOrder_Val"></span> /min) <i
+                                      class="fa fa-info-circle" data-toggle="tooltip"
+                                      title="All files will be expedited and delivered up to 5x faster." data-placement="top"></i><span
+                                      class="badge add-on-badge">Popular</span></label>
+                            
+                                </div>
+                              
+                                </div>
+                          
+                                <div class="form-group mb-3 d-none">
+                                  <small class="d-flex field-title"><strong class="me-auto">Instant Draft</strong><small id="Total_instant_first_draft_val" class="float-end"></small></small>
+                            
+                            
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="checkbox" name="instant_first_draft" id="InstantService"
+                                    value="instant_first_draft">
+                                  <label class="form-check-label" for="InstantService">Instant First Draft (+
+                                    $<span id="InstantServiceVal"></span>/min) <i class="fa fa-info-circle" data-toggle="tooltip"
+                                      title="Machine-generated transcript delivered in minutes." data-placement="top"></i></label>
+                                     
+                                </div>
+                              
+                                </div>
+                            
+                            
+                              </div>
+                          </div>
+
+                        </div>
+                        <div class="col-lg-4 col-md-8">
+                          <div class="card">
+                           
+                            <div class="card-body">
+  
+                              <p class="EstimatedCost">Estimated Total
+                                <span class="TotalCharges float-end">
+  
+                                </span></p>
+  
+  
+  
+                              </tbody>
+                              </table>
+                              <button class="btn btn-warning w-100 checkoutButton" type="button">
+                                Checkout
+                              </button>
+                            </div>
+                          
+                          </div>
+                        </div>
+  
+                      </div>
+
+                    </div>
+                  </div>
+              </section>
+            </div>
+            <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
+
+
+              <!-- form by nasir start -->
+              <div class="container-fluid">
+                <div class="card mt-3">
+                  <div class="card-body">
+                    <div class="row justify-content-center">
+                      {% if not signup %}
+                      <div class="col-md-12 col-xl-7 hideloginRow">
+                        <!-- <div class="card-header">
+                        <span class="text-white"><strong>User Detail</strong></span>
+                      </div> -->
+                        <div class="BoxInset mb-2 ">
+                          <div class="SignUpForm">
+                            <div class="mb-2 text-info text-center">
+                              <span class="mb-0 pt-2 d-none " id="backtoRegister"><u>Not a member? Register here.</u></span>
+                              <span class="mb-0 pt-2" id="changeForm"><u>Are you an existing customer? Login here.</u></span>
+                            </div>
+                            <div class="row ">
+                              <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                  <label><strong>Email</strong></label>
+                                  <input type="email" name="email" id="UserEmail" 
+                                    placeholder="Enter your Business Email" class="form-control form-control-sm" required />
+                                  <h6 class="msg-UserEmail text-danger" style="display: none;"></h6>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                  <input type="hidden" id="register" name="is_registered" value="false">
+
+                                  <label><strong>Password</strong></label>
+                                  <input id="Signup_password" type="password" name="password" required
+                                    placeholder="Enter your password" class="form-control form-control-sm">
+                                  <h6 class="msg-Signup_password text-danger" style="display: none;"></h6>
+                                </div>
+                              </div>
+                              <div class="col-md-12">
+                                <input type="button" id="submitLogin" class="btn btn-info btn-sm d-none loginbtn float-end text-white" value="Login">
+                              </div>
+                            </div>
+                          
+                            <div class="row hideRow">
+                              <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                  <label><strong>First Name</strong></label>
+                                  <input type="text" id="first_name" name="first_name" required placeholder="First Name"
+                                    class="form-control form-control-sm">
+                                  <h6 class="msg-first_name text-danger" style="display: none;"></h6>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                  <label><strong>Last Name</strong></label>
+                                  <input type="text" id="last_name" name="last_name" required placeholder="Last Name"
+                                    class="form-control form-control-sm">
+                                  <h6 class="msg-last_name text-danger" style="display: none;"></h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row hideRow">
+                              <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                  <label><strong>Company</strong></label>
+                                  <input type="text" id="company_name" name="company" required
+                                    placeholder="Enter your Company name" class="form-control form-control-sm">
+                                  <h6 class="msg-company_name text-danger" style="display: none;"></h6>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                  <label><strong>Phone</strong></label>
+                                  <span class="phonetext-389"><input type="tel" id="phone_numberold"
+                                    name="phone_numberold" pattern="\d*" title="Only numbers allowed" required="required" / size="40"
+                                      class="phone_number form-control form-control-sm wpcf7-form-control wpcf7-text wpcf7-phonetext"
+                                      data-numberonly="true" aria-invalid="false" placeholder="Phone Number"
+                                      required /></span>
+                                  <input type="hidden" id="phone_number" name="phone_number" required
+                                    placeholder="Enter your phone number" class="form-control form-control-sm">
+                                  <h6 class="msg-phone_number text-danger" style="display: none;"></h6>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+                      {% endif %}
+                      <div class="col-md-6 col-xl-5">
+                        <div class="BoxInset">
+                         
+                          <div class="">
+                            <div class="py-4 px-3 d-flex">
+                              <h5 class="me-auto mb-0">My Transcript Order</h5><span class="summary-edit-link link-info">
+                                
+                                  EDIT &gt;
+                                
+                              </span>
+                            </div>
+                            <hr class="m-0">
+                            <table id="InstantQuote" class="table table-lg">
+                              
+                              <tbody>
+
+                              </tbody>
+
+                            </table>
+                            <table id="InstantQuoteExtraCharges" class="table table-lg">
+                              
+                              <tbody>
+                                <tr id="ClosedCaptioningServicesSummary">
+                                 
+                                </tr>
+                                <tr id="OnSpeakerChangeSummary">
+                                 
+                                </tr>
+                                <tr id="Every2MinutesSummary">
+                                 
+                                </tr>
+                                <tr id="VerbatimSummary">
+                                 
+                                </tr>
+
+                                <tr id="RushMyOrderSummary">
+                                 
+                                </tr>
+                                <tr id="InstantFirstDraftSummary">
+                                 
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <hr class="m-0">
+                          <div class="py-4 px-3 d-flex">
+
+                            <b class="me-auto">Estimated Total</b>
+                              <h4 class="TotalCharges float-end">
+
+                              </h4>
+                            </tbody>
+                            </table>
+                          </div>
+
+                          <div class="">                        
+                           
+                                                                <input type="hidden" class="form-control" id="TotalChargesInput" placeholder="TotalCharges" style="border: 1px solid #ced4da !important;" name="TotalCharges" form="ProjectDetails">
+                              <input type="hidden" class="form-control" id="EstimatedTotal" placeholder="EstimatedTotal" style="border: 1px solid #ced4da !important;" name="estimated_amount" form="ProjectDetails">
+                      </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="hidePyement">
+                    <div class="row mt-4 removepeyment" >
+                      {% if not payment_method %}
+                      <div class="col-md-12">
+
+                        <div class="BoxInset mb-2">
+                          <!-- <form action="" enctype="multipart/form-data" id="payment-form" method="POST"> -->
+                          <div class="px-2"><h5 class="me-auto mb-0">Online Payment</h4></div>
+                          <input type="hidden" name="token" id="token">
+                          <div class="row">
+                            <div class="col-md-8">
+                              <div class="form-group mb-3">
+
+                                <div id="card-element" class="mt-3 mb-3 border"></div>
+
+                              </div>
+
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+
+                              <div class="form-group mb-3">
+                                <label><strong>First Name</strong></label>
+                                <input id="first-name" name="first-name" class="form-control form-control-sm"
+                                  placeholder="First Name" required />
+
+
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group mb-3">
+
+
+                                <label><strong>Last Name</strong></label>
+                                <input id="last-name" name="last-name" class="form-control form-control-sm"
+                                  placeholder="Last Name" required />
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group mb-3">
+                                <label><strong>Address</strong></label>
+                                <input id="address-line1" name="address_line1"
+                                  class="form-control form-control-sm" placeholder="Address" required />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group mb-3">
+                                <label><strong>Address (cont.)</strong></label>
+                                <input id="address-line2" name="address_line2"
+                                  class="form-control form-control-sm" placeholder="Address (cont.)"
+                                  required />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group mb-3">
+                                <label><strong>Country</strong></label>
+                                <select name="country" id="country" placeholder="Country"
+                                  class="form-control form-control-sm" required>
+                                  <option>country</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group mb-3">
+                                <label><strong>State</strong></label>
+                                <select id="state" name="state" class="form-control form-control-sm "
+                                  placeholder="State" required></select>
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group mb-3">
+                                <label><strong>City</strong></label>
+                                <input id="city" name="city" class="form-control form-control-sm"
+                                  placeholder="City" required />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group mb-3">
+                                <label><strong>ZIP</strong></label>
+                                <input type="number" id="zip" name="zip" class="form-control form-control-sm"
+                                  placeholder="Zip" maxlength="5" required />
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="form-group mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="SaveCardDetails"
+                                  name="Save_Card_Details">
+                                <label class="form-check-label" for="SaveCardDetails">
+                                  Save for my next payment
+                                </label>
+                              </div>
+                              <div class="form-group mb-3" style="display: none;">
+                                <input class="form-check-input" type="checkbox" checked value="" id="TermsConditions"
+                                  name="Terms_Conditions" required>
+                                <label class="form-check-label" for="TermsConditions">
+                                  <span>
+                                    I agree to our <a href="/user_management/terms_conditions/"  target="_blank">terms of service</a> and <a href="/user_management/privacy_policy/" target="_blank" >privacy policy</a>
+                                </span>
+                                </label>
+                              </div>
+
+                              <br>
+
+                              <img class="powered" src="{% static 'user_management/img/Powered by Stripe - black.png' %}" alt="powered by stripe">
+                              <div class="outcome">
+                              
+                                <div class="error"></div>
+                                <!-- <div class="success">
+                                        Success! Your Stripe token is <span class="token"></span>
+                                    </div> -->
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      {% endif %}
+                    
+                    </div>
+                    </div>
+                    <div class="row justify-content-center" id="paymentBtn">
+                      <div class="col-md-4">
+                        <button  class="stripe-btn mb-1 mt-2 submit btn btn-dark w-100 paymentSubmit" id="submit_payment"
+                          name='payment-button' value='1'><i class="fa fa-lock me-3"></i> Pay</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+            </div>
+
+
+            </form>
+            <!-- form by nasir end -->
+
+
+            <div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3">
+              <div class="row justify-content-center">
+                <div class="col-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="text-center">Your Project has been created successfully</h4>
+                    </div>
+                    <!-- <div class="card-footer">
+
+                      <a href="/user_management/main_dashboard/" class="btn btn-sm btn-success float-end">View
+                        Projects</a>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<div class="clearfix"></div>
+
+  </div>
+  </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block extrascript %}
+
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js"
+  type="text/javascript"></script>
+
+
+
+<script src="https://js.stripe.com/v3/"></script>
+
+
+<script src="{% static 'user_management/better_admin/js/Signup.js' %}"></script>
+<script src="{% static 'user_management/libs/Fileuploader/jquery.dm-uploader.min.js' %}"></script>
+<script src="{% static 'user_management/libs/Fileuploader/demo-ui.js' %}"></script>
+<!-- <script src="{{ STATIC_URL }}/static/libs/Fileuploader/demo-config.js"></script> -->
+<script type="text/html" id="files-template">
+      <li class="media">
+        <div class="media-body mb-1">
+          <p class="mt-2 mb-2">
+            <strong>%%filename%%</strong> - Status: <span class="text-muted">Waiting</span>
+          </p>
+          <div class="progressContainer mb-2">
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" 
+              role="progressbar"
+              style="width: 0%" 
+              aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+          <hr class="mt-1 mb-1" />
+        </div>
+      </li>
+    </script>
+
+{% endblock %}

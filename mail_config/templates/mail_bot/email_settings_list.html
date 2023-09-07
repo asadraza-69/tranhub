@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load user_perm %}
+{% load static %}
+{% block extra_style %}
+<style>
+    #dynamicTable_filter {
+        margin: 0 !important;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+{% get_user_perm "can_view_email_setting_list" as can_view_email_setting_list %}
+{% if  can_view_email_setting_list %}
+    <div class="right_segment">
+        <div id="tableApp"></div>
+    </div>
+{% else %}
+    <div class="right_segment" style="margin-top: 100px;">
+    <P>You don't have required permission</P>
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block extra_script %}
+{% get_user_perm "can_view_email_setting_list" as can_view_email_setting_list %}
+{% get_user_perm "can_add_email_settings" as can_add_email_settings %}
+    <script>
+        {% if can_view_email_setting_list %}
+            getAndRenderDynamicTable ('/mail_bot/email_settings_list_view/', 'dynamicTable');
+        {%endif%}
+        $( document ).ajaxComplete(function( event, xhr, settings ) {
+            if( settings.url == '/mail_bot/email_settings_list_view/') {
+                {% if can_add_email_settings %}
+                $('.modelFormTrigger').after(''+'<a style="color: #fff; background-color: #0c4da2;" href="/mail_bot/create_email_settings" class="ui button mini right floated icon labeled"><i class="icon plus"></i>Create Email Settings</a>');
+                {%endif%}
+                $('.modelFormTrigger').remove();
+            }
+        });
+    </script>
+{% endblock %}

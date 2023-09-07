@@ -1,0 +1,124 @@
+{% extends 'better_admin/base_better_admin.html' %}
+{% load bootstrap_toolkit %}
+{% load usr_perm %}
+
+{% block page_header %}
+
+<div class="container">
+<div class="row">
+<div class="span12">
+<ul class="breadcrumb">
+<li>
+<a href="#">Home</a> <span class="divider">/</span>
+</li>
+<li>
+<a href="#">User Management</a> <span class="divider">/</span>
+</li>
+<li>
+<a href="/permissions/sieveview/?">Permissions Sieve</a> <span class="divider">/</span>
+</li>
+<li>
+<li class="active">{{ object.group.name.title }}'s Permissions Sieve Detail</li>
+</li>
+</ul>
+</div>
+</div>
+</div><h2>{{ object.group.name.title }}'s Permissions Sieve Detail</h2>
+{% endblock %}
+
+{% block content %}
+    {% get_user_perm "can_detail_permissiontag" as perm_flag %}{% if perm_flag %}
+    <div class="span12">
+<div class="span2"></div>
+<div class="span6">
+<legend>Permission Detail</legend>
+<div class="row-fluid">
+<div class="span3"><b>Group</b></div>
+<div class="span9">{{ object.group}}</div>
+</div>
+<div class="row-fluid">
+<div class="span3"><b>Companies</b></div>
+<div class="span9">
+                {% for item in object.companies.all %}
+                    {{item.name.title}}
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </div>
+</div>
+<div class="row-fluid">
+<div class="span3"><b>Companies All</b></div>
+<div class="span9">{{object.companies_all}}</div>
+</div>
+<div class="row-fluid">
+<div class="span3"><b>Clients</b></div>
+<div class="span9">
+                {% for item in object.clients.all %}
+                    {{item.name.title}}
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </div>
+</div>
+<div class="row-fluid">
+<div class="span3"><b>Clients all</b></div>
+<div class="span9">{{object.clients_all}}</div>
+</div>
+<div class="row-fluid">
+<div class="span3"><b>Resellers</b></div>
+<div class="span9">
+                {% for item in object.reseller.all %}
+                    {{item.name.title}}
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </div>
+</div>
+<div class="row-fluid">
+<div class="span3"><b>Reseller all</b></div>
+<div class="span9">{{object.reseller_all}}</div>
+</div>
+<div class="row-fluid">
+<div class="span3"><b>Vendors</b></div>
+<div class="span9">
+                {% for item in object.vendors.all %}
+                    {{item.name.title}}
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </div>
+</div>
+<div class="row-fluid">
+<div class="span3"><b>Vendors all</b></div>
+<div class="span9">{{object.vendors_all}}</div>
+</div>
+<div class="row-fluid">
+<div class="span3"><b>Country</b></div>
+<div class="span9">
+                {% for item in object.country.all %}
+                    {{item.name.title}}
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </div>
+</div>
+<div class="row-fluid">
+<div class="span3"><b>Country all </b></div>
+<div class="span9">{{object.country_all}}</div>
+</div>
+<div class="form-actions"><center>
+<div class="btn-group">
+                {% get_user_perm "can_add_permissiontag" as perm_flag %}{% if perm_flag %}
+                    <a class="btn btn-primary" href="./update">Update</a>
+                {% endif %}
+                {% get_user_perm "can_delete_permissiontag" as perm_flag %}{% if perm_flag %}
+                    <a class="btn btn-danger" href="./delete">Delete</a>
+                {% endif %}
+                {% get_user_perm "can_view_permissiontag" as perm_flag %}{% if perm_flag %}
+                    <a class="btn btn-success" href="../?{{ request.GET.urlencode }}">  Back  </a>
+                {% endif %}
+            </div>
+</center>
+</div>
+</div>
+<div class="span4"></div>
+</div>
+    {% else %}
+        {% include 'access_denied_default.html' %}
+    {% endif %}
+{% endblock %}

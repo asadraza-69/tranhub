@@ -1,0 +1,41 @@
+{% load pagination_tags_extras sorting better_admin %}
+{% auto_sort object_list %}
+{% autopaginate object_list 25 %}
+
+<table class="table table-bordered table-condensed table-hover table-striped">
+    <thead>
+        <tr>
+            <th>{% sort_link "Sequence" "group__sequence" %}</th>
+            <th>{% sort_link "Group" "group__group" %}</th>
+            <th>{% sort_link "Title" "title" %}</th>
+            <th>{% sort_link "CAN ADD" "add_permission" %}</th>
+            <th>{% sort_link "CAN VIEW" "view_permission" %}</th>
+            <th>{% sort_link "CAN SEE DETAILS" "detail_permission" %}</th>
+            <th>{% sort_link "CAN DELETE" "delete_permission" %}</th>
+            <th>{% sort_link "CAN CHANGE" "change_permission" %}</th>
+            <th>{% sort_link "CAN IMPORT" "import_permission" %}</th>
+            <th>{% sort_link "CAN EXPORT" "export_permission" %}</th>
+            <th>{% sort_link "MISCELLANEOUS" "other_permission" %}</th>
+            <th><center>Actions</center></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for object in object_list %}
+        <tr>
+            <td>{{ object.group.sequence }}</td>
+            <td>{{ object.group.group.title }}</td>
+            <td>{{ object.title }}</td>
+            <td>{% if object.add_permission %}<i class="icon icon checkmark"></i>{% else %}<i class="icon icon remove"></i>{% endif %}</td>
+            <td>{% if object.view_permission %}<i class="icon icon checkmark"></i>{% else %}<i class="icon icon remove"></i>{% endif %}</td>
+            <td>{% if object.detail_permission %}<i class="icon icon checkmark"></i>{% else %}<i class="icon icon remove"></i>{% endif %}</td>
+            <td>{% if object.delete_permission %}<i class="icon icon checkmark"></i>{% else %}<i class="icon icon remove"></i>{% endif %}</td>
+            <td>{% if object.change_permission %}<i class="icon icon checkmark"></i>{% else %}<i class="icon icon remove"></i>{% endif %}</td>
+            <td>{% if object.import_permission %}<i class="icon icon checkmark"></i>{% else %}<i class="icon icon remove"></i>{% endif %}</td>
+            <td>{% if object.export_permission %}<i class="icon icon checkmark"></i>{% else %}<i class="icon icon remove"></i>{% endif %}</td>
+            <td>{% if object.other_permission %}<i class="icon icon checkmark"></i>{% else %}<i class="icon icon remove"></i>{% endif %}</td>
+            <td><a href="/rbac_preferences/rbacpreference/{{ object.pk }}/update/"><i class="icon icon edit"></i></a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% paginate %}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+          {% load static %}
+        <meta charset="utf-8">
+        <title>Itrans </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="iTrans">
+        <meta name="author" content="Bitswits">
+
+       
+        <link href="{% static 'user_management/better_admin/css/bootstrap.css' %}" rel="stylesheet">
+        <link href="{% static 'user_management/better_admin/css/font-awesome.min.css' %}" rel="stylesheet">
+       <link href="{% static 'user_management/libs/DataTables/DataTables-1.10.25/css/dataTables.bootstrap5.css' %}" rel="stylesheet">
+        
+       
+        <link href="{% static 'user_management/libs/jquery-ui-1.12.1/jquery-ui.min.css' %}" rel="stylesheet">
+        <link href="{% static 'user_management/libs/noty/noty.css' %}" rel="stylesheet">
+        <link href="{% static 'user_management/libs/noty/themes/light.css' %}" rel="stylesheet">
+
+
+        <link href="{% static 'user_management/bootstrap_toolkit_extras/css/ui.multiselect.css' %}" rel="stylesheet"/>
+        
+        <link href="{% static 'user_management/better_admin/css/style.css' %}" rel="stylesheet">
+        <link href="{% static 'user_management/better_admin/css/animate.css' %}" rel="stylesheet">
+        <!-- setup css -->
+        <link href="{% static 'user_management/setup/css/animation.css' %}" rel="stylesheet">
+        <!-- <link href="{% static 'user_management/setup/css/frontend.css' %}" rel="stylesheet"> -->
+        <link href="{% static 'user_management/setup/css/jupitor.css' %}" rel="stylesheet">
+        <link href="{% static 'user_management/setup/css/post.css' %}" rel="stylesheet">
+        <!-- <link href="{% static 'user_management/setup/css/inputiti.css' %}" rel="stylesheet"> -->
+        <link href="{% static 'user_management/setup/css/style.css' %}" rel="stylesheet">
+
+  <!-- Le fav and touch icons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="{% static 'user_management/better_admin/ico/apple-icon-57x57.png' %}">
+  <link rel="apple-touch-icon" sizes="60x60" href="{% static 'user_management/better_admin/ico/apple-icon-60x60.png' %}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{% static 'user_management/better_admin/ico/apple-icon-72x72.png' %}">
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'user_management/better_admin/ico/apple-icon-76x76.png' %}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{% static 'user_management/better_admin/ico/apple-icon-114x114.png' %}">
+  <link rel="apple-touch-icon" sizes="120x120" href="{% static 'user_management/better_admin/ico/apple-icon-120x120.png' %}">
+  <link rel="apple-touch-icon" sizes="144x144" href="{% static 'user_management/better_admin/ico/apple-icon-144x144.png' %}">
+  <link rel="apple-touch-icon" sizes="152x152" href="{% static 'user_management/better_admin/ico/apple-icon-152x152.png' %}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'user_management/better_admin/ico/apple-icon-180x180.png' %}">
+  <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'user_management/better_admin/ico/android-icon-192x192.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'user_management/better_admin/ico/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="96x96" href="{% static 'user_management/better_admin/ico/favicon-96x96.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'user_management/better_admin/ico/favicon-16x16.png' %}">
+  
+      <style>
+          .noty_body {
+    display: flex;
+    font-weight: 300;
+    font-size: 14px;
+    color: #000;
+    align-items: center;
+}
+
+.noty_body img {max-width: 63px;height: 45px;margin-right: 5px;}
+          </style>
+         {% block extrahead %}
+        {% endblock %}
+    </head>
+ 
+    <body>
+        {% block navbar %}
+       
+  
+      
+ 
+        {% endblock %}
+
+      
+            {% block content %}
+            {% endblock %}
+
+
+            {% block footer %}
+            
+            {% endblock %}
+
+     
+             <!-- Placed at the end of the document so the pages load faster -->
+         
+             <script src="{% static 'user_management/libs/jquery/jquery.js' %}"></script>
+             <!--
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js' %}"></script>
+             -->
+            <script src="{% static 'user_management/bootstrap_toolkit_extras/js/bootstrap.bundle.js' %}"></script>
+                     
+            <script src="{% static 'user_management/libs/jquery-ui-1.12.1/jquery-ui.js' %}"></script>
+        <!-- setupjs -->
+        <script type="text/javascript" src="{% static 'user_management/setup/js/intl-5.7.2.js' %}"></script>
+       <script type="text/javascript" src="{% static 'user_management/setup/js/country-select.js' %}"></script>
+         <!-- <script type='text/javascript' id='nbcpf-countryFlag-script-js-after'>
+            (function ($) {
+              $(function () {
+                  $(".wpcf7-countrytext").countrySelect({
+
+                  });
+                  $(".wpcf7-phonetext").intlTelInput({
+                      autoHideDialCode: true,
+                      autoPlaceholder: "true",
+                      nationalMode: true,
+                      separateDialCode: true,
+                      hiddenInput: "full_number",
+
+                  });
+              });
+          })(jQuery);
+      </script> -->
+        <script type="text/javascript" src="{% static 'user_management/setup/js/anim-2-2-0.js' %}"></script>
+     
+         <script type="text/javascript" src="{% static 'user_management/setup/js/frontend-module.js' %}"></script>
+        <script type="text/javascript" src="{% static 'user_management/setup/js/webpack.js' %}"></script>
+        <script type="text/javascript" src="{% static 'user_management/setup/js/waypoints.js' %}"></script>
+        <script type='text/javascript' id='elementor-frontend-js-before'>
+          var elementorFrontendConfig = { "environmentMode": { "edit": false, "wpPreview": false, "isScriptDebug": false }, "i18n": { "shareOnFacebook": "Share on Facebook", "shareOnTwitter": "Share on Twitter", "pinIt": "Pin it", "download": "Download", "downloadImage": "Download image", "fullscreen": "Fullscreen", "zoom": "Zoom", "share": "Share", "playVideo": "Play Video", "previous": "Previous", "next": "Next", "close": "Close" }, "is_rtl": false, "breakpoints": { "xs": 0, "sm": 480, "md": 768, "lg": 1025, "xl": 1440, "xxl": 1600 }, "responsive": { "breakpoints": { "mobile": { "label": "Mobile", "value": 767, "direction": "max", "is_enabled": true }, "mobile_extra": { "label": "Mobile Extra", "value": 880, "direction": "max", "is_enabled": false }, "tablet": { "label": "Tablet", "value": 1024, "direction": "max", "is_enabled": true }, "tablet_extra": { "label": "Tablet Extra", "value": 1365, "direction": "max", "is_enabled": false }, "laptop": { "label": "Laptop", "value": 1620, "direction": "max", "is_enabled": false }, "widescreen": { "label": "Widescreen", "value": 2400, "direction": "min", "is_enabled": false } } }, "version": "3.2.4", "is_static": false, "experimentalFeatures": { "e_dom_optimization": true, "a11y_improvements": true, "landing-pages": true }, "urls": { "assets": "https:\/\/seo3.cryscampus.com\/itrans\/wp-content\/plugins\/elementor\/assets\/" }, "settings": { "page": [], "editorPreferences": [] }, "kit": { "active_breakpoints": ["viewport_mobile", "viewport_tablet"], "global_image_lightbox": "yes", "lightbox_enable_counter": "yes", "lightbox_enable_fullscreen": "yes", "lightbox_enable_zoom": "yes", "lightbox_enable_share": "yes", "lightbox_title_src": "title", "lightbox_description_src": "description" }, "post": { "id": 7, "title": "Itrans%20%E2%80%93%20Speech%20Recognition%20Software", "excerpt": "", "featuredImage": false } };
+        </script>
+        <script type="text/javascript" src="{% static 'user_management/setup/js/frontend.min.js' %}"></script>
+<!-- noty -->
+        <script type="text/javascript" src="{% static 'user_management/libs/noty/noty.min.js' %}"></script>
+<script>
+    function ShowNoty(status,type) { new Noty({ layout: 'topRight',
+     theme: 'light',
+      type: type,
+      text: '<img src = "{% static 'user_management/img/logo.png'%}" /><strong>' + status + '</strong>',
+        dismissQueue: true,    
+      template: '<div class="noty_message noty_bar noty_theme_default noty_layout_top noty_success"><span class="noty_text"></span><div class="noty_close"></div></div>',
+       animation: { open: 'animated bounceInDown',   
+       close: 'animated bounceOutRight',      
+        speed: 500 
+   }, timeout: 10000, 
+   force: false, 
+   modal: false, closeWith: ['click', 'button'],
+    callback: { onShow: function () { }, afterShow: function () { }, onClose: function () { }, afterClose: function () { } } }).show() }
+
+
+    function goBack() {
+  window.history.back();
+
+}
+
+$('[data-toggle="tooltip"]').tooltip();
+    </script>
+        
+        {% block extrascript %}
+        {% endblock %}
+    </body>
+</html>

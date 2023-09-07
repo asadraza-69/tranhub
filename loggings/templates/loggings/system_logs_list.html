@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load user_perm %}
+{% load static %}
+{% block extra_style %}
+    <style>
+        @media only screen and (max-width: 768px){
+            #tableApp .dataTables_length,#tableApp .dataTables_filter{
+                margin: 6px 0 !important;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+{% get_user_perm "can_view_system_logs" as can_view_system_logs %}
+   {%if can_view_system_logs%}
+    <div class="right_segment">
+        <div id="tableApp"></div>
+    </div>
+    {% else %}
+    <div class="right_segment" style="margin-top: 100px;">
+    <P>You don't have required permission</P>
+    </div>
+    {%endif%}
+{% endblock %}
+
+{% block extra_script %}
+{% get_user_perm "can_view_system_logs" as can_view_system_logs %}
+    <script>
+        var parama = window.location.search;
+        {%if can_view_system_logs%}
+        getAndRenderDynamicTable ('/loggings/system_logs_listview/'+parama+'', 'dynamicTable');
+        {%endif%}
+        $( document ).ajaxComplete(function( event, xhr, settings ) {
+            if( settings.url == '/loggings/system_logs_listview/'+parama+'') {
+                $('.modelFormTrigger').remove();
+            }
+        });
+    </script>
+{% endblock %}

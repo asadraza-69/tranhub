@@ -1,0 +1,23 @@
+{% load pagination_tags_extras sorting better_admin %}
+
+{% auto_sort object_list %}
+{% autopaginate object_list 25 %}
+<table class="table table-bordered table-condensed table-hover">
+    <thead>
+        <tr>
+            <th>{% sort_link "Name" "name" %}</th>
+            <th>{% sort_link "Code Names" "codename" %}</th>
+            <th style="width:75px;"><center><b>Actions</b></center></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for object in object_list %}
+        <tr>
+            <td>{{ object.name }}</td>
+            <td>{{ object.codename }}</td>
+            <td><center>{% include 'permissions/permissiontags_actions.html' %}</center></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% paginate %}

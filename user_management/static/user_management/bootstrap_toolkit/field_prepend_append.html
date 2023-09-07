@@ -1,0 +1,39 @@
+{% load better_admin %}
+
+{% if prepend %}
+    {% if append %}
+        <div class="input-prepend input-append">
+            <span class="add-on">{{ prepend }}</span>{{ field }}<span class="add-on">{{ append }}</span>
+        </div>
+    {% else %}
+        <div class="input-prepend">
+            <span class="add-on">{{ prepend }}</span>{{ field }}
+        </div>
+    {% endif %}
+{% else %}
+    {% if append %}
+        <div class="input-append">
+            {{ field }}<span class="add-on">{{ append }}</span>
+        </div>
+    {% else %}
+        {% with field_type=field|get_form_field_type %}
+        {% if field_type == 'ModelChoiceField' or field_type == 'ModelMultipleChoiceField' %}
+        {{ field }} {% if "fk_popup" not in field.field.widget.attrs or field.field.widget.attrs.fk_popup != False %}<a href="{{ request.get_full_path }}/{{ field|get_fk_popup_url }}" class="add-another" id="add_id_{{ field.name }}" onclick="return showAddAnotherPopup(this);">+</a>{% endif %}
+        {% elif field_type == 'DateField'%}
+            <div class="input-append date form_date">
+            {{ field }}<span class="add-on"><i class="icon-th"></i></span>
+            </div>
+        {% elif field_type == 'TimeField' %}
+            <div class="input-append date form_time">
+            {{ field }}<span class="add-on"><i class="icon-th"></i></span>
+            </div>
+        {% elif field_type == 'DateTimeField' %}
+            <div class="input-append date form_datetime">
+            {{ field }}<span class="add-on"><i class="icon-th"></i></span>
+            </div>
+        {% else %}
+        {{ field }}
+        {% endif %}
+        {% endwith %}
+    {% endif %}
+{% endif %}

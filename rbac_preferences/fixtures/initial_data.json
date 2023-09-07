@@ -1,0 +1,1290 @@
+[
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 1,
+    "fields": {
+        "sequence": 0,
+        "group": "USERS"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 2,
+    "fields": {
+        "sequence": 2,
+        "group": "VOS Systems"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 3,
+    "fields": {
+        "sequence": 2,
+        "group": "PERMISSIONS"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 4,
+    "fields": {
+        "sequence": 3,
+        "group": "SERVER OPTIONS"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 6,
+    "fields": {
+        "sequence": 5,
+        "group": "SYSTEM LOGS"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 7,
+    "fields": {
+        "sequence": 6,
+        "group": "EMAIL SETTINGS"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 8,
+    "fields": {
+        "sequence": 7,
+        "group": "Client"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 9,
+    "fields": {
+        "sequence": 8,
+        "group": "Virtual Private Server"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 10,
+    "fields": {
+        "sequence": 9,
+        "group": "Billing"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 11,
+    "fields": {
+        "sequence": 10,
+        "group": "Banks"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 12,
+    "fields": {
+        "sequence": 11,
+        "group": "Invoice Designer"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 13,
+    "fields": {
+        "sequence": 12,
+        "group": "Company Configuration"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 14,
+    "fields": {
+        "sequence": 13,
+        "group": "Associate VPS"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 15,
+    "fields": {
+        "sequence": 14,
+        "group": "Data Center"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 16,
+    "fields": {
+        "sequence": 15,
+        "group": "Dedicated Server"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 17,
+    "fields": {
+        "sequence": 16,
+        "group": "Sippy Node Server"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreferencegroup",
+    "pk": 18,
+    "fields": {
+        "sequence": 17,
+        "group": "Sippy Environment"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 1,
+    "fields": {
+        "group": 1,
+        "title": "USER",
+        "add_permission": "can_add_user",
+        "view_permission": "can_view_user",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_edit_user",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": "can_reset_password_users"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 3,
+    "fields": {
+        "group": 3,
+        "title": "PERMISSION",
+        "add_permission": "can_add_permission_groups",
+        "view_permission": "can_view_permission_groups",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_edit_permission_groups",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 5,
+    "fields": {
+        "group": 4,
+        "title": "TIME ZONE",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_change_timezone",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 7,
+    "fields": {
+        "group": 6,
+        "title": "SYSTEM LOG",
+        "add_permission": null,
+        "view_permission": "can_view_system_logs",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 10,
+    "fields": {
+        "group": 4,
+        "title": "CAN REBOOT",
+        "add_permission": null,
+        "view_permission": "can_reboot",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 12,
+    "fields": {
+        "group": 4,
+        "title": "CHECK ROOT LOGIN LOGS",
+        "add_permission": null,
+        "view_permission": "can_check_root_login_logs",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 15,
+    "fields": {
+        "group": 4,
+        "title": "SERVER OPTIMIZATION",
+        "add_permission": null,
+        "view_permission": "can_optimize_server",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 16,
+    "fields": {
+        "group": 4,
+        "title": "ANTI HACKING PASSWORD RESET",
+        "add_permission": null,
+        "view_permission": "can_reset_antihacking_password",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 18,
+    "fields": {
+        "group": 4,
+        "title": "VOS PASSWORD RESET",
+        "add_permission": null,
+        "view_permission": "can_reset_vos_password",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 19,
+    "fields": {
+        "group": 4,
+        "title": "ANTI HACKING PAGE WORKING SLOW",
+        "add_permission": null,
+        "view_permission": "can_view_antihacking_slow_page",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 21,
+    "fields": {
+        "group": 4,
+        "title": "MYSQL TABLE REPAIR",
+        "add_permission": null,
+        "view_permission": "can_view_mysql_table_repair_listview",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_repair_mysql_table",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 22,
+    "fields": {
+        "group": 4,
+        "title": "PROCESSES",
+        "add_permission": null,
+        "view_permission": "can_view_server_process_list_top",
+        "detail_permission": null,
+        "delete_permission": "can_kill_process",
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 23,
+    "fields": {
+        "group": 4,
+        "title": "CANNOT CONNECT TO MYSQL DB",
+        "add_permission": null,
+        "view_permission": "can_cannot_connect_to_mysql_db",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 25,
+    "fields": {
+        "group": 4,
+        "title": "MANAGE SERVER",
+        "add_permission": null,
+        "view_permission": "can_manage_server",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 28,
+    "fields": {
+        "group": 7,
+        "title": "EMAIL SETTINGS",
+        "add_permission": "can_add_email_settings",
+        "view_permission": "can_view_email_setting_list",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_edit_email_settings",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 29,
+    "fields": {
+        "group": 4,
+        "title": "SSH",
+        "add_permission": null,
+        "view_permission": "can_view_ssh",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 30,
+    "fields": {
+        "group": 4,
+        "title": "LAST LOGIN LOGS",
+        "add_permission": null,
+        "view_permission": "can_view_last_login_logs",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 31,
+    "fields": {
+        "group": 4,
+        "title": "ACCESS LOGS",
+        "add_permission": null,
+        "view_permission": "can_view_access_log",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 32,
+    "fields": {
+        "group": 4,
+        "title": "ERROR LOGS",
+        "add_permission": null,
+        "view_permission": "can_view_error_log",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 33,
+    "fields": {
+        "group": 4,
+        "title": "AUDIT LOGS",
+        "add_permission": null,
+        "view_permission": "can_view_audit_log",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 34,
+    "fields": {
+        "group": 4,
+        "title": "MYSQL LOGS",
+        "add_permission": null,
+        "view_permission": "can_view_mysql_log",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 35,
+    "fields": {
+        "group": 4,
+        "title": "SERVICES",
+        "add_permission": null,
+        "view_permission": "can_view_services",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 36,
+    "fields": {
+        "group": 4,
+        "title": "START SERVICE",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_start_service",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 37,
+    "fields": {
+        "group": 4,
+        "title": "STOP SERVICE",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_stop_service",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 38,
+    "fields": {
+        "group": 4,
+        "title": "RESTART SERVICE",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_restart_service",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 39,
+    "fields": {
+        "group": 4,
+        "title": "OPEN PORTS",
+        "add_permission": null,
+        "view_permission": "can_view_openports",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 40,
+    "fields": {
+        "group": 8,
+        "title": "Client",
+        "add_permission": "can_add_client",
+        "view_permission": "can_view_client_list",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_edit_client",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 41,
+    "fields": {
+        "group": 8,
+        "title": "Client Activate/Deactivate",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": "can_activate_deactivate_client"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 42,
+    "fields": {
+        "group": 9,
+        "title": "VPS",
+        "add_permission": "can_create_vps",
+        "view_permission": "can_view_vps",
+        "detail_permission": null,
+        "delete_permission": "can_delete_vps",
+        "change_permission": "can_edit_vps",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 43,
+    "fields": {
+        "group": 9,
+        "title": "VPS  Restart",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_restart_vps",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 44,
+    "fields": {
+        "group": 9,
+        "title": "VPS  list",
+        "add_permission": null,
+        "view_permission": "can_view_vps_list",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 45,
+    "fields": {
+        "group": 9,
+        "title": "VPS  Onhold",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_onhold_vps",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 46,
+    "fields": {
+        "group": 9,
+        "title": "VPS  Reject",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_reject_vps",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 47,
+    "fields": {
+        "group": 9,
+        "title": "VPS  Request",
+        "add_permission": "can_request_vps",
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 48,
+    "fields": {
+        "group": 9,
+        "title": "VPS Order",
+        "add_permission": "can_view_vps_order_list",
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 49,
+    "fields": {
+        "group": 9,
+        "title": "VPS Unsuspend",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_unsuspend_vps",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 50,
+    "fields": {
+        "group": 9,
+        "title": "VPS Suspend",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_suspend_vps",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 51,
+    "fields": {
+        "group": 9,
+        "title": "VPS Stop",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_stop_vps",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 52,
+    "fields": {
+        "group": 9,
+        "title": "VPS Switch-Off",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_switch_off_vps",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 53,
+    "fields": {
+        "group": 9,
+        "title": "VPS Start",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_start_vps",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 54,
+    "fields": {
+        "group": 10,
+        "title": "Billing",
+        "add_permission": null,
+        "view_permission": "can_view_billing",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 55,
+    "fields": {
+        "group": 10,
+        "title": "Invoice",
+        "add_permission": null,
+        "view_permission": "can_view_invoice_payment_list",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_edit_invoice",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 56,
+    "fields": {
+        "group": 10,
+        "title": "Invoice Transactions",
+        "add_permission": null,
+        "view_permission": "can_view_invoice_transactions",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 57,
+    "fields": {
+        "group": 10,
+        "title": "Invoice Download",
+        "add_permission": null,
+        "view_permission": "can_download_invoice",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 58,
+    "fields": {
+        "group": 10,
+        "title": "Invoice Preview",
+        "add_permission": null,
+        "view_permission": "can_preview_invoice",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 59,
+    "fields": {
+        "group": 10,
+        "title": "Send Invoice",
+        "add_permission": null,
+        "view_permission": "can_send_invoice_to_client",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 60,
+    "fields": {
+        "group": 10,
+        "title": "Invoice Payment Approve",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_approve_invoice_payment",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 61,
+    "fields": {
+        "group": 10,
+        "title": "Invoice Payment Decline",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_decline_invoice_payment",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 62,
+    "fields": {
+        "group": 10,
+        "title": "Payment Adjustment",
+        "add_permission": "can_create_payment",
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 63,
+    "fields": {
+        "group": 10,
+        "title": "Record Payment",
+        "add_permission": "can_create_invoice_payment",
+        "view_permission": "can_view_invoice_payment_list",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 64,
+    "fields": {
+        "group": 11,
+        "title": "Bank",
+        "add_permission": "can_create_bank",
+        "view_permission": "can_view_bank_list",
+        "detail_permission": null,
+        "delete_permission": "can_delete_bank",
+        "change_permission": "can_edit_bank",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 65,
+    "fields": {
+        "group": 11,
+        "title": "Tax",
+        "add_permission": "can_add_tax",
+        "view_permission": "can_view_tax_list",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_edit_tax",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 66,
+    "fields": {
+        "group": 12,
+        "title": "Invoice Designer",
+        "add_permission": "can_create_invoice_template",
+        "view_permission": "can_view_invoice_template_list",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_edit_invoice_template",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 67,
+    "fields": {
+        "group": 12,
+        "title": "Download Invoice in pdf",
+        "add_permission": null,
+        "view_permission": "can_download_pdf_invoice_template",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 68,
+    "fields": {
+        "group": 12,
+        "title": "Download Invoice in Excel",
+        "add_permission": null,
+        "view_permission": "can_download_excel_invoice_template",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 69,
+    "fields": {
+        "group": 13,
+        "title": "Company Configuration",
+        "add_permission": "can_add_company_config",
+        "view_permission": "can_view_company_config_list",
+        "detail_permission": null,
+        "delete_permission": "can_delete_company_config",
+        "change_permission": "can_edit_company_config",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 70,
+    "fields": {
+        "group": 14,
+        "title": "Associate VPS",
+        "add_permission": "can_associate_vps",
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 71,
+    "fields": {
+        "group": 15,
+        "title": "Data Center",
+        "add_permission": "can_add_data_center",
+        "view_permission": "can_view_data_centers_list",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_edit_data_center",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 72,
+    "fields": {
+        "group": 16,
+        "title": "Dedicated Server",
+        "add_permission": "can_request_dedicated_server",
+        "view_permission": "can_view_dedicated_servers_list",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_update_dedicated_server",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 73,
+    "fields": {
+        "group": 16,
+        "title": "Dedicated Server Client Billing Details",
+        "add_permission": null,
+        "view_permission": "can_view_ds_client_billing_detail",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 74,
+    "fields": {
+        "group": 16,
+        "title": "Dedicated Server Vendor Billing Details",
+        "add_permission": null,
+        "view_permission": "can_view_ds_vendor_billing_detail",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 75,
+    "fields": {
+        "group": 16,
+        "title": "Dedicated Server Start Billing",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_start_billing",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 76,
+    "fields": {
+        "group": 16,
+        "title": "Dedicated Server Stop Billing",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_stop_billing",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 77,
+    "fields": {
+        "group": 2,
+        "title": "VOS System",
+        "add_permission": null,
+        "view_permission": "can_view_vos_systems",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 78,
+    "fields": {
+        "group": 17,
+        "title": "Sippy Node Server",
+        "add_permission": "can_add_node_ip",
+        "view_permission": "can_view_node_ips_list",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_edit_node_ip",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": "can_activate_deactivate_node_ip"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 79,
+    "fields": {
+        "group": 18,
+        "title": "Associated Sippy Environment",
+        "add_permission": "can_request_sippy_environment",
+        "view_permission": "can_view_associated_sippy_environments_list",
+        "detail_permission": "can_view_sippy_env_detail",
+        "delete_permission": null,
+        "change_permission": "can_update_sippy_environment",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": "can_disassociate_sippy_environment"
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 80,
+    "fields": {
+        "group": 18,
+        "title": "Sippy Environment Start",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_start_sippy_env",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 81,
+    "fields": {
+        "group": 18,
+        "title": "Sippy Environment Stop",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_stop_sippy_env",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 82,
+    "fields": {
+        "group": 18,
+        "title": "Sippy Environment Suspend",
+        "add_permission": null,
+        "view_permission": null,
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": "can_suspend_sippy_env",
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 83,
+    "fields": {
+        "group": 18,
+        "title": "Sippy Environment Graph",
+        "add_permission": null,
+        "view_permission": "can_view_sippy_env_graphs",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 84,
+    "fields": {
+        "group": 17,
+        "title": "Sippy Node Graph",
+        "add_permission": null,
+        "view_permission": "can_view_sippy_node_graphs",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+},
+{
+    "model": "rbac_preferences.rbacpreference",
+    "pk": 85,
+    "fields": {
+        "group": 18,
+        "title": "Disassociated Sippy Environment",
+        "add_permission": null,
+        "view_permission": "can_view_disassociated_sippy_environments_list",
+        "detail_permission": null,
+        "delete_permission": null,
+        "change_permission": null,
+        "import_permission": null,
+        "export_permission": null,
+        "other_permission": null
+    }
+}
+]

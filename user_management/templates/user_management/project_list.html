@@ -1,0 +1,769 @@
+{% extends "bw_base.html" %}
+{% load static %}
+{% load humanize %}
+{% block extrahead %}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-v4-grid-only@1.0.0/dist/bootstrap-grid.min.css">
+
+<style>
+  /* Design */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  .card-bg-brown{
+  margin: auto;
+  padding: 16px 50px;
+  background-image: linear-gradient(180deg,#f7911f 0%,#f05023 100%);
+  background-size: cover;
+}
+.card-bg-purple{
+  margin: auto;
+  padding: 0px 50px;
+  background-image: linear-gradient(180deg,#b33f80 0%,#622070 100%);
+  background-size: cover;
+}
+.card-bg-red{
+  margin: auto;padding: 0px 70px;
+  background-image: linear-gradient(180deg,#eb1459 0%,#b12947 100%);
+  background-size: cover;
+}
+  [class*="col-"]
+
+
+  .main {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    /* font-size: 24px; */
+    font-weight: 400;
+    text-align: center;
+  }
+
+  img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+  }
+
+  .btn {
+    color: #ffffff;
+    padding: 0.8rem;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-weight: 400;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+  }
+
+  .btn:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cards_item {
+    display: flex;
+    padding: 1rem;
+  }
+
+  @media (min-width: 40rem) {
+    .cards_item {
+      width: 50%;
+    }
+  }
+
+  @media (min-width: 56rem) {
+    .cards_item {
+      width: 33.3333%;
+    }
+  }
+
+  .card {
+    
+    box-shadow: 1px 0px 10px #888888;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+  }
+
+
+
+  .card_title {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin: 0px;
+  }
+
+  .card_text {
+    color: #ffffff;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+  }
+
+  .made_by {
+    font-weight: 400;
+    font-size: 13px;
+    margin-top: 35px;
+    text-align: center;
+  }
+.p-h1{
+  margin-bottom: 20px;
+    margin-top: -6px;
+    text-align: left;
+    text-decoration: underline;
+}
+  .button-create-project { 
+    float: right;   
+    border: none;
+    width: 15em !important;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: linear-gradient(90deg, #db2a07 40%, #f78a01 100%);
+    font-size: 13px;
+    color: #fff;
+    text-transform: uppercase;
+    overflow: hidden;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+  }
+
+  .button-create-project:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    /* -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 0 50%;
+    transform-origin: 0 50%;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out; } */
+  }
+
+  .button-create-project:hover:before {
+    background: linear-gradient(90deg, #db2a07 40%, #f78a01 100%);
+    /* -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);  */
+  }
+
+  .button {
+    float: right;
+    right: 6%;
+    border: none;
+    width: 15em !important;
+    height: 40px;
+    /* margin: auto; */
+    /* margin-top: 29px; */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: linear-gradient(90deg, #db2a07 40%, #f78a01 100%);
+    font-size: 13px;
+    color: #fff;
+    text-transform: uppercase;
+    overflow: hidden;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+  }
+
+  .button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    /* -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 0 50%;
+    transform-origin: 0 50%;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out; } */
+  }
+
+  .button:hover:before {
+    background: linear-gradient(90deg, #db2a07 40%, #f78a01 100%);
+    /* -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);  */
+  }
+
+  /* The Modal (background) */
+
+
+  a {
+    color: #fff;
+  }
+
+  a:hover {
+    color: lightgray;
+    text-decoration: none !important;
+  }
+
+  input[type=text],
+  select,
+  textarea {
+    padding: 14px;
+    border: 1px solid #ccc;
+    resize: vertical;
+  }
+
+  input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  /* The Close Button */
+
+  .card-header {
+    background: #333;
+    color: #fff;
+    padding: 3px;
+  }
+
+  .top {
+    padding-top: 4%;
+  }
+
+
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000000;
+  }
+
+  .modal-backdrop.fade {
+    opacity: 0;
+  }
+
+  .modal-backdrop,
+  .modal-backdrop.fade.in {
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+  }
+
+  .modal {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    z-index: 1050;
+    width: 560px;
+    margin-left: -280px;
+    background-color: #ffffff;
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    *border: 1px solid #999;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    outline: none;
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+  }
+
+  .modal.fade {
+    top: -25%;
+    -webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, top 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, top 0.3s ease-out;
+    transition: opacity 0.3s linear, top 0.3s ease-out;
+  }
+
+  .modal.fade.in {
+    top: 10%;
+  }
+
+  .modal-header h3 {
+    color: #fff;
+  }
+
+  .modal-header button {
+    color: #fff;
+  }
+
+  .modal-header {
+    padding: 9px 15px;
+    border-bottom: 1px solid #eee;
+    background: #333;
+  }
+
+  .close {
+    opacity: .5;
+  }
+
+  .close:hover {
+    opacity: .8 !important;
+  }
+
+  .modal-header .close {
+    margin-top: 2px;
+  }
+
+  .modal-header h3 {
+    margin: 0;
+    line-height: 30px;
+  }
+
+  .modal-body {
+    position: relative;
+    max-height: 400px;
+    padding: 15px;
+    overflow-y: auto;
+  }
+
+  .modal-form {
+    margin-bottom: 0;
+  }
+
+  .modal-footer {
+    padding: 14px 15px 15px;
+    margin-bottom: 0;
+    text-align: right;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+    *zoom: 1;
+    -webkit-box-shadow: inset 0 1px 0 #ffffff;
+    -moz-box-shadow: inset 0 1px 0 #ffffff;
+    box-shadow: inset 0 1px 0 #ffffff;
+  }
+
+  .modal-footer:before,
+  .modal-footer:after {
+    display: table;
+    line-height: 0;
+    content: "";
+  }
+
+  .modal-footer:after {
+    clear: both;
+  }
+
+  .modal-footer .btn+.btn {
+    margin-bottom: 0;
+    margin-left: 5px;
+  }
+
+  .modal-footer .btn-group .btn+.btn {
+    margin-left: -1px;
+  }
+
+  .modal-footer .btn-block+.btn-block {
+    margin-left: 0;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  a:focus {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 767px) {
+    .content {
+      padding-top: 300px;
+      flex-direction: column;
+    }
+  }
+
+  .card {
+    width: 100%;
+    height: 250px;
+    text-overflow: ellipsis;
+    background-color: #292929;
+    box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+     background: url('https://cdn-cceda.nitrocdn.com/FfzAQwpUZfLArkMtiIbgZPgEgmBjHDqy/assets/static/optimized/rev-4854599/wp-content/uploads/2021/03/contact.jpg');
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0px 20px;
+    
+  }
+
+  .icon {
+    margin: 0 auto;
+    width: 100%;
+    border: none;
+    height: 80px;
+    max-width: 80px;
+    line-height: 25px;
+    /* background:#db2a07; */
+    display: block;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: all 0.8s ease;
+    background-position: 0px;
+    background-size: 200px;
+    padding: 0px 12px;
+    background: transparent;
+    border: 2px solid #fff;
+  }
+
+  .edit-pd {
+    padding: 0px 18px;
+  }
+
+  /* .truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ 
+} */
+  .material-icons.md-18 {
+    font-size: 18px;
+  }
+
+  .material-icons.md-24 {
+    font-size: 24px;
+  }
+
+  .material-icons.md-36 {
+    font-size: 36px;
+  }
+
+  .material-icons.md-48 {
+    font-size: 48px;
+  }
+
+  .card .title {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    margin-top: 30px;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+  }
+
+  .card .text {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+    font-weight: 200;
+    letter-spacing: 2px;
+    opacity: 0;
+    max-height: 0;
+    transition: all 0.3s ease;
+
+  }
+  .row-mb > [class*="col-"] {
+    margin-bottom: 15px;
+}
+  .card:hover {
+    transform: scale(1.1);
+  }
+
+  .card:hover .info {
+    height: 90%;
+  }
+
+  .card:hover .text {
+    transition: all 0.3s ease;
+    opacity: 1;
+    max-height: 30px;
+    z-index: 1;
+  }
+
+  .div-c {
+    display: flex;
+  }
+
+  .card:hover .icon {
+    background-position: -120px;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover .icon i {
+    background: linear-gradient(90deg, #ff7e7e, #ff4848);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+
+  .card-title {
+    color: #fff;
+  }
+
+  .truncate {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+</style>
+{% endblock %}
+{% block content %}
+<div class="top">
+  <!-- Modal -->
+  <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Create Project</h3>
+    </div>
+    <div class="modal-body">
+      <form>
+        {% csrf_token %}
+        <!-- <h2 for="fname">Enter Project Name</h2> -->
+        <h5>Project Name</h5>
+        <input type="text" id="pname" rows="4" name="pname" value="" placeholder="enter project name">
+        <h5>Project Description</h5>
+        <textarea type="text" id="pdes" name="pdes" value="" placeholder="enter project Description"></textarea>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <!-- <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button> -->
+      <button class="button" id="save" type="submit"><a href="/bi_report/db_connection/">Configure Database</a></button>
+    </div>
+  </div>
+  <!-- viewDetail_modal start -->
+  <div id="viewDetail_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Project Detail</h3>
+    </div>
+    <div class="modal-body">
+      <div class="">
+        <div class="row">
+          <div class="span3">
+            <div class="control-group">
+              <label><strong>Host</strong></label>
+              <div class="controls">
+              <span class="host"></span>
+              </div>
+              </div>
+            </div>
+              <div class="control-group">
+                <label><strong>Database Type</strong></label>
+                <div class="controls">
+                <span class="dbType"></span>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="span3">
+              <div class="control-group">
+                <label><strong>Database</strong></label>
+                <div class="controls">
+                <span class="database"></span>
+                </div>
+                </div>
+              </div>
+                <div class="control-group">
+                  <label><strong>Name</strong></label>
+                  <div class="controls">
+                  <span class="name"></span>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="span3">
+                <div class="control-group">
+                  <label><strong>User</strong></label>
+                  <div class="controls">
+                  <span class="user"></span>
+                  </div>
+                  </div>
+                </div>                 
+              </div>
+          </div>
+      </div>
+    <div class="modal-footer">
+      <!-- <button class="button" data-dismiss="modal" aria-hidden="true">Close</button> -->
+    </div>
+  </div>
+  <!-- viewDetail_modal end -->
+  <div class="main">
+    <div class="ui segment">
+    <div class="container">
+    <div class="row">
+      <div class="col-md-8">      
+    <h1 class="p-h1"><strong>Projects</strong></h1>
+    </div>
+    <div class="col-md-4"> 
+    <button class="button-create-project" id="myBtn"><a href="#myModal" role="button" data-toggle="modal">Create Project</a></button>
+    </div>
+    </div>
+    <div class="row row-mb cards-holder">
+      
+      </div>
+      </div>
+  </div>
+</div>
+</div>
+{% endblock %}
+
+
+{% block extrascript %}
+
+
+<script>
+
+
+  $.ajax({
+    type: "GET",
+    url: `/user_management/get_projects/`,
+    dataType: "json",
+    success: function (response) {
+      if (response.status) {
+        $(".cards-holder").html("");
+        response.data.forEach(element => {
+          $('.cards-holder').append(
+            `<div class="col-md-3" data-id="${element[0]}">
+                    <div class="card">
+                      <!--<div class="icon">                       
+                        </div>-->
+                      <h1 class="card-title">${element[1]}</h1>                      
+                      <p class="card-title truncate ">${element[2]}</p>   
+                      <div class="div-c">                    
+                        <a class="text icon edit-pd editProject" target="blank" href="/bi_report/db_connection/?config_id=${element[4]}">Edit</a>
+                        &nbsp;&nbsp;&nbsp; <a  class="text icon projectDetail" href="" data-id="${element[0]}" role="button"  data-toggle="modal">Detail</a>
+                        </div>                   
+                    </div>
+                  </div>`
+          );
+        });
+      } else {
+        console.log("request status is not true");
+      }
+    },
+    error: function (xhr, textStatus) {
+      alert("error..");
+    }
+  });
+  $('#save').on('click', function (e) {
+
+    let p_name = $('#pname').val();
+    let p_des = $('#pdes').val();
+    localStorage.setItem('pname', p_name);
+    localStorage.setItem('pdes', p_des);
+  });
+
+
+  $(document).on("click", ".projectDetail", function () {
+    let id = $(this).attr('data-id');
+    let modal = $('#viewDetail_modal');
+    $.ajax({
+      type: 'GET',
+      url: `/user_management/get_project_details/?project_id=${id}`,
+      success: function (response) {
+        if (response.status) {
+           modal.find('.host').text(`${response.data.host}`);
+           modal.find('.dbType').text(`${response.data.db_type}`);
+           modal.find('.database').text(`${response.data.database}`);
+           modal.find('.name').text(`${response.data.name}`);
+           modal.find('.user').text(`${response.data.user}`);
+           modal.modal('show');
+
+          console.log("res", response.data)
+        }
+      },
+      error: function (err) {
+
+      }
+    });
+  });
+
+</script>
+{% endblock %}

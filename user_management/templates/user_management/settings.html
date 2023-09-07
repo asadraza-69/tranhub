@@ -1,0 +1,303 @@
+{% extends "bw_base.html" %}
+{% load bootstrap5 %}
+{% load static %}
+{% load humanize %}
+{% block extrahead %}
+
+<link href="{% static 'user_management/setup/css/style.css' %}" rel="stylesheet">
+<style>
+  body {
+    background-image: url("{% static 'user_management/img/bg1.png' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: top;
+    background-position-x: left;
+    background-color: #f1f1f1;
+  }
+
+  .GoBackBtn {
+    display: block;
+  }
+
+  .card-elementSticker {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background-color: #fff;
+    font-size: 13px;
+    border: 1px solid #dee2e6;
+    line-height: 40px;
+    background: #fff;
+  }
+
+  .card-elementSticker i.fa.fa-credit-card {
+    font-size: 16px;
+    color: #ccc;
+  }
+
+  .card-elementSticker span {
+    color: #ccc;
+  }
+</style>
+
+
+{% endblock %}
+<!-- <body style="background-color: #666666;"> -->
+{% block content %}
+<section class="pt-2 mt-2 mb-5">
+  <div class="container">
+    <div class="page_header text-center">
+      <h2 style="float: none;"><span id="pageTitle">Settings</span><small id="pageListTitle"></small></h2>
+    </div>
+    <div class="row justify-content-center w-100">
+      <div class="col-lg-10">
+        <div class="card">
+          <div class="card-body">
+            <div class="tab">
+              <button class="tablinks" onclick="openSetting(event, 'UserProfile')" id="defaultOpen">User
+                Profile</button>
+              <button class="PaymentForm tablinks" onclick="openSetting(event, 'PaymentMethod')">Payment Method</button>
+            </div>
+            <div id="UserProfile" class="tabcontent BoxInset p-4">
+              <h4>User Profile <button class='btn btn-sm btn-secondary float-end EditUserDetails'>Edit <i
+                    class="fa fa-edit"></i></button></h4>
+              <div class="clearfix"></div>
+              <form class="SignUpForm" id="SignUpForm">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label><strong>Email</strong></label>
+                      <input type="email" name="email" id="UserEmail" required placeholder="Enter your Business Email"
+                        class="form-control form-control-sm" readonly>
+                      <h6 class="msg-UserEmail text-danger" style="display: none;"></h6>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <!-- <div class="form-group mb-3">
+                                  <label><strong>Password</strong></label>
+                                  <input id="Signup_password" type="password" name="password" required
+                                    placeholder="Enter your password" class="form-control form-control-sm" readonly>
+                                  <h6 class="msg-Signup_password text-danger" style="display: none;"></h6>
+                                </div> -->
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label><strong>First Name</strong></label>
+                      <input type="text" id="first_name" name="first_name" required placeholder="First Name"
+                        class="form-control form-control-sm" readonly>
+                      <h6 class="msg-first_name text-danger" style="display: none;"></h6>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label><strong>Last Name</strong></label>
+                      <input type="text" id="last_name" name="last_name" required placeholder="Last Name"
+                        class="form-control form-control-sm" readonly>
+                      <h6 class="msg-last_name text-danger" style="display: none;"></h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label><strong>Company</strong></label>
+                      <input type="text" id="company_name" name="company" required placeholder="Enter your Company name"
+                        class="form-control form-control-sm" readonly>
+                      <h6 class="msg-company_name text-danger" style="display: none;"></h6>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label><strong>Phone</strong></label>
+                      <span class="phonetext-389"><input type="tel" id="phone_numberold" name="phone_numberold"
+                          size="40"
+                          class="phone_number form-control form-control-sm wpcf7-form-control wpcf7-text wpcf7-phonetext"
+                          data-numberonly="true" aria-invalid="false" placeholder="Phone Number" required /></span>
+                      <input type="hidden" id="phone_number" name="phone_number" required
+                        placeholder="Enter your phone number" class="form-control form-control-sm">
+                      <h6 class="msg-phone_number text-danger" style="display: none;"></h6>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <hr\>
+                <div class="py-2">
+                  <button type="button" class='btn btn-sm btn-danger float-end CancelUserDetails'>
+                    Cancel <i class="fa fa-close"></i></button> <button
+                    class='btn btn-sm btn-success float-end SaveUserDetails me-2' form="SignUpForm" type="submit"
+                    disabled>Save Changes <i class="fa fa-save"></i></button>
+                </div>
+            </div>
+            <div id="PaymentMethod" class="tabcontent BoxInset p-4" style="display: none;">
+              <div class="row">
+                <div class="col-md-7">
+                  <h4>Payment Method </h4>
+                </div>
+                <div class="col-md-5 ">
+                  <div class="float-end mt-sm-2 mb-sm-2">
+                    <button class='btn btn-sm btn-danger float-end DeletePaymentDetails'>Delete <i
+                        class="fa fa-trash"></i></button>
+
+                    <button class='btn btn-sm btn-secondary float-end EditPaymentDetails me-1'>Edit <i
+                        class="fa fa-edit"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+              <!-- <form action="" enctype="multipart/form-data" id="payment-form" method="POST"> -->
+              <form id="Payment_update" class="mt-2">
+                {% csrf_token %}
+                <input type="hidden" name="token" id="token">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group mb-3">
+                      <div id="card-element" class="border"></div>
+                      <div class="card-elementSticker"><span class="mx-2"><i class="fa fa-credit-card me-2"></i>_ _ _ _ _ _
+                          _ _ _ _ _ _ <span class="Last4Dgts"></span></span><span class="me-2"><span class="ExpMM"></span>/<span
+                            class="ExpYY me-2"></span>_ _ _ </span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label><strong>First Name</strong></label>
+                      <input id="first-name" name="first-name" class="form-control form-control-sm"
+                        placeholder="First Name" required readonly />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label><strong>Last Name</strong></label>
+                      <input id="last-name" name="last-name" class="form-control form-control-sm"
+                        placeholder="Last Name" required readonly />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label><strong>Address</strong></label>
+                      <input id="address-line1" name="address_line1" class="form-control form-control-sm"
+                        placeholder="Address" required readonly />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label><strong>Address (cont.)</strong></label>
+                      <input id="address-line2" name="address_line2" class="form-control form-control-sm"
+                        placeholder="Address (cont.)" required readonly />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label><strong>Country</strong></label>
+                      <select name="country" id="country" placeholder="Country" class="form-control form-control-sm"
+                        required disabled>
+
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label><strong>State</strong></label>
+                      <select id="state" name="state" class="form-control form-control-sm" placeholder="State" required
+                        disabled></select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label><strong>City</strong></label>
+                      <input id="city" name="city" class="form-control form-control-sm" placeholder="City" required
+                        readonly />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label><strong>ZIP</strong></label>
+                      <input id="zip" name="zip" class="form-control form-control-sm" placeholder="Zip" maxlength="5"
+                        required readonly />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <!-- <div class="form-group mb-3">
+          <input class="form-check-input" type="checkbox" value="" id="SaveCardDetails"
+            name="Save_Card_Details">
+          <label class="form-check-label" for="SaveCardDetails">
+            Save for my next payment
+          </label>
+        </div>
+        <br> -->
+                    <br><br>
+                    <img class="powered" src="{% static 'user_management/img/Powered by Stripe - black.png' %}"
+                      alt="powered by stripe">
+                    <div class="outcome">
+
+                      <div class="error"></div>
+                      <!-- <div class="success">
+                  Success! Your Stripe token is <span class="token"></span>
+              </div> -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12 p-0">
+                    <button type="button" class='btn btn-sm btn-danger float-end CancelPaymentDetails'
+                     > Cancel <i class="fa fa-close"></i></button>
+                    <button class="stripe-btn mb-1 submit btn btn-sm btn-success float-end me-1" id="submit_payment"
+                      name='payment-button' value='1' disabled><i class="fa fa-lock"></i> <span id="PaymentType"></span>
+                      Payment Details</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extrascript %}
+<script src="{% static 'user_management/better_admin/js/settings.js' %}"></script>
+<script src="{% static 'user_management/better_admin/js/sweetalert@11.js' %}"></script>
+
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+
+<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+<script src="https://js.stripe.com/v3/"></script>
+
+<script type="text/html" id="files-template">
+            <li class="media">
+              <div class="media-body mb-1">
+                <p class="mt-2 mb-2">
+                  <strong>%%filename%%</strong> - Status: <span class="text-muted">Waiting</span>
+                </p>
+                <div class="progressContainer mb-2">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" 
+                    role="progressbar"
+                    style="width: 0%" 
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+              </div>
+                <hr class="mt-1 mb-1" />
+              </div>
+            </li>
+          </script>
+
+
+{% endblock %}

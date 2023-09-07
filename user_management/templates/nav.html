@@ -1,0 +1,503 @@
+{% load static %}
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a href="/home">
+                <img class="logo" src="{% static 'user_management/img/logo.png' %}" style="height:35px; width:35px; margin-top:8px;" alt="BitsWits"/>
+            </a>
+            <div class="nav-collapse collapse pull-right">
+                <ul class="nav">
+                    {% if user.is_authenticated %}
+                        <!-- MENU -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-submenu">
+                                    <a href="#" >Company</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown"><a href="/corporate/company/">Company List</a></li>
+                                        <li class="dropdown"><a href="/corporate/company/create">Company Creation</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown-submenu">
+                                    <a href="#" >Vendor</a>
+                                    <ul class="dropdown-menu">
+                                        <li style="text-align:left"><a tabindex="-1" href="/corporate/vendor/create/?{{ request.GET.urlencode }}">Create Vendor</a></li>
+
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#">Vendor Configuration</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/validation_rules/rule/?sort_by=company__name">Validation Rules</a></li>
+                                                <li><a href="#">Rate*</a></li>
+                                                <li><a href="#">Technical</a></li>
+                                            </ul>
+                                        </li>
+                                        <li style="text-align:left"><a tabindex="-1" href="/corporate/vendor/">Vendors List</a></li>
+                                        <li style="text-align:left"><a tabindex="-1" href="/tariffs/vendortariff/?sort_by=i_vendor__name">Vendor Tariffs</a></li>
+                                        <li><a href="/email_identifier/emailratesvault/?sort_by=-i_emailrate">View Received Rate Sheets</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a href="#" >Client</a>
+                                    <ul class="dropdown-menu">
+                                        <li style="text-align:left"><a tabindex="-1" href="/corporate/clientview/create/?{{ request.GET.urlencode }}">Create Client</a></li>
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#">Client Configuration</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/rate_notifications/send_rate_notification_interface/0/">Rate*</a></li>
+                                                <li><a href="/rate_notifications/send_rate_notification_interface/0/">Email</a></li>
+                                                <li><a href="/rate_notifications/send_rate_notification_interface/0/">Technical</a></li>
+                                            </ul>
+                                        </li>
+                                        <li style="text-align:left"><a tabindex="-1" href="/corporate/clientview/">Client List</a></li>
+                                        <li style="text-align:left"><a tabindex="-1" href="/rate_plan/clientbussinessdestination/">Client Core Destinations</a></li>
+                                        <li><a href="/rate_notifications/ratenotificationjobsview/?sort_by=job_order">Rate Notifications</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a href="#" >Reseller</a>
+                                    <ul class="dropdown-menu">
+                                            <li style="text-align:left"><a tabindex="-1" href="/corporate/resellerview/create/?{{ request.GET.urlencode }}">Create Reseller</a></li>
+                                            <li class="dropdown-submenu">
+                                                <a tabindex="-1" href="#">Reseller Configuration</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="/rate_notifications/send_rate_notification_interface/0/">Rate*</a></li>
+                                                    <li><a href="/rate_notifications/send_rate_notification_interface/0/">Email</a></li>
+                                                    <li><a href="/rate_notifications/send_rate_notification_interface/0/">Technical</a></li>
+                                                </ul>
+                                            </li>
+                                            <li style="text-align:left"><a tabindex="-1" href="/corporate/resellerview/">Reseller List</a></li>
+                                            <li><a href="/rate_notifications/ratenotificationjobsview/?sort_by=job_order">Rate Notifications</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/email_identifier/emailratesvault/?sort_by=-i_emailrate">Vendor Received Email Rates</a></li>
+
+                            <!-- Send Rate Notifications -->
+                                <li class="dropdown-submenu">
+                                    <a tabindex="-1" href="#">Client Rate Notification</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/rate_notifications/send_rate_notification_interface/0/">Send Rate</a></li>
+                                        <li><a href="/rate_notifications/ratenotificationtemplate/?sort_by=-creation_date&status=c">Send Rate Template</a></li>
+                                        {% if request.user.profile.designation == "manager" %}
+                                            <li><a href="/rate_notifications/notificationmanagerapproval/?status=pn">Notification Manager Approval</a></li>
+                                        {% endif %}
+                                        {% if request.user.profile.designation == "management" or request.user.is_superuser %}
+                                            <li><a href="/rate_notifications/notificationmanagementapproval/?status=rc">Notification Management Approval</a></li>
+                                        {% endif %}
+                                       <li><a href="/rate_notifications/ratenotificationjobsview/?sort_by=job_order">Rate Notification Jobs</a></li>
+                                       <li><a href="/emails/clientemailtemplates/">Email Template</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown-submenu">
+                                    <a tabindex="-1" href="#">LCR Rate Ranks</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/rate_ranks/vendorglobalrrtemplateview/?sort_by=-creation_time">Vendor Global LCR</a></li>
+                                        <li><a href="/rate_ranks/vendorglobalrrtemplate/?sort_by=-creation_time">Vendor Destination LCR</a></li>
+                                        <li><a href="/rate_ranks/vendorrrtemplate/?sort_by=-creation_time">Vendor LCR Generation</a></li>
+                                        <li><a href="/rate_ranks/clientglobalrrtemplate/?sort_by=-creation_time">Client Global Rate Ranks</a></li>
+                                        <li><a href="/rate_ranks/clientrrtemplate/?sort_by=-creation_time">Client Rate Rank Generation</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/deals/dealtemplate/">Deal Management</a></li>
+                                <li><a href="/rateeditor/rateeditor/">Rate Editor</a></li>
+                                <li><a href="/rateeditor/globalcodeset/">Global Code Set</a></li>
+                            </ul>
+                        </li>
+                    <!-- MENU ENDS -->
+
+                    <!-- JOB NOTIFICATION -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Job Notification<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1" href="#">LCR Notifications</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/job_notifier/cronjobnotifier/?title=Vendor+Global+LCR+generations&status=F">Vendor Global LCR Generation</a></li>
+                                    <li><a href="/job_notifier/cronjobnotifier/?title=Vendor+LCR+generations&status=F">Vendor LCR Generation</a></li>
+                                    <li><a href="/job_notifier/cronjobnotifier/?title=Client+Global+LCR+and+HCR+generations&status=F">Client Global LOR & HOR Generation</a></li>
+                                    <li><a href="/job_notifier/cronjobnotifier/?title=Client+LCR+and+HCR+generations&status=F">Client LOR & HOR Generation</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- JOB NOTIFICATION ENDS -->
+
+                    <!-- FINANCE -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Finance<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-submenu">
+                                    <a tabindex="-1" href="#">Invoices</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/invoices/clientinvoice/?status=dr">Client</a></li>
+                                        <li><a href="/invoices/vendorinvoice/?status=dr">Vendor</a></li>
+                                    </ul>
+                                </li>
+
+
+                                <li class="dropdown-submenu">
+                                    <a tabindex="-1" href="#">Payments</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/payments/payment/?direction=c">Client</a></li>
+                                        <li><a href="/payments/payment/?direction=v">Vendor</a></li>
+                                        <li><a href="/payments/payment/?direction=r">Reseller</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown"><a href="/invoices/recalculateinvoice/">Recalculate Invoice</a></li>
+                                <li class="dropdown-submenu">
+                                    <a tabindex="-1" href="#">Template Designer</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/invoice_designer/invoicedesigner/">Invoice</a></li>
+                                        <li><a href="/emails/clientemailtemplates/?subject_type=invoice&email_type=IN">Email</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown"><a href="/bank/bankinfo/">Bank Info</a></li>
+                            </ul>
+                        </li>
+                    <!-- FINANCE ENDS -->
+
+                    <!-- TOOLS -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-submenu">
+                                    <a tabindex="-1" href="#">Configuration</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#">Validation Rules</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/validation_rules/rule/">Vendor</a></li>
+                                                <li><a href="/validation_rules/clientraterules/">Client</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="/vendor_parsing/ratesheetparsing/">Rate Sheet Parser</a></li>
+                                        <li><a href="/tariffs_profile/clienttariffprofile/">Client Tariff Profile</a></li>
+                                        <li><a href="/configuration_values/configurationvalues/">Configuration Values</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a tabindex="-1" href="#">Sync. Vendor Rate</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/sync_vendor_rates/destinationset/">Destination Sets</a></li>
+                                        <li><a href="/sync_vendor_rates/servicetype/">Service Type</a></li>
+                                        <li><a href="/sync_vendor_rates/service/">Service</a></li>
+                                        <li><a href="/sync_vendor_rates/mediarelaytype/">Media Relay Type</a></li>
+                                        <li><a href="/sync_vendor_rates/vendorconnection/">Vendor Connections</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a tabindex="-1" href="#">Settings</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/products/product/">Products</a></li>
+                                        <li><a href="/currencies/currency/">Currencies</a></li>
+                                        <li><a href="/departments/department/">Departments</a></li>
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#">Themes</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/themes/icon/">Icons</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="/sip_response/sipresponse/">Sip Responses</a></li>
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">MailBot</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/mail_bot/sendemail/">MailBot Senders</a></li>
+                                            <li><a href="/mail_bot/receiveemail/">MailBot Receivers</a></li>
+                                            <li><a href="/mail_bot/ignoreemail/">MailBot Ignorers</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">BriefCase</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/briefcase/document/">Document Mangement</a></li>
+                                            <li><a href="/briefcase/documentstatus/">Document Status</a></li>
+                                            <li><a href="/briefcase/documenttype/">Document Type</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/time_zones/timezone/">Time Zones</a></li>
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">KAM Hierarchy</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/organization_chart/organization/">Organization</a></li>
+                                            <li><a href="/organization_chart/organizationdepartment/">Organization Department</a></li>
+                                            <li><a href="/organization_chart/organizationteam/">Organization Team</a></li>
+                                            <li><a href="/auth/user/?is_staff=True">Organization KAM</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#">Destinations</a>
+                                            <ul class="dropdown-menu">
+                                                    <li><a href="/countries/country/">Countries</a></li>
+                                                    <li><a href="/destinations/carriertype/">Carrier Types</a></li>
+                                                    <li><a href="/destinations/destinationcategory/">Destination Categories</a></li>
+                                                    <li><a href="/destinations/destination/">Destinations</a></li>
+                                                <li class="dropdown-submenu">
+                                                    <a tabindex="-1" href="#">Global Destinations</a>
+                                                        <ul class="dropdown-menu">
+                                                    <li><a href="/destinations/globaldestination/">Global Destinations</a></li>
+                                                    <li><a href="/destinations/dialcodeaddition/">Add Dial Code</a></li>
+                                                    <li><a href="/destinations/globaldestinationpending/">Global Destinations Pending</a></li>
+                                                    <li><a href="/destinations/globaldestinationapproval/">Global Destinations Approval</a></li>
+                                                    <li><a href="/destinations/globaldestinationstatus/">Global Destinations Status</a></li>
+                                                    <li><a href="/destinations/globaldestinationamendment/">Global Destination Amendment</a></li>
+                                                    </ul>
+                                                </li>
+                                                    <li><a href="/destinations/clientdestination/">Client Destinations</a></li>
+                                                    <li><a href="/destinations/vendordestination/">Vendor Destinations</a></li>
+                                                    <li><a href="/destinations/clientdestinationoverridesummary/">Client Destinations Over-ride Summary</a></li>
+                                                    <li><a href="/destinations/destinationoverridesummary/">Destination Override Summary</a></li>
+                                                    <li><a href="/client_destination_override/client_destination_override_interface/">Client Destination Override</a></li>
+                                                    <li><a href="/client_destination_override/client_destination_override_approval/?sort_by=-creation_date&approval_status=rp">Client Destination Override job pending approvals</a></li>
+                                                    <li><a href="/client_destination_override/destination_override_approval/?sort_by=-creation_date&approval_status=rp">Destination Active/ Deactivate pending approvals</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="/poc/pointofcontact/">Point of Contacts</a></li>
+                                        <li><a href="/rate_plan/rateplan/">Rate Plans</a></li>
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#">Base Selling Rates</a>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown-submenu">
+                                                    <a tabindex="-1" href="#">Assign Vendors</a>
+
+                                                    <ul class="dropdown-menu">
+                                                        {% for product in products %}
+                                                            <li><a href="/bsr/bsrconftemplate/product/{{ product.pk }}/">{{ product.name.upper }}</a></li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown-submenu">
+                                                    <a tabindex="-1" href="#">BSR</a>
+
+
+                                                </li>
+                                                    {% if request.user.profile.designation ==  "management" or request.user.profile.designation ==  "icd" or request.user.is_superuser %}
+                                                        {% client_product as products %}
+                                                            <li class="dropdown-submenu">
+                                                                <a tabindex="-1" href="#">Master BSR</a>
+                                                                <ul class="dropdown-menu">
+                                                                    {% for product in products %}
+                                                                        <li><a href="/bsr/masterbsrdetail/product/{{ product.pk }}/">{{ product.name.upper }}</a></li>
+                                                                    {% endfor %}
+                                                                </ul>
+                                                            </li>
+                                                    {% else %}
+                                                        {% if request.user.profile.designation ==  "manager"%}
+                                                            {% client_product as products %}
+                                                                <li class="dropdown-submenu">
+                                                                    <a tabindex="-1" href="#">Master BSR</a>
+                                                                    <ul class="dropdown-menu">
+                                                                        {% for product in products %}
+                                                                            <li><a href="/bsr/managerbsr/?i_profile={{ request.user.profile.pk }}&product={{ product.pk }}">{{ product.name.upper }}</a></li>
+                                                                        {% endfor %}
+                                                                    </ul>
+                                                                </li>
+                                                        {% endif %}
+                                                        {% if request.user.profile.designation ==  "kam" %}
+                                                            {% client_product as products %}
+                                                                <li class="dropdown-submenu">
+                                                                    <a tabindex="-1" href="#">Master BSR</a>
+                                                                    <ul class="dropdown-menu">
+                                                                        {% for product in products %}
+                                                                            <li><a href="/bsr/kambsr/?i_profile={{ request.user.profile.pk }}&product={{ product.pk }}">{{ product.name.upper }}</a></li>
+                                                                        {% endfor %}
+                                                                    </ul>
+                                                                </li>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    {% if request.user.profile.designation == "icd" or request.user.profile.designation == "management" or request.user.is_superuser %}
+                                                        <li><a href="/bsr/masterbsrtemplate/">Master BSR History</a></li>
+                                                    {% endif %}
+                                                {% if request.user.profile.designation == "management" or request.user.profile.designation == "icd" or request.user.is_superuser %}
+                                                    <li><a href="/bsr/masterbsrfinalapproval/??sort_by=-created_by__user__username&status=S&bsr_status=I">Master BSR Approval</a></li>
+                                                {% endif %}
+                                                {% if request.user.profile.designation == "management" or request.user.profile.designation == "icd" or request.user.is_superuser %}
+                                                    <li><a href="/bsr/masterbsrapproval/">BSR Change Approval</a></li>
+                                                {% endif %}
+                                                {% if request.user.profile.designation != "icd" or request.user.is_superuser %}
+                                                    <li><a href="/bsr/masterbsrmargin/">Master BSR Margin</a></li>
+                                                {% endif %}
+                                            </ul>
+                                        </li>
+
+                                </ul>
+                            </li>
+                    <!-- TOOLS END -->
+
+                    <!-- SUMMARY REPORTS -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Summary Reports<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/reportdesigner/">Reports</a></li>
+                                <li class="dropdown-submenu">
+                                    <a tabindex="-1" href="#">Client Reports</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#">Monthly Reports</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/reportdesigner/8/">Client Wise Report</a></li>
+                                                <li><a href="/reportdesigner/21/">Client Vendor Report</a></li>
+                                                <li><a href="/reportdesigner/37/">Timeline Sample Report</a></li>
+                                                <li><a href="/reportdesigner/47/">Client Prefix Wise Analysis Report</a></li>
+                                                <li><a href="/reportdesigner/56/">Client Cause-Code Prefix Wise Analysis Report</a></li>
+                                                <li><a href="/reportdesigner/65/">Client & Vendor Report</a></li>
+                                                <li><a href="/reportdesigner/92/">Client Wise Global Destination Report</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#">Daily Reports</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/reportdesigner/17/">Client Vendor Report</a></li>
+                                                <li><a href="/reportdesigner/26/">Client Wise Report</a></li>
+                                                <li><a href="/reportdesigner/31/">Teaser Client Wise Report</a></li>
+                                                <li><a href="/reportdesigner/48/">Client Prefix Wise Analysis Report</a></li>
+                                                <li><a href="/reportdesigner/94/">Client Wise Global Destination Report</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#">Hourly Reports</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/reportdesigner/14/">Client Vendor Report</a></li>
+                                                <li><a href="/reportdesigner/25/">Client Wise Report</a></li>
+                                                <li><a href="/reportdesigner/46/">Client Wise Destination Analysis Report</a></li>
+                                                <li><a href="/reportdesigner/49/">Client Prefix Wise Analysis Report</a></li>
+                                                <li><a href="/reportdesigner/93/">Client Wise Global Destination Report</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a tabindex="-1" href="#">Vendor Reports</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#">Monthly Reports</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/reportdesigner/82/">Vendor Wise Report</a></li>
+                                                <li><a href="/reportdesigner/83/">Vendor Client Report</a></li>
+                                                <li><a href="/reportdesigner/84/">Vendor Prefix Wise Analysis Report</a></li>
+                                                <li><a href="/reportdesigner/85/">Vendor Cause-Code Prefix Wise Analysis Report</a></li>
+                                                <li><a href="/reportdesigner/97/">Vendor Wise Global Destination Report</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#">Daily Reports</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/reportdesigner/81/">Vendor Wise Report</a></li>
+                                                <li><a href="/reportdesigner/86/">Vendor Client Report</a></li>
+                                                <li><a href="/reportdesigner/88/">Vendor Cause-Code Prefix Wise Analysis Report</a></li>
+                                                <li><a href="/reportdesigner/95/">Vendor Wise Global Destination Report</a></li>
+                                                <li><a href="/reportdesigner/87/">Vendor Prefix Wise Analysis Report</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#">Hourly Reports</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/reportdesigner/80/">Vendor Wise Report</a></li>
+                                                <li><a href="/reportdesigner/89/">Vendor Client Report</a></li>
+                                                <li><a href="/reportdesigner/90/">Vendor Prefix Wise Analysis Report</a></li>
+                                                <li><a href="/reportdesigner/91/">Vendor Cause-Code Prefix Wise Analysis Report</a></li>
+                                                <li><a href="/reportdesigner/96/">Vendor Wise Global Destination Report</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">Un-Rated</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/cdrs_summary/unrated_cdr_exception_calls/">Exception Calls</a></li>
+                                            <li><a href="/cdrs_summary/unrated_cdr_exception_summary/">Exception Summary</a></li>
+                                            <li><a href="/unrated_cdrs/unratedcdr/">CDRs</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">Minutes Compare</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/minutes_compare/client_minutes_smry_hourly/">Client</a></li>
+                                            <li><a href="/minutes_compare/reseller_minutes_smry_hourly/">Reseller</a></li>
+                                            <li><a href="/minutes_compare/vendor_minutes_smry_hourly/">Vendor</a></li>
+                                        </ul>
+                                    </li>
+                            </ul>
+                        </li>
+                    <!-- SUMMARY REPORTS END-->
+
+                    <!-- CALL RECORDS -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Call Records</i><b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">Rerate</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/rerate/clientrerateview/">Client Rerate</a></li>
+                                            <li><a href="/rerate/resellerrerateview/">Reseller Rerate</a></li>
+                                            <li><a href="/rerate/vendorrerate/">Vendor Rerate</a></li>
+                                            <li><a href="/rerate/clientreratesuggestionview/">Client Rerate Suggestion</a></li>
+                                            <li><a href="/rerate/resellerreratesuggestionview/">Reseller Rerate Suggestion</a></li>
+                                            <li><a href="/rerate/vendorreratesuggestion/">Vendor Rerate Suggestion</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">CDRs</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/cdrs_compare/clientcomparecdrs/?sort_by=-i_compare_cdrs">Client Compare CDRs</a></li>
+                                            <li><a href="/cdrs_compare/vendorcomparecdrs/?sort_by=-i_vendorcomparecdrs">Vendor Compare CDRs</a></li>
+                                        </ul>
+                                    </li>
+                            </ul>
+                        </li>
+                    <!-- CALL RECORDS END-->
+
+                    <!-- PCAP -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">PCAP<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/pcap/pcapjob/?sort_by=-job_number">PCAP Archive</a></li>
+                            </ul>
+                        </li>
+                    <!-- PCAP END-->
+
+                    <!-- USER MANAGEMENT -->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Management<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/profiles/profile/">User Profile</a></li>
+                                    <li><a href="/permissions/permissiongroups/">Permission Groups</a></li>
+                                    <li><a href="/auth/group/">Sieve Groups</a></li>
+                                    <li><a href="/auth/user/">Assign Sieve Groups</a></li>
+                                    <li><a href="/permissions/permissiontags/">Permissions</a></li>
+                                    <li><a href="/secure_sessions/session/">User Sessions</a></li>
+                                    <li><a href="/permissions/sieveview/">Data Filtering</a></li>
+                                    <li><a href="/rbac_preferences/rbacpreference/">RBAC Preferences</a></li>
+                                </ul>
+                            </li>
+                    <!-- USER MANAGEMENT END-->
+
+                    <!-- USER NAME AND OPTIONS -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-large icon-white"></i> {{user.first_name|title}} {{user.last_name|title}}<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/profiles/profile/{{ user.profile.pk }}/">Profile</a></li>
+                                <li><a href="/profiles/password/change/">Change Password</a></li>
+                                <li><a href="/accounts/logout/">Sign-out</a></li>
+                            </ul>
+                        </li>
+                    <!-- USER NAME AND OPTIONS END-->
+                    {% else %}
+                        <li><a href="/accounts/login/">Sign-in</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

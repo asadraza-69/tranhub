@@ -1,0 +1,363 @@
+{% extends "bw_base.html" %}
+{% load static %}
+{% load bootstrap5 %}
+{% load humanize %}
+{% block extrahead %}
+
+<style>
+    nav{
+        display: none!important;
+    }
+
+  
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="stripeform">
+    <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="main-holder">
+             
+                <div class="row align-items-center justify-content-center">
+                    <div class="col col-content align-self-stretch  align-items-center">
+                      
+                           
+                            <div class="content-holder">
+                                 <!-- <img style="display: block; margin: auto;" src="{{ STATIC_URL }}/static/img/logo.png" alt="itrans_logo"> -->
+                            <img height="300px" style="display: block; margin: auto;" src="https://seo3.cryscampus.com/itrans/wp-content/uploads/2021/06/robort.png" alt="itrans_logo">
+                            <img class="powered" width="100px" src="{{ STATIC_URL }}/static/img/Powered by Stripe - black.png" alt="powered by stripe">
+                        </div>
+                    </div>
+                    <div class="col align-self-stretch form-col">
+                        <div class="form-holder">
+                            <form action="" enctype="multipart/form-data" id="payment-form" method="POST">
+                                <input type="hidden" name="UserEmail" id="UserEmail">
+                                <input type="hidden" name="token" id="token">
+                           
+                                <div class="group">
+                                    <label>
+                                        <span>Card</span>
+                                        <div id="card-element" class="field" required></div>
+                                    </label>
+                                </div>
+                                <div class="group">
+                                    <label>
+                                        <span>First name</span>
+                                        <input id="first-name" name="first-name" class="field" placeholder="First Name" required />
+                                    </label>
+                                    <label>
+                                        <span>Last name</span>
+                                        <input id="last-name" name="last-name" class="field" placeholder="Last Name" required/>
+                                    </label>
+                                </div>
+                                <div class="group">
+                                    <label>
+                                        <span>Address</span>
+                                        <input id="address-line1" name="address_line1" class="field" placeholder="Address" required/>
+                                    </label>
+                                    <label>
+                                        <span>Address (cont.)</span>
+                                        <input id="address-line2" name="address_line2" class="field" placeholder="Address (cont.)" required/>
+                                    </label>
+                                    <label>
+                                        <span>Country</span>
+                                        <select name="country" id="country" class="field" required>
+                                          
+                                        </select>
+                                    </label>
+                                    <label>
+                                        <span>State</span>
+                                        <select id="state" name="state" class="field disabled"  placeholder="State" required></select>
+                                    </label>
+                                    <label>
+                                        <span>City</span>
+                                        <input id="city" name="city" class="field" placeholder="City" required/>
+                                    </label>
+                                    <label>
+                                        <span>ZIP</span>
+                                        <input id="zip" name="zip" class="field" placeholder="Zip" maxlength="5" required/>
+                                    </label>    
+                                                                   
+                                </div>
+                                <button class="stripe-btn mb-1" id="submit_payment"  name='payment-button' value=1>Subscribe</button>
+                               
+                                <div class="outcome">
+                                    <a class="dropdown-item d-inline-block bg-secondary text-white" href="/accounts/logout/" ><i class="fa fa-arrow-left me-2" aria-hidden="true"></i>Back To Login</a>
+                                    <div class="error"></div>
+                                    <div class="success">
+                                        Success! Your Stripe token is <span class="token"></span>
+                                    </div>
+                                </div>
+                            </form> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+</div>
+</div>
+<!-- {{ email }} -->
+{% endblock %}
+
+		
+{% block extrascript %}
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+     var pubkey ="";
+ $(function() {
+
+    console.log("pubkey");
+    $.ajax({
+    type: "GET",
+    url: '/stripe_payments/get_pub_key/',
+    dataType: "json",
+    success: function (response) {
+      
+      if (response.status) {
+        $("#UserEmail").val(response.email);
+     pubkey = (response.pub_key);
+     OSPubKey();
+      } else {
+        ShowNoty("Request status is not true", "error");
+      }
+    },
+    error: function (xhr, textStatus) {
+        ShowNoty("Something Went Wrong!" , "error");
+    }
+  });
+
+   
+
+});
+function OSPubKey() {
+console.log("Stripe");
+var stripe = Stripe(pubkey);
+	var elements = stripe.elements();
+    var card = elements.create('card', {
+        hidePostalCode: true,
+        style: {
+            base: {
+                iconColor: '#666EE8',
+                color: '#31325F',
+                lineHeight: '40px',
+                fontWeight: 300,
+                fontFamily: 'Helvetica Neue',
+                fontSize: '15px',
+
+                '::placeholder': {
+                    color: '#CFD7E0',
+                },
+            },
+        }
+    });
+    
+   
+    card.mount('#card-element');
+
+    function setOutcome(result) {
+        var successElement = document.querySelector('.success');
+        var errorElement = document.querySelector('.error');
+        successElement.classList.remove('visible');
+        errorElement.classList.remove('visible');
+
+        if (result.token) {
+            // In this example, we're simply displaying the token
+            successElement.querySelector('.token').textContent = result.token.id;
+            successElement.classList.add('visible');
+
+            // In a real integration, you'd submit the form with the token to your backend server
+            //var form = document.querySelector('form');
+            //form.querySelector('input[name="token"]').setAttribute('value', result.token.id);
+            //form.submit();
+        } else if (result.error) {
+            errorElement.textContent = result.error.message;
+            errorElement.classList.add('visible');
+        }
+    }
+
+    card.on('change', function (event) {
+        setOutcome(event);
+    });
+
+    document.querySelector('form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var options = {
+            name: document.getElementById('first-name').value + " " + document.getElementById('last-name').value,
+            address_line1: document.getElementById('address-line1').value,
+            address_line2: document.getElementById('address-line2').value,
+            address_city: document.getElementById('city').value,
+            address_state: document.getElementById('state').value,
+            address_zip: document.getElementById('zip').value,
+            address_country: document.getElementById('country').value,
+           
+        };
+        var EmailID = $('#UserEmail').val();
+        stripe.createToken(card, options).then(function (result) {
+				//$('#loader').remove();
+				if (result.error) {
+					// Inform the user if there was an error.
+					// var errorElement = document.getElementById('card-errors');
+					// errorElement.textContent = result.error.message;
+					console.log("Token Error", result.error);
+					 ShowNoty(result.error.message , "error");
+					 $("#submit_payment").removeClass("loading").removeAttr('disabled');
+                    
+					 trackUserAction(EmailID,JSON.stringify(result.error),result.error.message);
+				} else {
+					console.log(result.token);
+                    
+                 
+                  
+					$('#token').val(result.token.id);
+				 ShowNoty("Card verified!" , "alert");
+					 trackUserAction(EmailID,"token_generated","token_generated");
+					sendToken();
+				}
+			});
+		
+           
+    });
+
+    // trackuser action
+    function trackUserAction(EmailID,log,remarks){
+		
+		let error_formdata = new FormData();
+		// error_formdata.append("payment-form",payment-form);
+        error_formdata.append("UserEmail", EmailID);
+		error_formdata.append("error_log", log);
+		error_formdata.append("remarks", remarks);
+		$.ajax({
+			url: '/stripe_payments/create_pay_method_error_log/',
+			method: 'POST',
+			data: error_formdata,
+			processData: false,
+			contentType: false,
+			enctype: 'multipart/form-data',
+			success: function (response) {
+				// console.log(response);
+				if (response.status) {
+					console.log("log saved");
+				} else {
+				}
+			},
+			error: function (error) {
+                ShowNoty("Something Went Wrong!" , "error");
+			},
+			complete: function () {
+			}
+		});
+	}
+
+   
+    
+// $(document).on('click', '#submit', function (e) {
+	function sendToken() {
+		// e.preventDefault();
+		let form = $('#payment-form')[0];
+		let formData = new FormData(form);
+      
+		// var errorFlag = check_required_validation('invoice-form');
+		// if (!errorFlag) {
+		// let token = $('#token').val();
+        // let token = $('#token').val();
+		if (token) {
+			$.ajax({
+				url: '/stripe_payments/save_payment_method/',
+				method: 'POST',
+				data: formData,
+				processData: false,
+				contentType: false,
+				enctype: 'multipart/form-data',
+				success: function (response) {
+					console.log("save_payment_method response",response);
+					if (response.status) {
+                      
+                        ShowNoty(response.message, "alert");
+                        window.location.href = "/user_management/main_dashboard/";
+					} else {
+					
+						 ShowNoty(response.errors, "error");
+						// $("#submit_payment").removeClass("loading").removeAttr('disabled');
+                        // window.location.reload();
+					}
+				},
+				error: function (error) {
+					ShowNoty(error , "error");
+				},
+				complete: function () {
+				}
+			});
+		} else {
+			ShowNoty("Verify card details first" , "error");
+		}
+		// }
+	}
+
+// coutry
+$.ajax({
+    type: "GET",
+    url: `/user_management/get_countries/`,
+    dataType: "json",
+    success: function (response) {
+      if (response.status) {
+         $("#country").html("<option>Select country</option>");
+        response.data.forEach(element => {
+        
+          let country_code = element[0];
+         
+          $('#country').append(
+           '<option value='+country_code+' style="color:#333">'+
+                   element[1] +
+                  '</option>'
+          );
+        });
+      } else {
+        console.log("request status is not true");
+      }
+    },
+    error: function (xhr, textStatus) {
+      alert("error..");
+    }
+  });
+
+
+
+//country change
+     $('#country').on('change', function(){
+         console.log("working");
+         let id = $(this).val();
+         console.log("id",id)       
+        $.ajax({
+            url:'/user_management/get_country_states/?country_id='+id,
+            method: 'GET',
+            success: function(response){
+                if (response.status === 'SUCCESS') {
+                let options = `<option value="">Please Select</option>`;
+                response.states.forEach(states => {
+                    options += '<option value='+states+'>'+states+'</option>'
+                });
+                options += `<option value="N/A">Other</option>`;
+                 $('#state').html(options);
+            }else{
+
+                }
+                },
+                error: function (error) {
+            ShowNoty(error , "error");
+        },
+        complete: function () {
+        }
+        })
+
+     })
+
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,1031 @@
+[
+{
+    "model": "permissions.permissiontags",
+    "pk": 1,
+    "fields": {
+        "name": "can_add_user",
+        "codename": "can_add_user"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 2,
+    "fields": {
+        "name": "can_view_user",
+        "codename": "can_view_user"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 3,
+    "fields": {
+        "name": "can_edit_user",
+        "codename": "can_edit_user"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 4,
+    "fields": {
+        "name": "can_reset_password_users",
+        "codename": "can_reset_password_users"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 5,
+    "fields": {
+        "name": "can_view_permission_groups",
+        "codename": "can_view_permission_groups"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 9,
+    "fields": {
+        "name": "can_manage_server",
+        "codename": "can_manage_server"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 11,
+    "fields": {
+        "name": "can_edit_permission_groups",
+        "codename": "can_edit_permission_groups"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 12,
+    "fields": {
+        "name": "can_view_vos_systems",
+        "codename": "can_view_vos_systems"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 28,
+    "fields": {
+        "name": "can_add_permission_groups",
+        "codename": "can_add_permission_groups"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 29,
+    "fields": {
+        "name": "can_view_system_logs",
+        "codename": "can_view_system_logs"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 30,
+    "fields": {
+        "name": "can_add_email_settings",
+        "codename": "can_add_email_settings"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 31,
+    "fields": {
+        "name": "can_edit_email_settings",
+        "codename": "can_edit_email_settings"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 32,
+    "fields": {
+        "name": "can_view_email_setting_list",
+        "codename": "can_view_email_setting_list"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 33,
+    "fields": {
+        "name": "can_view_services",
+        "codename": "can_view_services"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 34,
+    "fields": {
+        "name": "can_kill_process",
+        "codename": "can_kill_process"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 35,
+    "fields": {
+        "name": "can_view_openports",
+        "codename": "can_view_openports"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 36,
+    "fields": {
+        "name": "can_view_mysql_log",
+        "codename": "can_view_mysql_log"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 37,
+    "fields": {
+        "name": "can_view_audit_log",
+        "codename": "can_view_audit_log"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 38,
+    "fields": {
+        "name": "can_view_error_log",
+        "codename": "can_view_error_log"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 39,
+    "fields": {
+        "name": "can_view_access_log",
+        "codename": "can_view_access_log"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 40,
+    "fields": {
+        "name": "can_view_server_process_list_top",
+        "codename": "can_view_server_process_list_top"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 41,
+    "fields": {
+        "name": "can_start_service",
+        "codename": "can_start_service"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 42,
+    "fields": {
+        "name": "can_stop_service",
+        "codename": "can_stop_service"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 43,
+    "fields": {
+        "name": "can_restart_service",
+        "codename": "can_restart_service"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 44,
+    "fields": {
+        "name": "can_view_ssh",
+        "codename": "can_view_ssh"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 45,
+    "fields": {
+        "name": "can_view_last_login_logs",
+        "codename": "can_view_last_login_logs"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 46,
+    "fields": {
+        "name": "can_view_antihacking_slow_page",
+        "codename": "can_view_antihacking_slow_page"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 47,
+    "fields": {
+        "name": "can_optimize_server",
+        "codename": "can_optimize_server"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 48,
+    "fields": {
+        "name": "can_reset_vos_password",
+        "codename": "can_reset_vos_password"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 49,
+    "fields": {
+        "name": "can_reset_antihacking_password",
+        "codename": "can_reset_antihacking_password"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 50,
+    "fields": {
+        "name": "can_reboot",
+        "codename": "can_reboot"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 51,
+    "fields": {
+        "name": "can_change_timezone",
+        "codename": "can_change_timezone"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 52,
+    "fields": {
+        "name": "can_repair_mysql_table",
+        "codename": "can_repair_mysql_table"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 53,
+    "fields": {
+        "name": "can_view_mysql_table_repair_listview",
+        "codename": "can_view_mysql_table_repair_listview"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 54,
+    "fields": {
+        "name": "can_view_client_list",
+        "codename": "can_view_client_list"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 55,
+    "fields": {
+        "name": "can_add_client",
+        "codename": "can_add_client"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 56,
+    "fields": {
+        "name": "can_edit_client",
+        "codename": "can_edit_client"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 57,
+    "fields": {
+        "name": "can_request_vps",
+        "codename": "can_request_vps"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 58,
+    "fields": {
+        "name": "can_view_vps",
+        "codename": "can_view_vps"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 59,
+    "fields": {
+        "name": "can_edit_vps",
+        "codename": "can_edit_vps"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 60,
+    "fields": {
+        "name": "can_view_vps_order_list",
+        "codename": "can_view_vps_order_list"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 61,
+    "fields": {
+        "name": "can_create_vps",
+        "codename": "can_create_vps"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 62,
+    "fields": {
+        "name": "can_reject_vps",
+        "codename": "can_reject_vps"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 63,
+    "fields": {
+        "name": "can_onhold_vps",
+        "codename": "can_onhold_vps"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 64,
+    "fields": {
+        "name": "can_activate_deactivate_client",
+        "codename": "can_activate_deactivate_client"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 65,
+    "fields": {
+        "name": "can_view_invoice_list",
+        "codename": "can_view_invoice_list"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 66,
+    "fields": {
+        "name": "can_download_invoice",
+        "codename": "can_download_invoice"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 67,
+    "fields": {
+        "name": "can_preview_invoice",
+        "codename": "can_preview_invoice"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 68,
+    "fields": {
+        "name": "can_send_invoice_to_client",
+        "codename": "can_send_invoice_to_client"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 69,
+    "fields": {
+        "name": "can_edit_invoice",
+        "codename": "can_edit_invoice"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 70,
+    "fields": {
+        "name": "can_view_vps_list",
+        "codename": "can_view_vps_list"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 71,
+    "fields": {
+        "name": "can_start_vps",
+        "codename": "can_start_vps"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 72,
+    "fields": {
+        "name": "can_restart_vps",
+        "codename": "can_restart_vps"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 73,
+    "fields": {
+        "name": "can_suspend_vps",
+        "codename": "can_suspend_vps"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 74,
+    "fields": {
+        "name": "can_switch_off_vps",
+        "codename": "can_switch_off_vps"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 75,
+    "fields": {
+        "name": "can_stop_vps",
+        "codename": "can_stop_vps"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 76,
+    "fields": {
+        "name": "can_delete_vps",
+        "codename": "can_delete_vps"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 77,
+    "fields": {
+        "name": "can_create_bank",
+        "codename": "can_create_bank"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 78,
+    "fields": {
+        "name": "can_edit_bank",
+        "codename": "can_edit_bank"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 79,
+    "fields": {
+        "name": "can_delete_bank",
+        "codename": "can_delete_bank"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 80,
+    "fields": {
+        "name": "can_view_bank_list",
+        "codename": "can_view_bank_list"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 81,
+    "fields": {
+        "name": "can_add_tax",
+        "codename": "can_add_tax"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 82,
+    "fields": {
+        "name": "can_view_tax_list",
+        "codename": "can_view_tax_list"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 83,
+    "fields": {
+        "name": "can_edit_tax",
+        "codename": "can_edit_tax"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 84,
+    "fields": {
+        "name": "can_create_invoice_template",
+        "codename": "can_create_invoice_template"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 85,
+    "fields": {
+        "name": "can_view_invoice_template_list",
+        "codename": "can_view_invoice_template_list"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 86,
+    "fields": {
+        "name": "can_edit_invoice_template",
+        "codename": "can_edit_invoice_template"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 87,
+    "fields": {
+        "name": "can_download_pdf_invoice_template",
+        "codename": "can_download_pdf_invoice_template"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 88,
+    "fields": {
+        "name": "can_download_excel_invoice_template",
+        "codename": "can_download_excel_invoice_template"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 89,
+    "fields": {
+        "name": "can_view_company_config_list",
+        "codename": "can_view_company_config_list"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 90,
+    "fields": {
+        "name": "can_add_company_config",
+        "codename": "can_add_company_config"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 91,
+    "fields": {
+        "name": "can_edit_company_config",
+        "codename": "can_edit_company_config"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 92,
+    "fields": {
+        "name": "can_delete_company_config",
+        "codename": "can_delete_company_config"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 93,
+    "fields": {
+        "name": "can_unsuspend_vps",
+        "codename": "can_unsuspend_vps"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 94,
+    "fields": {
+        "name": "can_view_invoice_payment_list",
+        "codename": "can_view_invoice_payment_list"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 95,
+    "fields": {
+        "name": "can_approve_invoice_payment",
+        "codename": "can_approve_invoice_payment"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 96,
+    "fields": {
+        "name": "can_decline_invoice_payment",
+        "codename": "can_decline_invoice_payment"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 97,
+    "fields": {
+        "name": "can_view_blocked_ips",
+        "codename": "can_view_blocked_ips"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 98,
+    "fields": {
+        "name": "can_delete_blocked_ips",
+        "codename": "can_delete_blocked_ips"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 99,
+    "fields": {
+        "name": "can_view_vos_cdr_usage",
+        "codename": "can_view_vos_cdr_usage"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 100,
+    "fields": {
+        "name": "can_view_invoice_transactions",
+        "codename": "can_view_invoice_transactions"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 101,
+    "fields": {
+        "name": "can_create_payment",
+        "codename": "can_create_payment"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 102,
+    "fields": {
+        "name": "can_create_invoice_payment",
+        "codename": "can_create_invoice_payment"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 103,
+    "fields": {
+        "name": "can_view_data_centers_list",
+        "codename": "can_view_data_centers_list"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 104,
+    "fields": {
+        "name": "can_view_dedicated_servers_list",
+        "codename": "can_view_dedicated_servers_list"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 105,
+    "fields": {
+        "name": "can_request_dedicated_server",
+        "codename": "can_request_dedicated_server"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 106,
+    "fields": {
+        "name": "can_update_dedicated_server",
+        "codename": "can_update_dedicated_server"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 107,
+    "fields": {
+        "name": "can_associate_vps",
+        "codename": "can_associate_vps"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 108,
+    "fields": {
+        "name": "can_view_billing",
+        "codename": "can_view_billing"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 109,
+    "fields": {
+        "name": "can_start_billing",
+        "codename": "can_start_billing"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 110,
+    "fields": {
+        "name": "can_stop_billing",
+        "codename": "can_stop_billing"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 111,
+    "fields": {
+        "name": "can_edit_data_center",
+        "codename": "can_edit_data_center"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 112,
+    "fields": {
+        "name": "can_add_data_center",
+        "codename": "can_add_data_center"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 114,
+    "fields": {
+        "name": "can_view_ds_client_billing_detail",
+        "codename": "can_view_ds_client_billing_detail"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 115,
+    "fields": {
+        "name": "can_view_ds_vendor_billing_detail",
+        "codename": "can_view_ds_vendor_billing_detail"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 116,
+    "fields": {
+        "name": "can_cannot_connect_to_mysql_db",
+        "codename": "can_cannot_connect_to_mysql_db"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 117,
+    "fields": {
+        "name": "can_check_root_login_logs",
+        "codename": "can_check_root_login_logs"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 118,
+    "fields": {
+        "name": "can_add_node_ip",
+        "codename": "can_add_node_ip"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 119,
+    "fields": {
+        "name": "can_view_node_ips_list",
+        "codename": "can_view_node_ips_list"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 120,
+    "fields": {
+        "name": "can_activate_deactivate_node_ip",
+        "codename": "can_activate_deactivate_node_ip"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 121,
+    "fields": {
+        "name": "can_update_sippy_environment",
+        "codename": "can_update_sippy_environment"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 122,
+    "fields": {
+        "name": "can_request_sippy_environment",
+        "codename": "can_request_sippy_environment"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 123,
+    "fields": {
+        "name": "can_view_associated_sippy_environments_list",
+        "codename": "can_view_associated_sippy_environments_list"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 124,
+    "fields": {
+        "name": "can_view_sippy_env_detail",
+        "codename": "can_view_sippy_env_detail"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 125,
+    "fields": {
+        "name": "can_start_sippy_env",
+        "codename": "can_start_sippy_env"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 126,
+    "fields": {
+        "name": "can_stop_sippy_env",
+        "codename": "can_stop_sippy_env"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 127,
+    "fields": {
+        "name": "can_suspend_sippy_env",
+        "codename": "can_suspend_sippy_env"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 128,
+    "fields": {
+        "name": "can_view_sippy_env_graphs",
+        "codename": "can_view_sippy_env_graphs"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 129,
+    "fields": {
+        "name": "can_edit_node_ip",
+        "codename": "can_edit_node_ip"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 130,
+    "fields": {
+        "name": "can_view_sippy_node_graphs",
+        "codename": "can_view_sippy_node_graphs"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 131,
+    "fields": {
+        "name": "can_view_disassociated_sippy_environments_list",
+        "codename": "can_view_disassociated_sippy_environments_list"
+    }
+},
+{
+    "model": "permissions.permissiontags",
+    "pk": 132,
+    "fields": {
+        "name": "can_disassociate_sippy_environment",
+        "codename": "can_disassociate_sippy_environment"
+    }
+},
+{
+    "model": "permissions.permissiongroups",
+    "pk": 1,
+    "fields": {
+        "name": "System Administrator Group",
+        "permissions": [
+            116,
+            118,
+            120,
+            122,
+            124,
+            126,
+            128,
+            1,
+            2,
+            3,
+            4,
+            5,
+            61,
+            62,
+            9,
+            63,
+            11,
+            12,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            117,
+            119,
+            121,
+            125,
+            127,
+            105,
+            123,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            114,
+            115
+        ]
+    }
+},
+{
+    "model": "permissions.permissiongroups",
+    "pk": 2,
+    "fields": {
+        "name": "Client Permission Group",
+        "permissions": [
+            1,
+            2,
+            3,
+            4,
+            12,
+            104,
+            114
+        ]
+    }
+}
+]

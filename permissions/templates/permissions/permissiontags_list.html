@@ -1,0 +1,55 @@
+{% extends 'better_admin/base_better_admin.html' %}
+{% load bootstrap_toolkit widget_tweaks %}
+{% load usr_perm %}
+
+{% block page_header %}
+
+<div class="container">
+<div class="row">
+<div class="span12">
+<ul class="breadcrumb">
+<li>
+<a href="#">Home</a> <span class="divider">/</span>
+</li>
+<li>
+</li><li class="active">Permissions Tags</li>
+</ul>
+</div>
+</div>
+</div>
+{% endblock %}
+
+{% block content %}
+    {% get_user_perm "can_view_permission_groups" as can_view_permission_groups %}
+    {% get_user_perm "can_edit_permission_groups" as can_edit_permission_groups %}
+    {% get_user_perm "can_add_permission_groups" as can_add_permission_groups %}
+    {%if can_view_permission_groups%}
+    </br>
+    <div class="row-fluid">
+        <div class="span4">
+            <span style="font-size:20px">Permissions Tags</span>
+        </div>
+        <div class="span8">
+            <a class="btn btn-inverse btn-small pull-right toggle-sidebar" style="margin-left:10px"><i class="icon-filter"></i></a>
+            <div class="btn-group pull-right">
+                {% if can_add_permission_groups %}
+                    <a class="btn btn-success btn-small" style="background-color:blue" href="./create/?{{ request.GET.urlencode }}">Create</a>
+                {% endif %}
+                {% if can_view_permission_groups%}
+                    <a class="btn btn-primary btn-small" href="./export/?{{ request.GET.urlencode }}">Export</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            {% bootstrap_messages %}
+            {% include 'permissions/permissiontags_table.html' %}
+        </div>
+    </div>
+    {% else %}
+       <div class="right_segment" style="margin-top: 100px;">
+           <P>You don't have required permission</P>
+        </div>
+    {% endif %}
+{% endblock %}

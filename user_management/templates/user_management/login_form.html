@@ -1,0 +1,234 @@
+{% extends "base-setup.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% load static %}
+{% load bootstrap5 %}
+{% block extrahead %}
+
+<style>  body{
+    background-image: url("{% static 'user_management/img/background-1st-fold.png' %}");
+  background-repeat: no-repeat;
+  background-size: 100vh;
+  background-position-y: top;
+  background-position-x: right;
+  display: flex;
+ }
+
+  nav{
+    display: none!important;
+  }
+    .notifier-container{z-index:10000000;position:fixed;top:4px;right:40px;padding:4px;width:350px;max-width:98%;font-family:"Segoe UI",Tahoma,Calibri,Verdana,sans-serif;color:#333;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box}.notifier{position:relative;width:100%;min-height:62px;margin-bottom:12px;padding:8px;background:#fff;border-left:4px solid #95a5a6;border-radius:1px;box-shadow:0 1px 10px 0 rgba(0,0,0,.1),0 2px 15px 0 rgba(0,0,0,.05);opacity:0;-webkit-transform:translateX(100%);-moz-transform:translateX(100%);-ms-transform:translateX(100%);transform:translateX(100%);-webkit-transition:all .6s cubic-bezier(.5,-.5,.3,1.4),opacity .6s ease;-moz-transition:all .6s cubic-bezier(.5,-.5,.3,1.4),opacity .6s ease;-ms-transition:all .6s cubic-bezier(.5,-.5,.3,1.4),opacity .6s ease;transition:all .6s cubic-bezier(.5,-.5,.3,1.4),opacity .6s ease}.notifier.shown{opacity:1;-webkit-transform:translateX(0);-moz-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}.notifier.shown:hover{opacity:1}.notifier-close{position:absolute;top:4px;right:4px;width:16px;height:16px;padding:0;text-align:center;text-decoration:none;color:#aaa;font-weight:700;font-size:16px;background:0 0;outline:0;border:none;border-radius:50%;cursor:pointer;opacity:.5;-webkit-transition:.3s ease;-moz-transition:.3s ease;-ms-transition:.3s ease;transition:.3s ease}.notifier-close:focus,.notifier-close:hover{opacity:1;color:#999;background:#eee}.notifier-img{float:left;margin-right:8px;vertical-align:middle}.img{width:48px;height:48px}.notifier-title{margin:0 0 4px;padding:0;font-size:18px;font-weight:400}.notifier-body{font-size:13px}.notifier.info{border-left-color:#3498db}.notifier.success{border-left-color:#1abc9c}.notifier.warning{border-left-color:#f1c40f}.notifier.danger{border-left-color:#e74c3c}
+    .ui.form2 .fields select, .ui.form2 .fields input:not([type="checkbox"]):not([type="radio"]), .ui.form2 .fields textarea, .ui.form2 .field select, .ui.form2 .field input:not([type="checkbox"]):not([type="radio"]), .ui.form2 .field textarea {
+    box-sizing:border-box;
+    }
+    input[required]{
+  background-image:url('')!important;
+  background-size: .4em .4em;
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+}
+  </style>
+         {% endblock %}
+         {% block content %}
+         <div class="">
+         <main id="jupiterx-main" class="jupiterx-main">
+          <div data-elementor-type="wp-post" data-elementor-id="7" class="elementor elementor-7"
+              data-elementor-settings="[]">
+              <div class="elementor-section-wrap">
+                  <section
+                      class="elementor-section elementor-top-section elementor-element elementor-element-4daff85 elementor-section-stretched elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle"
+                      data-id="4daff85" data-element_type="section"
+                      data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
+                   
+                      <div class="elementor-container elementor-column-gap-default">
+                          <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-0e36e04"
+                              data-id="0e36e04" data-element_type="column">
+                              <div class="elementor-widget-wrap elementor-element-populated">
+                                  <div class="elementor-element elementor-element-07fc20f elementor-mobile-align-center elementor-align-left elementor-widget elementor-widget-raven-heading"
+                                      data-id="07fc20f" data-element_type="widget"
+                                      data-widget_type="raven-heading.default">
+                                      <img class="img-fluid mb-5" src="{% static 'user_management/setup/img/logo-itrans.png' %}">
+                                      <div class="elementor-widget-container ">
+                                        
+                                          <div class="raven-widget-wrapper">
+                                              <h3 class="raven-heading raven-heading-h3"><span
+                                                      class="raven-heading-title">Speech to text transcription
+                                                      in</span></h3>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="elementor-element elementor-element-33f1919 elementor-mobile-align-center elementor-align-left elementor-widget elementor-widget-raven-heading"
+                                      data-id="33f1919" data-element_type="widget"
+                                      data-widget_type="raven-heading.default">
+                                      <div class="elementor-widget-container">
+                                          <div class="raven-widget-wrapper">
+                                              <h1 class="raven-heading raven-heading-h1"><span
+                                                      class="raven-heading-title">5 minutes Advanced
+                                                      speech recognition
+                                                      software</span></h1>
+                                          </div>
+                                      </div>
+                                  </div>
+                                 
+                              </div>
+                          </div>
+                          <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-286f606"
+                              data-id="286f606" data-element_type="column"
+                              data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                              <div class="elementor-widget-wrap elementor-element-populated">
+                                  <div class="elementor-element elementor-element-a21e1f9 elementor-hidden-phone elementor-widget elementor-widget-spacer"
+                                      data-id="a21e1f9" data-element_type="widget" data-widget_type="spacer.default">
+                                      <div class="elementor-widget-container">
+                                          <div class="elementor-spacer">
+                                              <div class="elementor-spacer-inner"></div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <!-- <div class="elementor-element elementor-element-cb49f3b elementor-hidden-phone elementor-widget elementor-widget-html"
+                                      data-id="cb49f3b" data-element_type="widget" data-widget_type="html.default">
+                                      <div class="elementor-widget-container">
+                                          <div id="scroll-down">
+                                              <span class="arrow-down">
+                                                  <-- css generated icon --
+                                              </span>
+                                          </div>
+                                      </div>
+                                  </div> -->
+                              </div>
+                          </div>
+                          <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-c4a9c9a animated-slow elementor-invisible"
+                              data-id="c4a9c9a" data-element_type="column"
+                              data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;slideInRight&quot;}">
+                              <div class="elementor-widget-wrap elementor-element-populated">
+                                  <div class="elementor-element elementor-element-08f0f92 elementor-widget elementor-widget-heading"
+                                      data-id="08f0f92" data-element_type="widget" data-widget_type="heading.default">
+                                      <div class="elementor-widget-container">
+                                          <h2 class="elementor-heading-title elementor-size-default">LOGIN</h2>
+                                      </div>
+                                  </div>
+                                  <div class="elementor-element elementor-element-49617c9 elementor-widget elementor-widget-contact-form-7"
+                                      data-id="49617c9" data-element_type="widget"
+                                      data-widget_type="contact-form-7.default">
+                                      <div class="elementor-widget-container">
+                                          <div class="elementor-contact-form-7 jet-elements">
+                                              <div role="form" class="wpcf7" id="wpcf7-f448-p7-o1" lang="en-US"
+                                                  dir="ltr">
+                                                  <div class="screen-reader-response">
+                                                      <p role="status" aria-live="polite" aria-atomic="true"></p>
+                                                      <ul></ul>
+                                                  </div>
+                                                  <form id="signin_form" method="POST" action="{{ request.get_full_path }}" enctype="multipart/form-data">
+                                                    {% csrf_token %}   
+                                                    <div style="display: none;">
+                                                          <input type="hidden" name="_wpcf7" value="448" />
+                                                          <input type="hidden" name="_wpcf7_version" value="5.4.1" />
+                                                          <input type="hidden" name="_wpcf7_locale" value="en_US" />
+                                                          <input type="hidden" name="_wpcf7_unit_tag"
+                                                              value="wpcf7-f448-p7-o1" />
+                                                          <input type="hidden" name="_wpcf7_container_post"
+                                                              value="7" />
+                                                          <input type="hidden" name="_wpcf7_posted_data_hash"
+                                                              value="" />
+                                                      </div>
+                                                      <div class="contact-form-row">
+                                                          <div class="custom_inputs-second">
+                                                              <span class="wpcf7-form-control-wrap email-823"><input
+                                                                      type="email" name="email" value="" size="40"
+                                                                      class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email"
+                                                                      aria-required="true" aria-invalid="false"
+                                                                      placeholder="Enter your Email" required id="id_username"/></span>
+                                                          </div>
+                                                          <div class="custom_inputs-second">
+                                                            <span class="wpcf7-form-control-wrap email-823"><input
+                                                                    type="password" name="password" value="" size="40"
+                                                                    class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email"
+                                                                    aria-required="true" aria-invalid="false"
+                                                                    placeholder="Enter your Password" required id="id_password"/></span>
+                                                        </div>
+                                                         
+                                                        <div  class="text-center">
+                                                          <a href="/user_management/password-reset/" class=" mt-3">Forgot Password</a> 
+                                                          </div>
+                                                          <div class="custom_inputs mb-3 mt-3">
+                                                              <input type="submit" value="LOGIN"
+                                                                  class="wpcf7-form-control wpcf7-submit btn-submit" />
+                                                          </div>
+                                                          <div  class="text-center">
+                                                            <!-- <span style="color:#db2a07">Not Registered &nbsp; <a href="/user_management/user/create/">Start a Free trail</a></span>                      -->
+                                                            <a style="color:#db2a07" href="/user_management/user/create/">Get Started</a>                    
+
+                                                          </div>
+                                                      </div>
+                                                      <div class="wpcf7-response-output" aria-hidden="true"></div>
+                                                  </form>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-dcb2d82 elementor-hidden-tablet"
+                              data-id="dcb2d82" data-element_type="column"
+                              data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                              <div class="elementor-widget-wrap">
+                              </div>
+                          </div>
+                      </div>
+                  </section>
+              </div>
+          </div>
+          </main>
+          </div>
+
+       
+     
+            {% endblock %}
+
+{% block extrascript %}
+
+<script>
+
+    // window.onload = function () {
+    //   $('.page-header').remove();
+
+    //   $("#signin").click(function( event ) {
+    //       var formData = $('#signin_form').serializeArray();
+    //       console.log(formData);
+    //       var blank = false;
+    //       for (var i in formData) {
+    //         if (!formData[i].value) {
+    //           blank = true;
+    //         };
+    //       };
+    //       if (!blank) {
+    //         $(this).attr('data-loading-text', 'Logging In...');
+    //         $(this).button('loading');  
+    //       };
+          
+    //   });
+    // }
+    
+    $(document).ready(function() {
+         
+      if('{{errors}}'){
+      
+         ShowNoty('{{errors}}' ,'error');
+        console.log("errors",'{{errors}}')
+       
+      }
+     
+      // }
+      {% if messages %}
+      {% for message in messages %}
+       
+        ShowNoty('{{message}}','alert');
+      {% endfor %}
+      {% endif %}
+
+    });
+    
+   
+</script>
+
+{% endblock %}

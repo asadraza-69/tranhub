@@ -1,0 +1,71 @@
+{% extends 'better_admin/base_better_admin.html' %}
+{% load bootstrap_toolkit %}
+
+{% block page_header %}
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="/home">Home</a> <span class="divider">/</span>
+                    </li>
+                    <li>
+                        <a href="#">User Management</a> <span class="divider">/</span>
+                    </li>
+                    <li>
+                        <a href="/rbac_preferences/rbacpreference/">RBAC Preferences</a> <span class="divider">/</span>
+                    </li>
+
+                    <li class="active">Update Group Sequence</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <h2>Update Group Sequence</h2>
+{% endblock %}
+
+{% block content %}
+    <div class="container-narrow">
+        <form class="form-horizontal" method="POST" action="{{ request.get_full_path }}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Update Group Sequence</legend>
+                <fieldset>
+                <div class="control-group row-fluid">
+                    <div class="span1">
+                        <label for="id_sequence">Sequence</label>
+                    </div>
+                    <div class="controls span3 {% if form.errors.sequence %}error{% endif %}">
+                        {{ form.sequence }}
+                        {% if form.errors.sequence %}
+                            {% for error in form.errors.sequence %}
+                                <p class="help-block">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="span1">
+                        <label for="id_group">Group</label>
+                    </div>
+                    <div class="controls span4 {% if form.errors.group %}error{% endif %}">
+                        {{ form.group }}
+                        {% if form.errors.group %}
+                            {% for error in form.errors.group %}
+                                <p class="help-block">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </fieldset>
+            </fieldset>
+            <div class="form-actions text-center">
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary btn-small" name="submit">Submit</button>
+                    <a class="btn btn-danger btn-small" href="/rbac_preferences/rbacpreference/?{{ request.GET.urlencode }}">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+

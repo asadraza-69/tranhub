@@ -1,0 +1,82 @@
+{% extends "base-setup.html" %}
+{% load static %}
+{% load bootstrap5%}
+{% load humanize %}
+{% block extrahead %}
+<style>
+   body{
+      background-image: url("{% static 'user_management/img/edit-transcript-bg.png' %}");
+    background-repeat: no-repeat;
+    background-size: 75vh;
+    background-position-y: top;
+    background-position-x: left;
+    background-color: #f1f1f1;
+   }
+
+
+
+</style>
+
+{% endblock %}
+{% block content %}	
+<div class="container animate__animated animate__bounceInDown">
+  <div class="d-flex align-items-center justify-content-center" style="height: 100vh">
+   <div class="card" style="box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 50%);
+   transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s; border-radius: 4px 4px 4px 4px;">
+     <div class="text-center card-body" id="">
+      <img class="img-fluid mb-3" src="{% static 'user_management/setup/img/logo-itrans.png' %}">
+      <h4><span><i class="fa fa-key fa-1x" aria-hidden="true"></i> Please activate your account !</span>
+      </h4>
+      <h5><span>The activation link was sent to your email address.</span>
+      </h5>
+     </div>
+   </div>
+  </div>
+</div>
+
+	{% endblock %}
+
+		
+		{% block extrascript %}
+  
+		{% endblock %}
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itrans </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body{
+            margin: auto;
+            background: url('{{ STATIC_URL }}/static/setup/img/background-1st-fold.png');
+            width: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .verifi-center{
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            height: 100vh;
+            color: #333;
+        }
+        .logo{
+            margin: 20px 20px 20px 20px;
+            width: 100px;
+            position: absolute;
+        }
+        </style>
+</head>
+<body>
+    <img class="logo" src="{{ STATIC_URL }}/static/setup/img/logo-itrans.png">
+    <div class="verifi-center">
+        <h2><i class="fa fa-key fa-5x" aria-hidden="true"></i>&nbsp; 'Please activate your account. The activation link was sent to your email address.'</h2>
+        </div>
+</body>
+</html> -->

@@ -1,0 +1,14 @@
+[
+{
+    "model": "itrans.vendor",
+    "pk": 1,
+    "fields": {
+        "name": "ITRANS",
+        "url": null,
+        "shortcode": null,
+        "watermark": "",
+        "logo": "",
+        "remarks": ""
+    }
+}
+]

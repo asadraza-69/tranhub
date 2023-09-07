@@ -1,0 +1,96 @@
+<div class="table-container" style="margin-top:0px;">
+    <div class="ui form" id="rbac_create">
+        {{ formset.management_form }}
+        <table id="myFormset{{counter}}Table" class="ba-table">
+           <thead>
+                <tr>
+                {% for field in formset.forms.0 %}
+                    {% if not field.is_hidden %}
+                        <th>{{ field.label }}</th>
+                    {% endif %}
+                {% endfor %}
+                </tr>
+           </thead>
+           <tbody>
+            {% for form in formset %}
+                <tr id="{{ form.prefix }}-row">
+                    <td align="left" valign="middle" class="ui form mini titleField" >
+                        {% for fld in form.hidden_fields %}
+                            {{ fld }}
+                        {% endfor %}
+                        {% if form.instance.pk %}
+                            {{ form.DELETE }}
+                        {% endif %}
+                        {{ form.title }} {{ form.id }} {{ form.title.errors }}
+                    </td>
+                    <td align="center" valign="middle"> {{ form.add.errors }}
+                        <div class="fancy_checkbox">
+                            <label class="checkbox_label checkbox">
+                                {{ form.add }}
+                                <span class="checkbox_style" ></span> 
+                            </label>
+                        </div>
+                    </td>
+                    <td align="center" valign="middle"> {{ form.view.errors }}
+                         <div class="fancy_checkbox">
+                            <label class="checkbox_label checkbox">
+                                {{ form.view }}
+                                <span class="checkbox_style" ></span> 
+                            </label>
+                        </div>
+                    </td>
+                    <td align="center" valign="middle"> {{ form.detail.errors }}
+                         <div class="fancy_checkbox">
+                            <label class="checkbox_label checkbox">
+                                {{ form.detail }}
+                                <span class="checkbox_style" ></span> 
+                            </label>
+                        </div>
+                    </td>
+                    <td align="center" valign="middle"> {{ form.delete.errors }}
+                         <div class="fancy_checkbox">
+                            <label class="checkbox_label checkbox">
+                                {{ form.delete }}
+                                <span class="checkbox_style" ></span> 
+                            </label>
+                        </div>
+                    </td>
+                    <td align="center" valign="middle"> {{ form.change.errors }}
+                         <div class="fancy_checkbox">
+                            <label class="checkbox_label checkbox">
+                                {{ form.change }}
+                                <span class="checkbox_style" ></span> 
+                            </label>
+                        </div>
+                    </td>
+                    <td align="center" valign="middle"> {{ form.bulk.errors }}
+                        <div class="fancy_checkbox">
+                            <label class="checkbox_label checkbox">
+                                {{ form.bulk }}
+                                <span class="checkbox_style" ></span> 
+                            </label>
+                        </div>
+                    </td>
+                    <td align="center" valign="middle"> {{ form.export.errors }}
+                        <div class="fancy_checkbox">
+                            <label class="checkbox_label checkbox">
+                                {{ form.export }}
+                                <span class="checkbox_style" ></span> 
+                            </label>
+                        </div>
+                    </td>
+                    <td align="center" valign="middle"> {{ form.other.errors }}
+                        <div class="fancy_checkbox">
+                            <label class="checkbox_label checkbox">
+                                {{ form.other }}
+                                <span class="checkbox_style" ></span> 
+                            </label>
+                        </div>
+                    </td>
+                    <td align="center" valign="middle" class="text-center actionCol" width="5%"></td>
+                </tr>
+            {%endfor%}
+           </tbody>
+        </table>
+    </div>
+</div>

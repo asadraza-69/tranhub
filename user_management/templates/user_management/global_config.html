@@ -1,0 +1,76 @@
+{% extends "bw_base.html" %}
+{% load bootstrap5 %}
+{% load static %}
+{% load humanize %}
+{% block extrahead %}
+
+
+<style>
+    body{
+       background-image: url({% static 'user_management/img/bg1.png' %}");
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position-y: top;
+     background-position-x: left;
+     background-color: #f1f1f1;
+    }
+ 
+
+  .GoBackBtn{
+    display: block;
+  }
+
+ 
+ </style>
+
+  {% endblock %}
+  <!-- <body style="background-color: #666666;"> -->
+      {% block content %}
+
+      <div class="container py-5">
+      <div class="page_header text-center">
+        <h2 style="float: none;"><span id="pageTitle">Global Configurations</span><small id="pageListTitle"></small></h2>
+      </div>
+        <div class="card-collection">
+
+        <div class="neumorphic-card" style="min-width: 300px;">
+          <a href="/user_management/billing_charge_per_minute/">
+            <div class="neumorphic-image__wrapper">
+              <div class="neumorphic-image__placeholder"><i class="fa fa-money" aria-hidden="true"></i></div>
+
+            </div>
+            <h4 class="neumorphic-card__title text-center">Billing Charges</h4>
+            <div class="neumorphic-card__text">Set rates for transcriptions</div>
+          </a>
+        
+        </div>
+
+        <!-- <div class="neumorphic-card" style="min-width: 300px;">
+          <a href="#">
+            <div class="neumorphic-image__wrapper">
+              <div class="neumorphic-image__placeholder"><i class="fa fa-money" aria-hidden="true"></i></div>
+            </div>
+            <h4 class="neumorphic-card__title text-center">Lorem Ipsum</h4>
+            <div class="neumorphic-card__text">more-or-less normal distribution of letters</div>
+          </a>
+        
+        </div> -->
+
+   
+      </div>
+   
+    </div>
+     
+
+
+        {% endblock %}
+
+		
+		{% block extrascript %}
+  
+
+ 
+    
+
+
+		{% endblock %}

@@ -1,0 +1,118 @@
+{% extends "bw_base.html" %}
+{% load static %}
+{% load bootstrap5 %}
+{% load humanize %}
+{% block extrahead %}
+
+<style>
+    .modelFormTrigger {
+        display: none;
+    }
+
+    .rotation-animation {
+        animation: div-rotate 0.7s infinite steps(8);
+        transform: translateZ(0);
+        transform-origin: 50% 50%;
+    }
+
+    @keyframes div-rotate {
+        0% {
+            transform: rotate(0deg) scale(0.1);
+        }
+
+        100% {
+            transform: rotate(360deg) scale(0.1);
+        }
+    }
+
+    #first {
+        font-size: 200px;
+        margin: -90px;
+    }
+</style>
+
+
+{% endblock %}
+<!-- <body style="background-color: #666666;"> -->
+{% block content %}
+<section class="pt-2 mt-2 mb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+
+                <div id="tableApp"></div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Modal -->
+<div class="modal fade" id="DownloadFile" tabindex="-1" aria-labelledby="DownloadFileLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="DownloadFileLabel">Export to your device</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="formatFile" class="form-label">Choose a file format</label>
+        <select id="formatFile" class="form-select">
+          <option selected value="txt">Text (.txt)</option>
+          <option selected value="srt">SubRip Subtitle (.srt)</option>
+          <option selected value="docx">Word</option>
+          <option selected value="pdf">Portable document format (.pdf)</option>
+          <option selected value="vtt">Video Text Tracks (.vtt)</option>
+
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning btn-sm DownloadFile">Download</button>
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block extrascript %}
+
+<script src="{% static 'user_management/better_admin/js/projects_file_list.js' %}"></script>
+<script src="{% static 'user_management/libs/Fileuploader/jquery.dm-uploader.min.js' %}"></script>
+<script src="{% static 'user_management/libs/Fileuploader/demo-ui.js' %}"></script>
+<!-- <script src="{% static 'user_management/libs/Fileuploader/demo-config.js' %}"></script> -->
+<script type="text/html" id="files-template">
+      <li class="media">
+        <div class="media-body mb-1">
+          <p class="mb-2">
+            <strong>%%filename%%</strong> - Status: <span class="text-muted">Waiting</span>
+          </p>
+          <div class="progress mb-2">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+              role="progressbar"
+              style="width: 0%"
+              aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <hr class="mt-1 mb-1" />
+        </div>
+      </li>
+    </script>
+<script>
+    $(document).ready(function () {
+        $('#status_select').on('change', function () {
+            var fileStatus = $(this).val();
+        });
+        $(document).on("click", "a[data-action=status]", function () {
+            var fielid = $(this).closest("tr").children("td:first-child").attr('data-id');
+            var stat = $(this).closest("tr").children("td:nth-child(6)").text();
+            var fileTitle = $(this).closest("tr").children("td:nth-child(2)").text();
+            $("#status_select").val(stat);
+            $("#file-id").append(`<input type="hidden" value="${fielid}" name="file_id"/>`)
+            $("#status").append(`
+                     <p class="mt-2" style="font-size:11px">[ ${fileTitle} ]</p>
+                `)
+        })
+    });
+</script>
+{% endblock %}
+<!-- </body> -->

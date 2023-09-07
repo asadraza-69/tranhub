@@ -1,0 +1,43 @@
+{% extends 'better_admin/base_better_admin.html' %}
+{% load bootstrap_toolkit %}
+{%load user_perm %}
+
+{% block page_header %}
+
+<div class="container">
+<div class="row">
+<div class="span12">
+<ul class="breadcrumb">
+<li>
+<a href="/home">Home</a> <span class="divider">/</span>
+</li>
+<li>
+<li class="active">Permission Tags</li>
+</li>
+</ul>
+</div>
+</div>
+</div><h2>Permission Tags</h2>
+{% endblock %}
+
+{% block content %}
+{% get_user_perm "can_add_permission_groups" as can_add_permission_groups %}
+    {%if can_add_permission_groups%}
+        <div class="container-narrow">
+			<form action="{{ request.get_full_path }}" class="form-horizontal" enctype="multipart/form-data" id="zform" method="POST">
+                {% csrf_token %}
+                <fieldset>
+                    {{ form|as_bootstrap }}
+                </fieldset>
+				<div class="form-actions">
+					<input class="btn btn-primary" type="submit" value="Submit"/>
+					<a href="./">Cancel</a>
+				</div>
+			</form>
+		</div>
+    {% else %}
+        <div class="right_segment" style="margin-top: 100px;">
+           <P>You don't have required permission</P>
+        </div>
+    {% endif %}
+{% endblock %}

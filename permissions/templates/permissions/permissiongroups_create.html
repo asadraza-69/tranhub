@@ -1,0 +1,340 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block extra_style %}
+{%load user_perm %}
+    <style>
+        .no_segment_bg{
+            background-color: #f5f5f5 !important;
+        }
+        .no_border{
+            border: none !important;
+        }
+        #newHeading{
+            margin-top: 100px !important;
+        }
+        #id_mug_shot{
+            padding-left: 0px !important;
+            border: none !important;
+        }
+        .segment_spacing{
+            padding: 25px !important;
+            border-radius: 0px !important;
+        }
+        .ui.top.attached.segment{
+            background-color: #0c4da2 !important;
+            color: #fff !important;
+            border-radius: 0px !important;
+        }
+        .right_segment .ui.header{
+            float: none !important;
+            margin-bottom: 30px !important;
+        }
+
+        @media screen and (min-width: 320px) and (max-width: 767px){
+            .ui.bottom.segment.attached.center.aligned.no_border {
+                margin-bottom: 5px !important;
+            }
+        }
+
+        .permission_table thead tr th{
+            background-color: #adadad !important;
+        }
+        table thead tr:last-child th{
+            width: 8% !important;
+            min-width: 8% !important;
+        }
+        #tableApp table.list_viewTable thead tr th:first-child {
+            min-width: 8% !important;
+        }
+        @media only screen and (max-width: 480px){
+            .table-contianer .sa-table:not(.no-responsive) tbody tr.depart, .table-container .sa-table:not(.no-responsive) tbody tr.depart {
+                height: 45px;
+            }
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+{% get_user_perm "can_add_permission_groups" as can_add_permission_groups %}
+{% get_user_perm "can_edit_permission_groups" as can_edit_permission_groups%}
+{%if can_add_permission_groups or can_edit_permission_groups%}
+<div class="right_segment" style="margin-top: 100px;">
+    <div class="ui header">
+        <h1 id="mainTitle">
+            <span>Create Permissions Group</span>
+        </h1>
+    </div>
+    <div id="tableApp">
+        <form action="" enctype="multipart/form-data" name="user_permissions_form" method="POST" id="permission_create">
+            {% csrf_token %}
+
+            <input type="hidden" value="{{ request.user.profile.i_agency.id }}" name="i_agency_id">
+            <div class="ui middle segment attached">
+                <div class="ui form">
+
+                    <div class="inline fields required">
+                        <div class="field">
+                            {{ form.name.label_tag }}
+                        </div>
+                        {% if form.name.value %}
+                        <div class="four wide field">
+                            {{ form.name | attr:"readOnly" }}
+                        </div>
+                        {% else %}
+                        <div class="four wide field">
+                            {{ form.name | attr:"pattern=([^\s][A-z0-9À-ž\s]+)" }}
+                        </div>
+                        {% endif %}
+                        {{ form.name.errors }}
+                        <div class="field">
+                            {{ form.i_agency.label_tag }}
+                        </div>
+                        <div class="four wide field">
+                            {{ form.i_agency }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="ui divider"></div>
+                <div class="table-container" style="margin:0px;">
+                    <table class="sa-table list_viewTable" border="0">
+                        <thead>
+                            <tr>
+                                <th align="center" rowspan="2">Activities</th>
+                                <th align="center" colspan="8">Permissions</th>
+                            </tr>
+                            <tr>
+                                <th align="center">ADD</th>
+                                <th align="center">VIEW</th>
+                                <th align="center">UPDATE</th>
+                                <th align="center">DELETE</th>
+                                <th align="center">DETAIL</th>
+                                <th align="center">IMPORT</th>
+                                <th align="center">EXPORT</th>
+                                <th align="center">CUSTOM</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% regroup rbac|dictsort:"sequence" by sequence as sequence_list %}
+                            {% for seq in sequence_list %}
+                                {% regroup seq.list|dictsort:"group" by group as group_list %}
+                                {% for group in group_list %}
+                                    {% regroup group.list|dictsort:"title" by title as title_list %}
+                                    {% if group.grouper != 'Site' and group.grouper != 'Sessions' and group.grouper != 'logentry' and group.grouper != 'Sieve' and group.grouper != 'Content Type' %}
+                                        <tr class="activity-desc-row depart">
+                                            <td colspan="9" data-responsive="hide"><div class="activity-desc">{{ group.grouper|title }}</div></td>
+                                        </tr>
+                                        {% for title in title_list %}
+                                            {% for item in title.list %}
+                                                <tr>
+                                                    <td data-title="Activities">
+                                                        <div class="activity-title" data-value="{{item.view_permissions}}">{{ title.grouper|title }} </div>
+                                                    </td>
+                                                    <td data-title="Permissions" style="display: none;">
+                                                        <div></div>
+                                                    </td>
+                                                    <td data-title="ADD" align="center" valign="middle">
+                                                        {% if item.add_permissions %}
+                                                            <div class="fancy_checkbox">
+                                                                <label class="checkbox_label checkbox">
+                                                                   <input type="checkbox" name="perms" value="{{item.add_permissions}}" {% if item.add_checked == '1' %} checked{% endif %}>
+                                                                    <span class="checkbox_style" ></span> 
+                                                                </label>
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="fancy_checkbox disabled">
+                                                                <label class="checkbox_label checkbox">
+                                                                   <input type="checkbox" name="perms" disabled="">
+                                                                    <span class="checkbox_style" ></span> 
+                                                                </label>
+                                                            </div>
+                                                        {% endif %}
+                                                    </td>
+                                                    <td data-title="VIEW" align="center">
+
+                                                        {% if item.view_permissions %}
+                                                            <div class="fancy_checkbox">
+                                                                <label class="checkbox_label checkbox">
+                                                                   <input  type="checkbox" name="perms" value="{{item.view_permissions}}" {% if item.view_checked == '1' %} checked{% endif %}>
+                                                                    <span class="checkbox_style" ></span> 
+                                                                </label>
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="fancy_checkbox disabled">
+                                                                <label class="checkbox_label checkbox">
+                                                                   <input type="checkbox" name="perms" disabled="">
+                                                                    <span class="checkbox_style" ></span> 
+                                                                </label>
+                                                            </div>
+                                                        {% endif %}
+                                                    </td>
+                                                    <td data-title="UPDATE" align="center"> 
+
+                                                        {% if item.change_permissions %}
+                                                            <div class="fancy_checkbox">
+                                                                <label class="checkbox_label checkbox">
+                                                                    <input  type="checkbox" name="perms" value="{{item.change_permissions}}" {% if item.change_checked == '1' %} checked{% endif %}>
+                                                                    <span class="checkbox_style" ></span> 
+                                                                </label>
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="fancy_checkbox disabled">
+                                                                <label class="checkbox_label checkbox">
+                                                                   <input type="checkbox" name="perms" disabled="">
+                                                                    <span class="checkbox_style" ></span> 
+                                                                </label>
+                                                            </div>
+                                                        {% endif %}
+                                                    </td>
+                                                    <td data-title="DELETE" align="center">  
+
+                                                        {% if item.delete_permissions %}
+
+                                                            <div class="fancy_checkbox">
+                                                                <label class="checkbox_label checkbox">
+                                                                   <input type="checkbox" name="perms" value="{{item.delete_permissions}}" {% if item.delete_checked == '1' %} checked{% endif %}>
+                                                                    <span class="checkbox_style" ></span> 
+                                                                </label>
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="fancy_checkbox disabled">
+                                                                <label class="checkbox_label checkbox">
+                                                                   <input type="checkbox" name="perms" disabled="">
+                                                                    <span class="checkbox_style" ></span> 
+                                                                </label>
+                                                            </div>
+                                                        {% endif %}
+                                                    </td>
+                                                    <td data-title="DETAIL" align="center"> 
+
+                                                        {% if item.detail_permissions %}
+                                                            <div class="fancy_checkbox">
+                                                                <label class="checkbox_label checkbox">
+                                                                   <input type="checkbox" name="perms" value="{{item.detail_permissions}}" {% if item.detail_checked == '1' %} checked{% endif %}>
+                                                                    <span class="checkbox_style" ></span> 
+                                                                </label>
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="fancy_checkbox disabled">
+                                                                <label class="checkbox_label checkbox">
+                                                                   <input type="checkbox" name="perms" disabled="">
+                                                                    <span class="checkbox_style" ></span> 
+                                                                </label>
+                                                            </div>
+                                                        {% endif %}
+                                                    </td>
+                                                    <td data-title="IMPORT" align="center">
+                                                        {% if item.import_permissions %}
+                                                            <div class="fancy_checkbox">
+                                                                <label class="checkbox_label checkbox">
+                                                                    <input type="checkbox" name="perms" value="{{item.import_permissions}}" {% if item.import_checked == '1' %} checked{% endif %}>
+                                                                    <span class="checkbox_style" ></span> 
+                                                                </label>
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="fancy_checkbox disabled">
+                                                                <label class="checkbox_label checkbox">
+                                                                   <input type="checkbox" name="perms" disabled="">
+                                                                    <span class="checkbox_style" ></span> 
+                                                                </label>
+                                                            </div>
+                                                        {% endif %}
+                                                    </td>
+                                                    <td data-title="EXPORT" align="center">
+
+                                                        {% if item.export_permissions %}
+
+                                                            <div class="fancy_checkbox">
+                                                                <label class="checkbox_label checkbox">
+                                                                     <input type="checkbox" name="perms" value="{{item.export_permissions}}" {% if item.export_checked == '1' %} checked{% endif %}>
+                                                                    <span class="checkbox_style" ></span> 
+                                                                </label>
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="fancy_checkbox disabled">
+                                                                <label class="checkbox_label checkbox">
+                                                                   <input type="checkbox" name="perms" disabled="">
+                                                                    <span class="checkbox_style" ></span> 
+                                                                </label>
+                                                            </div>
+                                                        {% endif %}
+                                                    </td>
+                                                    <td data-title="CUSTOM" align="center">
+                                                        {% if item.other_permissions %}
+                                                            <div class="fancy_checkbox">
+                                                                <label class="checkbox_label checkbox">
+                                                                    <input type="checkbox" name="perms" value="{{item.other_permissions}}" {% if item.other_checked == '1' %} checked{% endif %}>
+                                                                    <span class="checkbox_style" ></span> 
+                                                                </label>
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="fancy_checkbox disabled">
+                                                                <label class="checkbox_label checkbox">
+                                                                   <input type="checkbox" name="perms" disabled="">
+                                                                    <span class="checkbox_style" ></span> 
+                                                                </label>
+                                                            </div>
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="ui divider"></div>
+                <div class="row text-center">
+                    <button class="ui button small green labeled icon"><i class="icon right arrow"></i> Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+{%else%}
+<div class="right_segment" style="margin-top: 100px;">
+   <P>You don't have required permission</P>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra_script %}
+    <script>
+        const path = window.location.pathname;
+        if(path.includes('update')) {
+            $('#mainTitle span').text('Edit Permissions Group');
+        }
+        $('[for="id_i_agency"]').text("Agency");
+
+        var $agency = $('#id_i_agency'),
+        optionsHtml = '';
+        $agency.find('option').each(function() {
+            var $this = $(this),
+            value = $this.val(),
+            text = $this.text(),
+            textArray = text.split('| '),
+            selected = $this.attr('selected');
+            if ( textArray[1] == "Active" ) {
+                optionsHtml += `<option value=${value} ${selected ? 'selected' : ''}>${text}</option>`;
+            }
+            $('#id_i_agency').html(optionsHtml)
+        });
+        $('#id_i_agency').multipleSelect({
+            placeholder: "Select Group",
+            single:true,
+            filter: true,
+            required: true
+        });
+        $('#permission_create .button').on('click',(e) => {
+        $('#id_i_agency').siblings('.ms-parent').removeClass('error').find('.errorlist').remove();
+            if($('#id_i_agency').siblings().find('span.placeholder').length){
+                $('#id_i_agency').siblings('.ms-parent').addClass('error').append('<p class="errorlist">field is required</p>');
+            }
+        });
+    </script>
+{% endblock %}

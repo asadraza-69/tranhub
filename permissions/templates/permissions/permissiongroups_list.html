@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{%load user_perm %}
+{% block extra_style %}
+    <style>
+        .no_segment_bg{
+            background-color: #f5f5f5 !important;
+        }
+        .no_border{
+            border: none !important;
+        }
+        #newHeading{
+            margin-top: 100px !important;
+        }
+        #id_mug_shot{
+            padding-left: 0px !important;
+            border: none !important;
+        }
+        .segment_spacing{
+            padding: 25px !important;
+            border-radius: 0px !important;
+        }
+        .ui.top.attached.segment{
+            background-color: #0c4da2 !important;
+            color: #fff !important;
+            border-radius: 0px !important;
+        }
+        .right_segment .ui.header{
+            float: none !important;
+            margin-bottom: 30px !important;
+        }
+
+        @media screen and (min-width: 320px) and (max-width: 767px){
+            .ui.bottom.segment.attached.center.aligned.no_border {
+                margin-bottom: 5px !important;
+            }
+        }
+
+        .button_background{
+            background-color: #F2711C!important;
+        }
+
+        #dataTableView {
+            padding: 0px !important;
+        }
+
+        .clear{
+            clear: both;
+        }
+
+        @media screen and (max-width: 768px){
+            .page_header{
+                margin-bottom: 20px;
+            }
+            .dataTables_wrapper .dataTables_filter {
+                margin-bottom: 0px !important;
+            }
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+
+{% get_user_perm "can_view_permission_groups" as can_view_permission_groups %}
+<!-- {% get_user_perm "can_add_permission_groups" as can_add_permission_groups %}
+{% get_user_perm "can_edit_permission_groups" as can_edit_permission_groups %} -->
+{%if can_view_permission_groups %}
+<div class="right_segment" style="margin-top: 100px;">  
+
+    <!-- <div class="page_header">
+        <h1 id="mainTitle">
+            <span> Permissions Group List</span>
+        </h1>
+        {%if can_add_permission_groups%}
+         <a href="/permissions/create/" class="ui right floated button mini green icon labeled button_background"><i class="icon plus"></i> Add Permissions Group </a> 
+        {%endif%}
+    </div> -->
+    
+    <div class="table-container ui form mini clear" id="tableApp">
+        <!-- <table id="dataTableView" class="ba-table list_viewTable dataTable no-footer" border="0" style="padding: 0px !important;">
+            <thead>
+                <tr>
+                    <th>Agency</th>
+                    <th>Group Name</th>
+                    <th>Permissions</th>
+                    <th align="center" width="10%">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+               {% for object in object_list %}
+                    <tr>
+                            <td data-title="Agency">{{ object.i_agency.name}}</td>
+                            <td data-title="Group Name">{{ object.name }}</td>
+                            <td data-title="Permissions">
+                                <span class="large" data-position="top center" data-html="{% for item in object.permissions.all %}{{item.name.title}}, {% endfor %}" data-variation="inverted">
+                                    {% for item in object.permissions.all %} {{item.name.title}}, {% endfor %}
+                                </span>
+                            </td>
+
+                            <td align="center">
+                                <div class="action_btn_dots ui icon right pointing dropdown button white">
+                                    <i class="dot"></i>
+                                    <div class="menu">
+                                        {%if can_edit_permission_groups%}
+                                        <a href="/permissions/update/{{ object.pk }}/" data-action="edit" class="item" data-nametrigger="course">Edit</a>
+                                        {%endif%}
+                                    </div>
+                                </div>
+                            </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table> -->
+    </div>
+ 
+</div>
+{%else%}
+<div class="right_segment" style="margin-top: 100px;">
+   <P>You don't have required permission</P>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra_script %}
+{% get_user_perm "can_add_permission_groups" as can_add_permission_groups %}
+{% get_user_perm "can_edit_permission_groups" as can_edit_permission_groups %}
+    <script>
+        var obj = {
+            breadcrums: "",
+            headers: ["Group Name", "Permissions", "Action"],
+            model_name: "Permission Groups",
+            page_list_title: "",
+            page_title: "Permissions Group List"
+        }
+        var articles = [
+            {% for object in object_list %}
+                [
+                    ["{{ object.name }}", ""],
+                    [
+                    {% if object.permissions.all %}
+                        [{% for item in object.permissions.all %}[`{{item.name.title}}`],{% endfor %}]
+                    {% else %}
+                        ""
+                    {% endif %}
+                        ,["modal", "permissions"]
+                    ],
+                    {% if can_edit_permission_groups %}
+                        [[["/permissions/update/{{ object.pk }}/", "Edit", ""]], "action"]
+                    {% else %}
+                        [[], "action"]
+                    {% endif %}
+                ],
+            {% endfor %}
+        ];
+        obj['data'] = articles;
+        tableDiv = $('#tableApp');
+        renderDynamicTable(obj, 'dynamicTable');
+        {%if can_add_permission_groups %}
+            $('[data-status="create"]').replaceWith('<a style="color: #fff; background-color: #0c4da2;" href="/permissions/create/" class="ui right floated button mini icon labeled"><i class="icon plus"></i> Add Permissions Group </a>');  
+        {% else %}
+            $('[data-status="create"]').remove();
+        {% endif %}
+    </script>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load user_perm %}
+{% block body %}
+    {% get_user_perm "can_edit_email_settings" as can_edit_email_settings %}
+    {% if  can_edit_email_settings %}
+    <form action="" class="validateForm" method="post">
+    {% csrf_token %}
+        <div class="ui top header attached" style="margin-top: 100px;">
+            <h3>Update Email Settings</h3>
+        </div>
+        <div class="ui middle segment attached">
+            <div class="ui form" id="userCreateForm">
+                <div class="four fields">
+                    <div class="field required">
+                        <label for="id_title">Title:</label>
+                        {{ email_form.title}}
+                        {{ email_form.title.errors}}
+                    </div>
+                    <div class="field required">
+                        <label for="id_email">Email:</label>
+                        {{ email_form.email}}
+                        {{ email_form.email.errors}}
+                    </div>
+                    <div class="field required">
+                        <label for="id_password">Password:</label>
+                        {{ email_form.password}}
+                        {{ email_form.password.errors}}
+                    </div>
+                    <div class="field required">
+                        <label for="id_confirm_password">Confirm Password:</label>
+                        {{ email_form.confirm_password}}
+                        {{ email_form.confirm_password.errors}}
+                    </div>
+                </div>
+
+                <div class="four fields">
+                    <div class="field required">
+                        <label for="id_host">Host:</label>
+                        {{ email_form.host|attr:"required"}}
+                        {{ email_form.host.errors}}
+                    </div>
+                    <div class="field required">
+                        <label for="id_category">Category:</label>
+                        {{ email_form.category|attr:"required"}}
+                        {{ email_form.category.errors}}
+                    </div>
+                    <div class="field required">
+                        <label for="id_port">Port:</label>
+                        {{ email_form.port|attr:"required"}}
+                        {{ email_form.port.errors}}
+                    </div>
+                    <div class="field required">
+                        <label for="id_port">Port Type:</label>
+                        {{ email_form.port_type|attr:"required"}}
+                        {{ email_form.port_type.errors}}
+                    </div>
+                </div>
+
+                <div class="four fields">
+                    <div class="field">
+                        <label for="id_timeout">Time Out:</label>
+                        {{ email_form.timeout}}
+                        {{ email_form.timeout.errors}}
+                    </div>
+                </div>
+        </div>
+        <div class="ui bottom segment attached center aligned">
+            <div class="ui form">
+                <div class="field">
+                    <button class="ui button small blue labeled icon" id="submit"><i class="icon plus"></i> Submit</button>
+                    <span class="ui button small red labeled icon" onclick="goBack();"><i class="icon remove"></i> Cancel</span>
+                </div>
+            </div>
+        </div>
+    </form>
+    {% else %}
+    <div class="right_segment" style="margin-top: 100px;">
+   <P>You don't have required permission</P>
+    </div>
+{% endif %}
+{% endblock %}
+
+
+{% block extra_script %}
+<script>
+    $(document).on('click', '#submit',function(e) {
+        var password = $("#id_password").val();
+        var confirmPassword = $("#id_confirm_password").val();
+        if (password != confirmPassword) {
+            $("#id_confirm_password").parent().find('.errorlist').remove();
+            $("#id_confirm_password").parent().addClass('error');
+            $("#id_confirm_password").parent().append('<p class="errorlist">Password does not match!</p>');
+            e.preventDefault();
+        }
+    });
+</script>
+{% endblock %}

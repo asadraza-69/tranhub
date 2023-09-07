@@ -1,0 +1,9 @@
+[
+{
+    "model": "stripe_payments.stripetype",
+    "pk": 1,
+    "fields": {
+        "name": "ITRANS"
+    }
+}
+]

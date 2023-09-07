@@ -1,0 +1,68 @@
+{% extends 'global_settings/base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+{% block body %}
+<div class="ui top header attached">
+        <h3>Create Create RBAC Preference Group</h3>
+    </div>
+    <div class="container">
+        <form class="form-horizontal" method="POST" action="{{ request.get_full_path }}" enctype="multipart/form-data">
+            {% csrf_token %}
+                <fieldset>
+                    <legend>RBAC Preference Group Sequence</legend>
+                    <div class="row-fluid control-group">
+                        <div class="span3  required">
+                            <div class="row-fluid">
+                                <div class="span4"><label>Sequence *</label></div>
+                                <div class="span8 ">
+                                    {% if form.sequence.errors %}
+                                        {% for error in form.sequence.errors %}
+                                            <p class="help-block">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span3  required">
+                            <div class="row-fluid">
+                                <div class="span4"><label>Group *</label></div>
+                                <div class="span8 ">
+                                    {{ form.group }}
+                                    {% if form.group.errors %}
+                                        {% for error in form.group.errors %}
+                                            <p class="help-block">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                {% for formset in inlines %}
+                    {% include 'rbac_preferences/formset.html' with formset=formset counter=forloop.counter %}
+                {% endfor %}
+
+                <div class="form-actions text-center">
+                    <input class="btn btn-primary" value="Submit" type="submit">
+                    <a href="../">Cancel</a>
+                </div>
+        </form>
+    </div>
+{% endblock %}
+
+
+{% block extra_script %}
+    <script type="text/javascript" src="{% static '/js/jquery.formset.js' %}"></script>
+    <script type="text/javascript">
+        $(function() {
+            {% for formset in inlines %}
+               $('#myFormset{{forloop.counter}}Table tbody tr').formset({
+                    prefix: '{{ formset.prefix }}',
+                    addText: '<i class="icon-plus-sign" title="Add Another"></i>',
+                    deleteText: '<i class="icon-minus-sign" title="Remove"></i>',
+                    });
+            {% endfor %}
+        })
+    </script>
+{% endblock %}

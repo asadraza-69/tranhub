@@ -1,0 +1,236 @@
+{% extends "bw_base.html" %}
+{% load static %}
+{% load bootstrap5 %}
+{% load humanize %}
+{% block extrahead %}
+
+
+<style>
+    body{
+       background-image: url("{% static 'user_management/img/bg1.png' %}");
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position-y: top;
+     background-position-x: left;
+     background-color: #f1f1f1;
+    }
+ 
+    .GoBackBtn{
+    display: block;
+  }
+
+ 
+ </style>
+
+  {% endblock %}
+  <!-- <body style="background-color: #666666;"> -->
+      {% block content %}
+    
+      <div class="container py-5">
+        <div class="page_header text-center">
+          <h2 style="float: none;"><span id="pageTitle">Billing Charges</span><small id="pageListTitle"></small></h2>
+        </div>
+   
+      <section class="pt-2 mt-2 mb-5">
+        <div class="container">
+            <div class="row justify-content-center mt-2" style="float: left;width: 100%;">
+            <div class="col-lg-5">
+                <div class="card">
+                  <div class="card-body">
+                  <table class="table table-sm table-striped mb-0" id="PriceTable">
+            
+                  </table>
+                  <!-- <div class="card-body">
+                 <h5>Billing Charges <small>(Per Second)</small></h5>
+                 <form class="form-horizontal" method="POST" action="/user_management/create_global_setting/" id="ChargesPerSecondForm">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                        <input id="ChargesPerSecond" type="number" class="form-control form-control-sm" aria-label="Amount (to the nearest dollar)" required name="value" placeholder="Enter charges" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" step="0.01">
+                       
+                      </div>
+                      
+                    <div class="form-actions float-end">
+                        <input type="submit" class="btn btn-sm btn-primary" value="Save" />
+                        <input type="button" class="btn btn-sm btn-danger" value="Cancel" onclick="javascript:$('#ChargesPerSecond').val('{{value}}');"/>
+                    </div>
+
+                    <input type="hidden" id="heading" name="heading" value="billing_charge_per_minute">
+                    <input type="hidden" id="url" placeholder="url" name="url">
+                    
+                       
+                </form>
+                </div> -->
+              </div>
+            </div>
+            </div>
+            </div>
+          </div>
+      </section>
+     
+    </div>
+  <!-- Modal -->
+  <div class="modal fade" id="modal_edit" tabindex="-1" aria-labelledby="modal_editLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal_editLabel">Edit Charges</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="ServiceChargesUpdate" method="POST">
+            {% csrf_token %}
+            <div class="row g-3 justify-content-center">
+              <div class="col-auto">
+                <label for="inputServiceCharges" class="col-form-label ServiceNameLabel text-capitalize"></label>
+              </div>
+              <div class="col-auto">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">$</span>
+                  <input type="hidden" id="inputServiceName" class="form-control" aria-describedby="inputServiceName" name="name">
+                  <input id="inputServiceCharges" class="form-control onlyNumber" aria-describedby="inputServiceCharges" name="">
+                </div>
+              
+              </div>
+             
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-warning SaveServiceCharges" form="ServiceChargesUpdate">Save changes</button>
+          <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+     
+        </div>
+      </div>
+    </div>
+  </div>
+        {% endblock %}
+
+		
+		{% block extrascript %}
+    <script type="text/javascript">
+      $(document).ready(function() {
+        GetServiceCharges();
+  
+      });
+    
+      function GetServiceCharges(){
+
+        $.ajax({
+          type: "GET",
+          url: "/user_management/get_global_settings/",
+        
+          success: function (response) {
+
+      
+            if (response.status == true) {
+              $("#PriceTable").empty();
+             $("#PriceTable").append("<thead class='bg-dark text-white fw-light'><tr><th class='fw-light'>Service Name</th><th class='fw-light'>Charges</th><th class='text-center fw-light'>Action</th></tr></thead><tbody></tbody>");
+           
+var data = response.data;
+              $.each(data, function(key, value) {
+
+let Srvc = key.replace(/_/g, ' ');
+
+$("#PriceTable tbody").append('<tr><td class="text-capitalize">'+Srvc +'</td><td>$ '+value +'</td><td class="text-center"><button ServiceName='+key+' ServiceCharges='+value +' type="button" class="ActionBtn btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#modal_edit"><i class="fa fa-edit"></i></button></td></tr>')
+              });
+            }
+            else if (response.status == false) {
+             
+            }
+            else{
+             
+            }
+          }
+        });
+   
+  //some code
+}
+$(document).on("click", ".ActionBtn", function(event){
+  let Srvc = $(this).attr('ServiceName').replace(/_/g, ' ');
+$(".ServiceNameLabel").text(Srvc);
+$("#inputServiceName").attr("value",$(this).attr('ServiceName'));
+$("#inputServiceCharges").attr('name','value');
+$("#inputServiceCharges").val($(this).attr('ServiceCharges'));
+
+});
+
+
+$(".SaveServiceCharges").click(function(e) {
+
+ 
+    var dataString = $("#ServiceChargesUpdate").serialize();
+
+    console.log(dataString);
+    $.ajax({
+        type: "POST",
+        url: "/user_management/edit_global_settings/",
+        data: dataString,
+        success: function (response) {
+            if (response.status == true) {
+              ShowNoty("Charges have been updated successfully!", "alert");
+              $("#modal_edit").modal('hide');
+              GetServiceCharges();
+        }
+        else{
+          ShowNoty("Failed to update charges!", "error");
+          $("#modal_edit").modal('hide')
+        }
+      },
+        error: function(response) {
+            alert('error');
+            $("#modal_edit").modal('hide')
+        }
+    });
+    e.preventDefault();
+});
+
+    </script>
+<!-- 
+        <script>
+              $(document).ready(function () {
+            var input = document.getElementById("url");
+            input.value = location.href;
+
+            $("#ChargesPerSecond").val("{{value}}");
+              });
+          
+
+              $("#ChargesPerSecondForm").submit(function(e) {
+
+e.preventDefault(); // avoid to execute the actual submit of the form.
+
+var form = $(this);
+var url = form.attr('action');
+
+$.ajax({
+       type: "POST",
+       url: url,
+       data: form.serialize(), // serializes the form's elements.
+       success: function(data)
+       {
+           if(data.status){
+            ShowNoty('Update successful !','alert'); // show response from the php script.
+           }
+           else {
+            ShowNoty('Update failed ! Something went wrong, please try again!','warning'); // show re
+           }
+      
+       },
+        error: function (e, x, y) {
+            console.log(e);
+            console.log(x);
+            console.log(y);
+        },
+        cache: false,
+        async: false
+     });
+
+
+});
+            
+        </script>
+     -->
+
+
+		{% endblock %}

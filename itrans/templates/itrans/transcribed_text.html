@@ -1,0 +1,216 @@
+{% extends "bw_base.html" %}
+{% load static %}
+{% load bootstrap5 %}
+{% load humanize %}
+{% block extrahead %}
+
+
+<link href="https://unpkg.com/video.js/dist/video-js.min.css" rel="stylesheet">
+<style>
+    .Transcript {
+ 
+    cursor: initial;
+}
+a{
+  text-decoration: none;
+  color: #333;
+}
+</style>
+  {% endblock %}
+  <!-- <body style="background-color: #666666;"> -->
+      {% block content %}
+    
+   
+   
+      <section class="pt-2 mt-2 mb-5">
+        <div class="container">
+         
+          <div class="row justify-content-center mt-2">
+            <div class="col-lg-10">
+           
+              
+              <div class="card">
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                      <h6>Transcribed Text</h6>  
+                        <div class="btn-group" role="group" aria-label="ActionButtons">
+                          <a class="btn btn-sm btn-secondary " href="/itrans/projects_file_list/?project_id={{project_id}}"><i class="fa fa-arrow-circle-left d-none d-lg-inline-block d-md-inline-block"></i> Go Back</a>
+                         <button type="button" data-action="download" class="btn btn-sm btn-dark"><i class="fa fa-download d-none d-lg-inline-block d-md-inline-block"></i> Download</button>
+                      
+                      </div>
+                  </div>
+                  <div class="card-body">
+                 
+                    <p>{{transcript}}</p>
+
+                   
+                      <div id="TranscibedFileTextPreviewNew"></div>
+                      
+                      <!-- <video id="MediaSource" controls>
+                        <source src="{{audio_file}}" type="video/mp4">
+                        <source src="{{audio_file}}" type="video/ogg">
+                        <p>Your browser doesn't support HTML5 video. Here is a <a href="{{audio_file}}">link to the video</a> instead.</p>
+                      </video> -->
+
+                      <h5 id="CurrentText"></h5>
+
+
+                  </div>
+              
+                 
+              </div>
+                
+                      
+              <p id="TFLink" style="visibility: hidden;">{{transcribed_file}}</p>   
+              
+                 
+              
+              
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="modal fade" id="TextQualityStatsModals" tabindex="-1" aria-labelledby="TextQualityStatsLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="TextQualityStatsLabel">Few Edits Required</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p id="transcibedFileMessage">
+                It will take sometime to polish the transcipt so that it is perfect. Many of the words were transcribed with high level of confidence. We hope you enjoy reading along.
+              </p>
+              <h6>
+               Confidence
+              </h6>
+              <div class="bar-chart-bar">
+                <div id="VeryConfident" class="bar bar1">
+                    <span></span>
+                </div>
+                <div id="FairlyConfident" class="bar bar2">
+                    <span></span>
+                </div>
+                <div id="SlightlyConfident" class="bar bar3">
+                    <span></span>
+                </div>
+            </div>
+            <br>
+            <div id="QualityOfTextScale">
+              <table class="table table-sm table-borderless">
+                <thead>
+                  <tr>
+                    <th>Level</th>
+                    <th>Stats</th>
+                 
+                  </tr>
+                </thead>
+                <tbody>
+                 <tr>
+                  <td><div><span class="VeryConfident"></span>Very Confident</div></td>
+                  <td id="VeryConfidentPercent"></td>
+                 </tr>
+                 <tr>
+                  <td><div><span class="FairlyConfident"></span>Fairly Confident</div></td>
+                  <td id="FairlyConfidentPercent"></td>
+                 </tr>
+                 <tr>
+                  <td><div><span class="SlightlyConfident"></span>Slightly Confident</div></td>
+                  <td id="SlightlyConfidentPercent"></td>
+                 </tr>
+                </tbody>
+                 </table>
+            </div>
+            </div>
+            <div class="modal-footer">
+             
+              <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#DownloadFile">
+  Launch DownloadFile modal
+</button> -->
+<!-- Modal -->
+<div class="modal fade" id="DownloadFile" tabindex="-1" aria-labelledby="DownloadFileLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="DownloadFileLabel">Export to your device</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="formatFile" class="form-label">Choose a file format</label>
+        <select id="formatFile" class="form-select">
+          <option selected value="txt">Text (.txt)</option>
+          <option selected value="srt">SubRip Subtitle (.srt)</option>
+          <option selected value="docx">Word</option>
+          <option selected value="pdf">Portable document format (.pdf)</option>
+          <option selected value="vtt">Video Text Tracks (.vtt)</option>
+     
+        </select>
+      </div>
+      <div class="modal-footer">
+          <!-- <a href="" type="button" class="btn btn-warning btn-sm DownloadFile" download>Download</a> -->
+        <button type="button" class="btn btn-warning btn-sm DownloadFile">Download</button>
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+        {% endblock %}
+
+		
+		{% block extrascript %}
+    <script src="https://unpkg.com/video.js@7.10.2/dist/video.min.js"></script>
+  
+    <!-- <script src="{{ STATIC_URL }}/static/better_admin/js/custom.js"></script> -->
+    <script src="{% static 'user_management/better_admin/js/TranscribedText.js' %}"></script>
+
+
+    <!-- <script>
+      
+
+        function load() {
+            var TF = $("#TFLink").text();
+         
+            var hostname = window.location.origin
+            var UrlNew = hostname+TF;
+      
+if(TF != ""){
+
+
+            fetch(UrlNew)
+  .then(response => response.text()).then(data => {
+  	// Do something with your data
+  
+      document.getElementById("TranscibedFileTextPreview").innerHTML = data;
+  });
+}
+else{
+    document.getElementById("TranscibedFileTextPreview").innerHTML = "Text not available for provided file!";
+}
+    // var file = new XMLHttpRequest();
+    // file.open("GET",UrlNew , true);
+    // console.log(file.onreadystatechange);
+    // file.onreadystatechange = function() {
+     
+    //   if (file.readyState === 4) {  // Makes sure the document is ready to parse
+    //     if (file.status === 200) {  // Makes sure it's found the file
+    //       text = file.responseText;
+    //       document.getElementById("TranscibedFileTextPreview").innerHTML = text;
+    //     }
+    //   }
+    // }
+}
+
+window.onLoad = load();
+    </script> -->
+    <!-- <script src="{{ STATIC_URL }}/static/libs/Fileuploader/demo-config.js"></script> -->
+
+		{% endblock %}
+    <!-- </body> -->
